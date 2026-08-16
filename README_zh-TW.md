@@ -89,7 +89,8 @@ xcodebuild -workspace HomeAssistant.xcworkspace -scheme App-Debug \
 |---|---|
 | 換裝(3 934 條字串 / 34 語系、79 組資產)+ preflight 66/66 | ✅ 2026-08-16 |
 | 模擬器編譯 + 品牌 onboarding | ✅ 2026-08-16 |
-| 實伺服器 OAuth 全鏈路、實機、8 大類冒煙 | ⏳ 待辦 |
+| 實伺服器 OAuth 全鏈路(完整原生 onboarding、儀表板、`apporohome://` 深連結) | ✅ 2026-08-16([報告](docs/verification/phase4-report.md)) |
+| 實機 + 8 大類冒煙 | ⏳ 待辦 |
 
 ## 授權與致謝
 

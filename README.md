@@ -90,7 +90,8 @@ xcodebuild -workspace HomeAssistant.xcworkspace -scheme App-Debug \
 |---|---|
 | Rebrand (3 934 strings / 34 locales, 79 asset sets) + preflight 66/66 | ✅ 2026-08-16 |
 | Simulator build + branded onboarding | ✅ 2026-08-16 |
-| Live server OAuth end-to-end, physical device, 8-category smoke | ⏳ pending |
+| Live server OAuth end-to-end (full native onboarding, dashboard, `apporohome://` deep link) | ✅ 2026-08-16 ([report](docs/verification/phase4-report.md)) |
+| Physical device + 8-category smoke | ⏳ pending |
 
 ## License & Attribution
 
