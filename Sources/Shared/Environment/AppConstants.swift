@@ -5,35 +5,73 @@ import Version
 
 /// Contains shared constants
 public enum AppConstants {
+    /// Single source of truth for the brand host used by help-center links and OAuth client metadata.
+    /// Changing the brand domain should only ever require editing this one line.
+    public static let brandHost = "aiot.apporo.ai"
+
+    /// Help-center / documentation destinations.
+    ///
+    /// WARNING: the help-center articles behind these paths have NOT been written yet. The paths
+    /// below are the planned, structured layout (`https://<brandHost>/<path>`) so that call sites can
+    /// be pointed at stable names now and the content can be filled in later.
+    /// Before App Store submission every URL here MUST be opened and confirmed to return a readable
+    /// page — a reviewer following an in-app help link into a 404 is a rejection risk.
     public enum WebURLs {
-        public static var homeAssistant = URL(string: "https://aiot.apporo.io")!
-        public static var homeAssistantGetStarted = URL(string: "https://aiot.apporo.io/installation/")!
-        public static var homeAssistantCompanionGetStarted =
-            URL(string: "https://aiot.apporo.io/docs/getting_started/")!
-        public static var companionAppDocs = URL(string: "https://aiot.apporo.io")!
-        public static var companionAppDocsTroubleshooting =
-            URL(string: "https://aiot.apporo.io/docs/troubleshooting/errors")!
-        public static var beta = URL(string: "https://aiot.apporo.io/app/ios/beta")!
-        public static var betaMac = URL(string: "https://aiot.apporo.io/app/ios/beta_mac")!
-        public static var review = URL(string: "https://aiot.apporo.io/app/ios/review")!
-        public static var reviewMac = URL(string: "https://aiot.apporo.io/app/ios/review_mac")!
-        public static var translate = URL(string: "https://aiot.apporo.io/app/ios/translate")!
-        public static var forums = URL(string: "https://aiot.apporo.io/")!
-        public static var chat = URL(string: "https://aiot.apporo.io/app/ios/chat")!
-        public static var twitter = URL(string: "https://aiot.apporo.io")!
-        public static var facebook = URL(string: "https://aiot.apporo.io")!
-        public static var repo = URL(string: "https://aiot.apporo.io/app/ios/repo")!
-        public static var issues = URL(string: "https://aiot.apporo.io/app/ios/issues")!
-        public static var companionAppConnectionSecurityLevel =
-            URL(string: "https://aiot.apporo.io/docs/getting_started/connection-security-level")!
-        public static var companionLocalPush =
-            URL(string: "https://aiot.apporo.io/app/ios/local-push")!
-        public static var nfcDocs =
-            URL(string: "https://aiot.apporo.io/app/ios/nfc")!
-        public static var liveActivitiesDocs =
-            URL(string: "https://aiot.apporo.io/docs/notifications/live-activities")!
-        public static var appleDropSupportiOS15 =
-            URL(string: "https://aiot.apporo.io")!
+        private static let root = "https://\(AppConstants.brandHost)"
+
+        private static func page(_ path: String) -> URL {
+            URL(string: "\(root)/\(path)")!
+        }
+
+        // MARK: Landing / general
+
+        public static let homeAssistant = URL(string: root)!
+        public static let support = page("support")
+        public static let privacy = page("privacy")
+
+        // MARK: Getting started
+
+        public static let homeAssistantGetStarted = page("docs/getting-started")
+        public static let homeAssistantCompanionGetStarted = page("docs/getting-started")
+        public static let companionAppDocs = page("docs")
+
+        // MARK: Troubleshooting
+
+        public static let companionAppDocsTroubleshooting = page("docs/troubleshooting")
+        public static let companionAppConnectionSecurityLevel =
+            page("docs/troubleshooting#connection-security-level")
+
+        // MARK: Notifications
+
+        public static let notificationsDocs = page("docs/notifications")
+        public static let actionableNotificationsDocs = page("docs/notifications#actionable-notifications")
+        public static let notificationSoundsDocs = page("docs/notifications#notification-sounds")
+        public static let liveActivitiesDocs = page("docs/notifications#live-activities")
+        public static let companionLocalPush = page("docs/notifications#local-push")
+
+        // MARK: Platform features
+
+        public static let widgetsDocs = page("docs/widgets")
+        public static let appleWatchDocs = page("docs/apple-watch")
+        public static let nfcDocs = page("docs/nfc")
+        public static let appleDropSupportiOS15 = page("docs/troubleshooting")
+
+        // MARK: Community / app links
+        //
+        // These are inherited from the upstream companion app. They are kept so existing call sites
+        // keep compiling; a later batch decides whether the brand actually offers each destination.
+
+        public static let beta = page("app/ios/beta")
+        public static let betaMac = page("app/ios/beta-mac")
+        public static let review = page("app/ios/review")
+        public static let reviewMac = page("app/ios/review-mac")
+        public static let translate = page("app/ios/translate")
+        public static let forums = page("support")
+        public static let chat = page("support")
+        public static let twitter = URL(string: root)!
+        public static let facebook = URL(string: root)!
+        public static let repo = page("app/ios")
+        public static let issues = page("support")
     }
 
     public enum QueryItems: String, CaseIterable {
@@ -101,13 +139,18 @@ public enum AppConstants {
         return removeBundleSuffix
     }
 
-    public static var deeplinkURL: URL {
-        switch Current.appConfiguration {
-        case .debug:
-            return URL(string: "apporohome://")!
-        default:
-            return URL(string: "apporohome://")!
-        }
+    /// The app's custom URL scheme, used for deep links and for the OAuth redirect.
+    /// NOTE: still the legacy `apporohome` value on purpose — renaming the scheme is a later batch
+    /// (it has to move together with the bundle id, Info.plist and the server-side redirect URI).
+    public static let urlScheme = "apporohome"
+    public static let deeplinkURL = URL(string: "\(urlScheme)://")!
+
+    public enum OAuth {
+        /// Public client metadata URL advertised to Home Assistant as `client_id`.
+        /// NOTE: kept at its current value on purpose; moving it under `brandHost` is a later batch
+        /// and requires the new page to be published first (HA fetches it for IndieAuth link discovery).
+        public static let clientID = "https://woowtech.github.io/Woow_apporo_ha_app/android"
+        public static let redirectURI = "\(AppConstants.urlScheme)://auth-callback"
     }
 
     /// Roots a scheme-less, slash-less navigation path (`map/0` → `/map/0`) so an HA path that is
