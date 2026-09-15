@@ -16,7 +16,9 @@ struct AppConstantsTests {
 
     @Test func testWebURLsAllLiveOnBrandHost() async throws {
         // Guards the regression this migration exists to fix: a help link left on an upstream
-        // Home Assistant domain, or on the dead `www.apporo.ai` domain.
+        // Home Assistant domain, or on one of the two dead Apporo domains — `aiot.apporo.io`
+        // (retired 2026-09) and `aiot.apporo.ai` (has DNS but no origin on Cloudflare, so the
+        // whole host answers 404). The live brand host is `www.apporo.ai`.
         let all: [URL] = [
             AppConstants.WebURLs.homeAssistant,
             AppConstants.WebURLs.support,
