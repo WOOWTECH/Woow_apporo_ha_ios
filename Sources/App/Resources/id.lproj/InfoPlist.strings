@@ -1,13 +1,13 @@
 "NFCReaderUsageDescription" = "Pembacaan dan penulisan tag NFC memungkinkan Anda untuk memicu peristiwa.";
-"NSCameraUsageDescription" = "Ambil foto dan kirimkan ke server Apporo SmartHome Anda";
+"NSCameraUsageDescription" = "Ambil foto dan kirimkan ke server Apporo aiot Anda";
 "NSCrossWebsiteTrackingUsageDescription" = "Aktifkan pelacakan lintas situs web opsional jika konfigurasi Anda memerlukannya.";
 "NSFocusStatusUsageDescription" = "Laporkan status fokus Anda sebagai sensor.";
-"NSLocalNetworkUsageDescription" = "Temukan dan terhubung dengan instans Apporo SmartHome Anda.";
+"NSLocalNetworkUsageDescription" = "Temukan dan terhubung dengan instans Apporo aiot Anda.";
 "NSLocationAlwaysAndWhenInUseUsageDescription" = "Kami sarankan untuk memilih \"Selalu Izinkan\" untuk pengalaman lokasi terbaik. Memilih \"Hanya Saat Menggunakan Aplikasi\" akan menonaktifkan iBeacon, geofence, pembaruan lokasi latar belakang, dan pelaporan yang akurat.";
 "NSLocationAlwaysUsageDescription" = "Kami selalu membutuhkan akses ke lokasi Anda untuk fitur seperti iBeacon, geofence, pembaruan lokasi latar belakang, dan pelaporan yang akurat.";
-"NSLocationUsageDescription" = "Jika diaktifkan, lokasi perangkat Anda akan dikirim ke server Apporo SmartHome untuk data pelacak perangkat.";
+"NSLocationUsageDescription" = "Jika diaktifkan, lokasi perangkat Anda akan dikirim ke server Apporo aiot untuk data pelacak perangkat.";
 "NSLocationWhenInUseUsageDescription" = "Hanya mengizinkan akses lokasi saat aplikasi sedang digunakan akan menonaktifkan iBeacon, geofences, pembaruan lokasi latar belakang, dan pelaporan yang akurat.";
-"NSMicrophoneUsageDescription" = "Rekam audio menggunakan antarmuka Apporo SmartHome Anda.";
+"NSMicrophoneUsageDescription" = "Rekam audio menggunakan antarmuka Apporo aiot Anda.";
 "NSMotionUsageDescription" = "Gerakan digunakan untuk meningkatkan pembaruan lokasi dengan jenis gerakan saat ini, serta menyediakan data pedometer dasar.";
 "NSPhotoLibraryAddUsageDescription" = "Akses Perpustakaan Foto diperlukan agar bisa menyimpan foto dari tampilan web.";
 "NSPhotoLibraryUsageDescription" = "Akses Perpustakaan Foto diperlukan agar bisa menyimpan foto dari tampilan web.";

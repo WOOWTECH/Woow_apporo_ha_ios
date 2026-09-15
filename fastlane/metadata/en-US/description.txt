@@ -1,27 +1,28 @@
-Control and monitor your home from anywhere in the world. Home Assistant Companion lets you control all your devices and provides advanced location and notification engines to allow for complex mobile automations.
+Apporo aiot puts an Apporo building controller in your pocket. Pair the app with an AP-1004S or AP-1005S your integrator has commissioned for the site, and everything that controller manages becomes something you can check and steer from your phone.
 
-Home Assistant is an open-source home automation platform that focuses on local control and privacy. Supported products include:
+It is written for the people who occupy the building, not only for the person who installed it. A resident gets their own apartment. A duty manager gets the floors they answer for. An engineer gets the plant room. Who sees what is decided on the controller itself, never inside the app.
 
-- Amazon Echo (Alexa)
-- Apple TV
-- Arduino
-- Belkin WeMo
-- Dark Sky
-- ecobee
-- Google Assistant
-- Google Cast
-- IFTTT
-- IKEA Trådfri (Tradfri)
-- Kodi/XBMC
-- MQTT
-- MySensors
-- Nest
-- Owntracks
-- Philips Hue
-- Plex
-- Pushbullet
-- Sonos
-- Wink
-- Z-Wave
+WHAT THE APP DOES
+– Opens the dashboards your integrator laid out, so lights, climate, blinds, scenes and switches are one tap away
+– Delivers push alerts the moment your controller raises one: a fault, a threshold crossed, a door left open. Respond from the notification itself — press an action button, or type a reply straight back to the controller
+– Shows live sensor readings and equipment status without digging through a browser
+– Puts a control tile on your Home Screen or Lock Screen as a widget
+– Reads NFC tags, so a tap on a tag by the door or the desk can trigger whatever you assigned to it
+– Answers to Siri for the routines you choose to expose
+– Optionally reports selected phone signals back to the controller for use in automations. Every signal is listed individually and can be switched off, or the whole feature disabled
 
-Home Assistant Companion requires an iPhone running iOS 10.3 or later and a configured Home Assistant instance. The instance must use Home Assistant Cloud or be accessible from the Internet and secured with a valid, non self-signed, SSL certificate for location tracking. Basic notifications work without external access.
+WHERE APPORO CONTROLLERS ARE USED
+Apartments and houses, hotels and serviced residences, offices, retail floors and light industrial sites. Field equipment reaches the controller over KNX, BACnet, Modbus, DALI and IP networks; the app itself speaks only to the controller.
+
+WHAT YOU NEED FIRST
+– A commissioned Apporo controller and an account on it. This app does nothing on its own.
+– Credentials issued by your integrator or building administrator, who also sets the scope of what that account may reach.
+– For use away from the site, a remote entry point that your administrator has enabled.
+
+ABOUT THE SOFTWARE
+Apporo aiot is built on Home Assistant open source technology. Apporo is an independent product and is not affiliated with, endorsed by, or sponsored by the Home Assistant project.
+
+Dashboards, device state and history live on the controller in your building. Apporo does not keep a copy of them.
+
+Product information: https://www.apporo.ai/products
+Get in touch: https://www.apporo.ai/contactus

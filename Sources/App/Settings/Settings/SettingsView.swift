@@ -171,9 +171,10 @@ struct SettingsView: View {
                 ForEach(SettingsItem.helpItems, id: \.self) { item in
                     if item == .help {
                         Button {
-                            if let url = URL(string: "https://aiot.apporo.io") {
-                                openURLInBrowser(url, viewControllerProvider.viewController)
-                            }
+                            openURLInBrowser(
+                                AppConstants.WebURLs.support,
+                                viewControllerProvider.viewController
+                            )
                         } label: {
                             HStack {
                                 settingsItemLabel(item)

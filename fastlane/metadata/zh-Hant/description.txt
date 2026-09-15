@@ -1,27 +1,28 @@
-想在任何地方控制智能設備和監控你家裡的情況嗎？Home Assistant iOS版本提供你在移動設備上就能遠端操作家裡的智能家居設備，也可根據你的需求自動化的運作，將結果通知給你。
+Apporo aiot 是 Apporo 建築控制器（AP-1004S、AP-1005S）的行動端操作介面。當你的場域已完成控制器調校，這支 App 就是把那台控制器所管理的一切帶在身上的方式。
 
-Home Assistant是一套使用Python3開發的智能家居平台，支援了以下設備
+它是寫給待在建築裡的人用的，而不只給安裝的人用。住戶看到自己的單位，值班主管看到自己負責的樓層，工程人員看到機房。誰能看到什麼，由控制器端決定，App 本身不做權限。
 
-- Amazon Echo (Alexa)
-- Apple TV
-- Arduino
-- Belkin WeMo
-- Dark Sky
-- ecobee
-- Google Assistant
-- Google Cast
-- IFTTT
-- IKEA Trådfri (Tradfri)
-- Kodi/XBMC
-- MQTT
-- MySensors
-- Nest
-- Owntracks
-- Philips Hue
-- Plex
-- Pushbullet
-- Sonos
-- Wink
-- Z-Wave
+這支 App 能做的事
+－ 開啟整合商排好的儀表板，燈光、空調、窗簾、情境與開關一觸即達
+－ 控制器一發出警示就推播到手機：異常、數值越界、門未關妥。可直接在通知上處理，按下動作按鈕，或直接打字回覆給控制器
+－ 即時查看感測器數值與設備狀態，不必再開瀏覽器翻找
+－ 把控制磚放到主畫面或鎖定畫面的小工具上
+－ 讀取 NFC 標籤，在門邊或桌上輕觸一下就觸發你指定的動作
+－ 支援 Siri，呼叫你自己開放出來的流程
+－ 可選擇把手機的部分狀態回報給控制器供自動化使用。每一項都獨立列出、可單獨關閉，也可以整個停用
 
-Home Assistant iOS版本需求 9.3以上的iOS版本，並且需要一個已經設定完成的Home Assistant智能家居環境。主機端請設定好可被網際網路存取的外部IP以及安全的SSL憑證，這可以保證你在安全的環境下操作。
+Apporo 控制器的使用場域
+住宅與公寓、旅館與服務式住宅、辦公空間、零售賣場，以及輕工業廠域。現場設備透過 KNX、BACnet、Modbus、DALI 與 IP 網路連到控制器；App 本身只與控制器溝通。
+
+使用前需要準備
+－ 一台已完成調校的 Apporo 控制器，以及該控制器上的帳號。本 App 無法單獨運作。
+－ 由整合商或建築管理者核發的帳號，可存取的範圍也由對方設定。
+－ 若要在場域外使用，需由管理者開通外部連線入口。
+
+關於這套軟體
+Apporo aiot 建構於 Home Assistant 開源技術之上。Apporo 為獨立產品，與 Home Assistant 專案無隸屬、背書或贊助關係。
+
+儀表板、設備狀態與歷史紀錄留在你建築物內的控制器上，Apporo 不另行保存副本。
+
+產品資訊：https://www.apporo.ai/products
+聯絡我們：https://www.apporo.ai/contactus
