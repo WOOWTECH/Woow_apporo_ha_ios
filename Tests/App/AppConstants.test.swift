@@ -11,12 +11,12 @@ struct AppConstantsTests {
     }
 
     @Test func testBrandHost() async throws {
-        assert(AppConstants.brandHost == "aiot.apporo.ai", "brand host must be the aiot.apporo.ai domain")
+        assert(AppConstants.brandHost == "www.apporo.ai", "brand host must be the www.apporo.ai domain")
     }
 
     @Test func testWebURLsAllLiveOnBrandHost() async throws {
         // Guards the regression this migration exists to fix: a help link left on an upstream
-        // Home Assistant domain, or on the dead `aiot.apporo.io` domain.
+        // Home Assistant domain, or on the dead `www.apporo.ai` domain.
         let all: [URL] = [
             AppConstants.WebURLs.homeAssistant,
             AppConstants.WebURLs.support,
@@ -46,12 +46,12 @@ struct AppConstantsTests {
     @Test func testWebURLPaths() async throws {
         let root = "https://\(AppConstants.brandHost)"
         assert(AppConstants.WebURLs.homeAssistant.absoluteString == root)
-        assert(AppConstants.WebURLs.support.absoluteString == "\(root)/support")
+        assert(AppConstants.WebURLs.support.absoluteString == "\(root)/help/support")
         assert(AppConstants.WebURLs.privacy.absoluteString == "\(root)/privacy")
-        assert(AppConstants.WebURLs.companionAppDocs.absoluteString == "\(root)/docs")
-        assert(AppConstants.WebURLs.companionAppDocsTroubleshooting.absoluteString == "\(root)/docs/troubleshooting")
-        assert(AppConstants.WebURLs.notificationsDocs.absoluteString == "\(root)/docs/notifications")
-        assert(AppConstants.WebURLs.nfcDocs.absoluteString == "\(root)/docs/nfc")
+        assert(AppConstants.WebURLs.companionAppDocs.absoluteString == "\(root)/help")
+        assert(AppConstants.WebURLs.companionAppDocsTroubleshooting.absoluteString == "\(root)/help/troubleshooting")
+        assert(AppConstants.WebURLs.notificationsDocs.absoluteString == "\(root)/help/notifications")
+        assert(AppConstants.WebURLs.nfcDocs.absoluteString == "\(root)/help/nfc")
         // The upstream community entry points (forums / chat / twitter / facebook / repo) are gone;
         // anything that used to "report an issue" now goes to our support page instead.
         assert(AppConstants.WebURLs.issues == AppConstants.WebURLs.support)
