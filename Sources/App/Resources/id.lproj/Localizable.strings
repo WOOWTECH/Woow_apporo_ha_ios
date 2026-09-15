@@ -966,7 +966,7 @@ Tag akan berfungsi di semua perangkat apa yang dipasangi Apporo aiot, yang memil
 "onboarding.network_input.no_network.skip.alert.secondary_button.title" = "Lewati";
 "onboarding.network_input.no_network.skip.alert.title" = "Yakin?";
 "onboarding.network_input.primary_button.title" = "Berikutnya";
-"onboarding.network_input.primary_description" = "Untuk pengalaman terbaik, Asisten Rumah perlu mengetahui kapan Anda terhubung ke jaringan rumah.";
+"onboarding.network_input.primary_description" = "Untuk pengalaman terbaik, Apporo aiot perlu mengetahui kapan Anda terhubung ke jaringan rumah.";
 "onboarding.network_input.secondary_button.title" = "Lewati";
 "onboarding.network_input.title" = "Apa jaringan rumah Anda?";
 "onboarding.permission.location.deny.alert.body" = "Jika Anda yakin, lanjutkan dan ketuk 'Tolak' pada popup berikutnya, jika Anda tidak memiliki konfigurasi koneksi jarak jauh, Aplikasi ini akan menggunakan konfigurasi koneksi lokal Anda untuk mengakses Apporo aiot.";

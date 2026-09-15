@@ -1,37 +1,24 @@
+# App Store Connect only requires the largest display in each family it will
+# scale down from: 6.9" iPhone (1320x2868) and 13" iPad (2064x2752).
 devices(
   [
-    'iPhone 8',
-    'iPhone 8 Plus',
-    'iPhone SE',
-    'iPhone Xs',
-    'iPhone Xs Max',
-    'iPad Pro (12.9-inch) (2nd generation)',
-    'iPad Pro (10.5-inch)',
-    'iPad Pro (12.9-inch) (3rd generation)'
+    'iPhone 17 Pro Max',
+    'iPad Pro 13-inch (M4)'
   ]
 )
 
+# Must stay in sync with the locale folders under fastlane/metadata/ --
+# deliver uploads a localization for any locale that has screenshots, even
+# when that locale has no metadata folder.
 languages(
   [
-    'de-DE',
     'en-US',
-    # es-* doesn't have enough coverage as of 06/19.
-    # "es-ES",
-    # "es-MX",
-    'es',
-    'fi',
-    'fr',
-    'it',
-    'nb',
-    'nl',
-    'ru',
-    'sv',
-    'zh-Hans',
-    'zh-Hant'
+    'zh-Hant',
+    'zh-Hans'
   ]
 )
 
-scheme('HomeAssistantUITests')
+scheme('Tests-UI')
 
 clear_previous_screenshots(true)
 

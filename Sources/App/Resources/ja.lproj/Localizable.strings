@@ -919,7 +919,7 @@
 "onboarding.device_name_check.error.prompt" = "代わりにどのデバイス名を使用する必要がありますか？";
 "onboarding.device_name_check.error.title" = "'%1$@' という名前のデバイスは既に存在します";
 "onboarding.invitation.accept_button" = "受け入れる";
-"onboarding.invitation.address_title" = "ホームアシスタントのアドレス";
+"onboarding.invitation.address_title" = "Apporo aiot のアドレス";
 "onboarding.invitation.description" = "Apporo aiotは、ローカル制御とプライバシーを最優先に考えたオープンソースのホームオートメーションシステムです。";
 "onboarding.invitation.reject_button" = "拒否";
 "onboarding.invitation.screen_title" = "招待されました";
@@ -1022,7 +1022,7 @@
 "onboarding.welcome.description" = "このアプリは、あなたのApporo aiotのサーバーに接続し、あなたとあなたの携帯電話に関するデータを統合することができます。\
 \
 Apporo aiotは、ローカルコントロールとプライバシーに重点を置いた、フリーでオープンソースなホームオートメーションソフトウェアです。";
-"onboarding.welcome.header" = "ホームアシスタントコンパニオンアプリ";
+"onboarding.welcome.header" = "Apporo aiot アプリ";
 "onboarding.welcome.learn_more" = "もっと詳しく知る";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot のロゴ";
 "onboarding.welcome.primary_button" = "Apporo aiotに接続";
@@ -1865,7 +1865,7 @@ Apporo aiotはオープンソースで、プライバシーを擁護し、あな
 \
  ➡️ アプリの設定を開き、セキュリティの選択やURLを更新してください。";
 "web_view.no_url_available.primary_button.title" = "アプリの設定を開く";
-"web_view.no_url_available.title" = "ホームアシスタントに接続できません";
+"web_view.no_url_available.title" = "Apporo aiot に接続できません";
 "web_view.server_selection.title" = "サーバーの選択";
 "web_view.unique_server_selection.title" = "サーバーを1つ選択";
 "webrtc_player.known_issues.title" = "既知の問題";
@@ -1987,7 +1987,7 @@ Apporo aiotはオープンソースで、プライバシーを擁護し、あな
 "widgets.details.parameters.upper_template" = "上部テキストテンプレート";
 "widgets.details.title" = "詳細";
 "widgets.entity_state.placeholder" = "エンティティの状態";
-"widgets.gauge.description" = "ホームアシスタントからの数値をゲージに表示";
+"widgets.gauge.description" = "Apporo aiot からの数値をゲージに表示";
 "widgets.gauge.description_with_warning" = "Apporo aiot からの数値状態をゲージに表示します。注意: テンプレートにアクセスするには、ユーザーは管理者である必要があります。";
 "widgets.gauge.parameters.action" = "アクション";
 "widgets.gauge.parameters.gauge_type" = "ゲージタイプ";

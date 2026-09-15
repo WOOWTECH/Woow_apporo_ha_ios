@@ -327,6 +327,9 @@ struct SettingsView: View {
     }
 
     private var shouldShowWatchSection: Bool {
+        // The phone package does not embed a Watch app in 1.0, so never offer Watch settings —
+        // not even in debug, where the old `Current.isDebug` branch below would have shown them.
+        guard AppConstants.includesWatchAppInPhonePackage else { return false }
         guard UIDevice.current.userInterfaceIdiom == .phone else { return false }
         if Current.isDebug {
             return true

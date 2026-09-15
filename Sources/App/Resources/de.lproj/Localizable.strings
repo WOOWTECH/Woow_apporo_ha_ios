@@ -1382,7 +1382,7 @@ Apporo aiot ist Open Source, setzt sich für Datenschutz ein und läuft lokal be
 "settings_details.mac_native_features.footer" = "Dadurch wird Safari anstelle der App-Webansicht geöffnet, während native Funktionen wie Widgets weiterhin funktionieren.";
 "settings_details.mac_native_features.title" = "Nur native Funktionen (experimentell)";
 "settings_details.mac_open_in_browser.footer" = "Öffnet Apporo aiot in deinem Standardbrowser anstelle der In-App-Webansicht, wobei native Funktionen wie Widgets weiterhin funktionieren.";
-"settings_details.mac_open_in_browser.title" = "Home-Assistant-UI im Browser öffnen";
+"settings_details.mac_open_in_browser.title" = "Apporo aiot UI im Browser öffnen";
 "settings_details.notifications.badge_section.automatic_setting.description" = "Setzt das Badge bei jedem Start der App auf 0 zurück.";
 "settings_details.notifications.badge_section.automatic_setting.title" = "Automatisch";
 "settings_details.notifications.badge_section.button.title" = "Badge zurücksetzen";

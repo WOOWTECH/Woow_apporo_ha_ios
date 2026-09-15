@@ -1,12 +1,12 @@
 "0aqrcy" = "Falló: ${error}";
-"2KWKqM" = "Ha Fallado: Hombre Assistant no es accesible";
+"2KWKqM" = "Ha Fallado: Apporo aiot no es accesible";
 "2LIxe4" = "Failed: ${error}";
 "2b0Uo4" = "Servicio";
 "2yevCF" = "Which pipeline do you want to use?";
 "3jKamg" = "{{ now() }}";
 "4fFx9y" = "Actualizado";
 "4tpAXn" = "Sólo para confirmar, ¿quiere `${server}`?";
-"5ZzwZD" = "Ha Fallado: Hombre Assistant no está accesible actualmente";
+"5ZzwZD" = "Ha Fallado: Apporo aiot no está accesible actualmente";
 "5bVvn0" = "No se ha podido actualizar la ubicación: ${error}";
 "637QjD" = "Error";
 "6ozAdN" = "Imagen de la cámara";
@@ -40,7 +40,7 @@
 "JBMp1T" = "Sólo para confirmar, ¿quiere `${server}`?";
 "JFaYRG" = "Just to confirm, you wanted ‘${pipeline}’?";
 "K4xrvF" = "Error";
-"KHH48D" = "Ha Fallado: Hombre Assistant no está accesible actualmente";
+"KHH48D" = "Ha Fallado: Apporo aiot no está accesible actualmente";
 "KJS2jk" = "Falló: ${error}";
 "KM7mXC" = "Acción";
 "KSmKl0" = "Called ${domain}.${service}";
@@ -82,7 +82,7 @@
 "am5G4A" = "Sólo para confirmar, ¿quiere `${server}`?";
 "cK9jdK" = "Falló: ${error}";
 "cLmTme" = "Acción";
-"cuflz3" = "Ha Fallado: Hombre Assistant no está accesible actualmente";
+"cuflz3" = "Ha Fallado: Apporo aiot no está accesible actualmente";
 "d65H6l" = "z - (Deprecated) Assist with \"${text}\"";
 "dFHPYK" = "Se ha realizado ${action}";
 "eObn2i" = "Página";
@@ -91,13 +91,13 @@
 "fkQXDn" = "Hay ${count} opciones que coinciden con '${action}'.";
 "flUgtx" = "¿Qué acción?";
 "fnz838" = "Sensores actualizados";
-"foI0Fv" = "Ha Fallado: Hombre Assistant no está accesible actualmente";
+"foI0Fv" = "Ha Fallado: Apporo aiot no está accesible actualmente";
 "ftQHJw" = "Which server?";
 "fuRWMi" = "z - (Deprecated) Envia ${location} a Apporo aiot";
 "g8g7Af" = "Realiza la acción";
 "gI3mme" = "¿Qué datos de servicio queréis enviar?";
 "gePUyy" = "Ubicación";
-"glRCfJ" = "Ha Fallado: Hombre Assistant no está accesible actualmente";
+"glRCfJ" = "Ha Fallado: Apporo aiot no está accesible actualmente";
 "gv7Gg6" = "Ubicación";
 "h1xQ53" = "z - (Deprecated) Actualizar sensores";
 "hKNPaD" = "Servidor";
@@ -115,7 +115,7 @@
 "lGqSSG" = "No se han podido actualizar los sensores.";
 "lNmaCR" = "Plantilla";
 "lxHlyQ" = "z - (Deprecated) Fire Event";
-"mAibJP" = "Ha Fallado: Hombre Assistant no está accesible actualmente";
+"mAibJP" = "Ha Fallado: Apporo aiot no está accesible actualmente";
 "mJ6CrP" = "No se ha podido enviar ${eventName}: ${error}";
 "mZnRHS" = "${eventName} fired";
 "mi6B62" = "What data do you want to send with the event?";
@@ -126,7 +126,7 @@
 "oHn0vD" = "Páginas";
 "oIWFyR" = "Falló: ${error}";
 "onq5yE" = "Error al llamar al servicio con error: ${error}";
-"pQhTjo" = "Ha Fallado: Hombre Assistant no está accesible actualmente";
+"pQhTjo" = "Ha Fallado: Apporo aiot no está accesible actualmente";
 "pjQR7t" = "z - (Deprecated) Actualizar sensores";
 "qYpzmu" = "¿Qué páginas?";
 "qayMH6" = "z - (Deprecated) Call Service";

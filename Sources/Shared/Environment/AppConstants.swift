@@ -5,6 +5,12 @@ import Version
 
 /// Contains shared constants
 public enum AppConstants {
+    /// Apporo aiot 1.0 keeps the Watch targets and their source in the repository, but does not
+    /// embed a Watch app in the phone package: the App target no longer has an "Embed Watch
+    /// Content" phase or a WatchApp dependency. UI that would offer to set up or manage the Watch
+    /// app is gated on this flag so it does not advertise something the shipped package cannot do.
+    public static let includesWatchAppInPhonePackage = false
+
     /// Single source of truth for the brand host used by help-center links and OAuth client metadata.
     /// Changing the brand domain should only ever require editing this one line.
     public static let brandHost = "aiot.apporo.ai"
@@ -145,7 +151,8 @@ public enum AppConstants {
         removeBundleSuffix = removeBundleSuffix.replacingOccurrences(of: ".Widgets", with: "")
         removeBundleSuffix = removeBundleSuffix.replacingOccurrences(of: ".ShareExtension", with: "")
         removeBundleSuffix = removeBundleSuffix.replacingOccurrences(of: ".PushProvider", with: "")
-        removeBundleSuffix = removeBundleSuffix.replacingOccurrences(of: ".Matter", with: "")
+        // ".Matter" is intentionally absent: the Extensions-Matter target no longer exists, so no
+        // bundle identifier in this app can carry that suffix.
 
         return removeBundleSuffix
     }

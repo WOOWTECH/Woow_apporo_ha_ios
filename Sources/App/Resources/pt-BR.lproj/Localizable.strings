@@ -30,7 +30,7 @@
 "addButtonLabel" = "Adicionar";
 "alert.confirmation.delete_entities.message" = "Isso limpará suas entidades do banco de dados e só será recarregado na próxima vez que você abrir o aplicativo do zero.";
 "alert.confirmation.generic.title" = "Tem certeza?";
-"alerts.action_automation_editor.unavailable.body" = "Para criar automaticamente uma automação para uma Ação, atualize seu Assistente Doméstico para pelo menos a versão 2024.2";
+"alerts.action_automation_editor.unavailable.body" = "Para criar automaticamente uma automação para uma Ação, atualize seu Apporo aiot para pelo menos a versão 2024.2";
 "alerts.action_automation_editor.unavailable.title" = "Atualize o Apporo aiot";
 "alerts.alert.ok" = "OK";
 "alerts.auth_required.message" = "O servidor rejeitou suas credenciais e você deve entrar novamente para continuar.";

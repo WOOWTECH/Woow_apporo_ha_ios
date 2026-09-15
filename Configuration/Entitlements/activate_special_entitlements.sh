@@ -5,7 +5,7 @@ ENTITLEMENTS_FILE="${TARGET_TEMP_DIR}/${FULL_PRODUCT_NAME}.xcent"
 # 旗標正規化:xcconfig 的 $(ENABLE_X_$(DEVELOPMENT_TEAM)) 在 team 沒有對應定義時會展開成
 # 空字串;非 iphoneos SDK 也不會有值。空/未設/非數字一律當 0（停用),
 # 避免 [[ "" -eq 1 ]] 之外的形態（例如 "NO"、"1a"）在 build log 噴 bash 算術錯誤。
-for _flag in ENABLE_CRITICAL_ALERTS ENABLE_PUSH_PROVIDER ENABLE_THREAD_NETWORK_CREDENTIALS \
+for _flag in ENABLE_CRITICAL_ALERTS ENABLE_PUSH_PROVIDER \
              ENABLE_CARPLAY ENABLE_DEVICE_NAME; do
     if [[ ! ${!_flag-} =~ ^[0-9]+$ ]]; then
         printf -v "$_flag" '%s' 0
@@ -38,15 +38,8 @@ else
     echo "warning: Push provider disabled"
 fi
 
-if [[ $TARGET_NAME = "App" ]]; then
-    if [[ $CI && $CONFIGURATION != "Release" ]]; then
-      echo "warning: THREAD_NETWORK_CREDENTIALS disabled for CI"
-    elif [[ ${ENABLE_THREAD_NETWORK_CREDENTIALS} -eq 1 ]]; then
-        add_entitlement "add com.apple.developer.networking.manage-thread-network-credentials bool true"
-    else
-        echo "warning: THREAD_NETWORK_CREDENTIALS disabled"
-    fi
-fi
+# com.apple.developer.networking.manage-thread-network-credentials 的區塊已移除:
+# Matter / Thread 整條產品線不進首版,沒有東西會用到這個 entitlement。
 
 if [[ $TARGET_NAME = "App" ]]; then
   if [[ $CI && $CONFIGURATION != "Release" ]]; then

@@ -6,7 +6,7 @@
 "3jKamg" = "{{ şimdi() }}";
 "4fFx9y" = "Güncellenmiş";
 "4tpAXn" = "Sadece onaylamak için ' ${server} ' mı istediniz?";
-"5ZzwZD" = "Başarısız: Ev Asistanı'na şu anda ulaşılamıyor";
+"5ZzwZD" = "Başarısız: Apporo aiot'a şu anda ulaşılamıyor";
 "5bVvn0" = "Konum güncelleneme başarısız: ${error}";
 "637QjD" = "Hata";
 "6ozAdN" = "Kamera Görüntüsü";
@@ -40,7 +40,7 @@
 "JBMp1T" = "Sadece onaylamak için ' ${server} ' mı istediniz?";
 "JFaYRG" = "Sadece teyit etmek için soruyorum, '${pipeline}' mı istiyordunuz?";
 "K4xrvF" = "Hata";
-"KHH48D" = "Başarısız: Ev Asistanı'na şu anda ulaşılamıyor";
+"KHH48D" = "Başarısız: Apporo aiot'a şu anda ulaşılamıyor";
 "KJS2jk" = "Başarısız: ${error}";
 "KM7mXC" = "Aksiyon";
 "KSmKl0" = "Çağırılan ${domain}.${service}";
@@ -52,7 +52,7 @@
 "MwEpGz" = "Bitti";
 "N9iJpK" = "z - (Deprecated) Kamera Görüntüsü Alın";
 "NUF0Pa" = "${result}";
-"NdG9Jz" = "Ev Yardımcısı şablonunu işler";
+"NdG9Jz" = "Apporo aiot şablonunu işler";
 "NsbUTz" = "Kamera Varlığı";
 "Q2Qp4a" = "Aksiyon";
 "QCGKRz" = "Hangi dil?";
@@ -82,7 +82,7 @@
 "am5G4A" = "Sadece onaylamak için ' ${server} ' mı istediniz?";
 "cK9jdK" = "Başarısız: ${error}";
 "cLmTme" = "Aksiyon";
-"cuflz3" = "Başarısız: Ev Asistanı'na şu anda ulaşılamıyor";
+"cuflz3" = "Başarısız: Apporo aiot'a şu anda ulaşılamıyor";
 "d65H6l" = "z - (Deprecated) \"${text}\" ile yardım";
 "dFHPYK" = "Gerçekleştirilen ${action}";
 "eObn2i" = "Sayfa";
@@ -91,13 +91,13 @@
 "fkQXDn" = "${count} seçenekleri '${action}' ile eşleşiyor.";
 "flUgtx" = "Hangi eylem?";
 "fnz838" = "Sensörler güncellendi.";
-"foI0Fv" = "Başarısız: Ev Asistanı'na şu anda ulaşılamıyor";
+"foI0Fv" = "Başarısız: Apporo aiot'a şu anda ulaşılamıyor";
 "ftQHJw" = "Hangi sunucu?";
 "fuRWMi" = "z - (Deprecated) Apporo aiot'a ${location} gönder";
 "g8g7Af" = "Eylemi gerçekleştirin";
 "gI3mme" = "Hangi servis verilerini göndermek istiyorsunuz?";
 "gePUyy" = "Konum";
-"glRCfJ" = "Başarısız: Ev Asistanı'na şu anda ulaşılamıyor";
+"glRCfJ" = "Başarısız: Apporo aiot'a şu anda ulaşılamıyor";
 "gv7Gg6" = "Konum";
 "h1xQ53" = "z - (Deprecated) Sensörleri Güncelle";
 "hKNPaD" = "Sunucu";
@@ -115,7 +115,7 @@
 "lGqSSG" = "Sensörleri güncelleştiremedi.";
 "lNmaCR" = "Taslak";
 "lxHlyQ" = "z - (Deprecated) Olayı Çalıştır";
-"mAibJP" = "Başarısız: Ev Asistanı'na şu anda ulaşılamıyor";
+"mAibJP" = "Başarısız: Apporo aiot'a şu anda ulaşılamıyor";
 "mJ6CrP" = "Apporo aiot'a ${eventName} gönderilemedi: ${error}";
 "mZnRHS" = "${eventName} tetiklendi";
 "mi6B62" = "Olay ile beraber ne verisi göndermek istiyorsunuz?";
@@ -126,7 +126,7 @@
 "oHn0vD" = "Sayfalar";
 "oIWFyR" = "Başarısız: ${error}";
 "onq5yE" = "Hizmet çağrılamadı, hata: ${error}";
-"pQhTjo" = "Başarısız: Ev Asistanı'na şu anda ulaşılamıyor";
+"pQhTjo" = "Başarısız: Apporo aiot'a şu anda ulaşılamıyor";
 "pjQR7t" = "z - (Deprecated) Sensörleri Güncelle";
 "qYpzmu" = "Hangi sayfalar?";
 "qayMH6" = "z - (Deprecated) Servisi Çağır";

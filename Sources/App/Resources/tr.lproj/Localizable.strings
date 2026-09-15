@@ -30,7 +30,7 @@
 "addButtonLabel" = "Ekle";
 "alert.confirmation.delete_entities.message" = "Bu, veritabanınızdaki varlıkları temizleyecek ve yalnızca uygulamayı sıfırdan açtığınızda yeniden yüklenecektir.";
 "alert.confirmation.generic.title" = "Emin misin?";
-"alerts.action_automation_editor.unavailable.body" = "Bir Eylem için otomatik olarak otomasyon oluşturmak üzere lütfen Home Asistanınızı en az 2024.2 sürümüne güncelleyin.";
+"alerts.action_automation_editor.unavailable.body" = "Bir Eylem için otomatik olarak otomasyon oluşturmak üzere lütfen Apporo aiot sisteminizi en az 2024.2 sürümüne güncelleyin.";
 "alerts.action_automation_editor.unavailable.title" = "Lütfen Apporo aiot'ı güncelleyin";
 "alerts.alert.ok" = "Tamam";
 "alerts.auth_required.message" = "Sunucu kimlik bilgilerinizi reddetti ve devam etmek için tekrar oturum açmanız gerekiyor.";
@@ -406,7 +406,7 @@
 "debug_section_label" = "Hata ayıklama";
 "delete" = "Sil";
 "device_name.primary_button.title" = "Kaydet";
-"device_name.subtitle" = "Bu, cihazınızı Ev Asistanınızda tanımlamak için kullanılır.";
+"device_name.subtitle" = "Bu, cihazınızı Apporo aiot'ta tanımlamak için kullanılır.";
 "device_name.textfield.placeholder" = "iPhone/iPad/Mac adı";
 "device_name.title" = "Bu cihaza nasıl bir isim vermek istersiniz?";
 "done_label" = "Bitti";
@@ -434,7 +434,7 @@
 "experimental.badge.title" = "Deneysel özellik";
 "extensions.map.location.new" = "Yeni Konum";
 "extensions.map.location.original" = "Özgün Konum";
-"extensions.map.payload_missing_homeassistant.message" = "Yükleyici, bir ev yardımcısı sözlüğü içermiyordu!";
+"extensions.map.payload_missing_homeassistant.message" = "Yükleyici, bir homeassistant sözlüğü içermiyordu!";
 "extensions.map.value_missing_or_uncastable.latitude.message" = "Enlem bulunamadı ya da dizeye aktarılması!";
 "extensions.map.value_missing_or_uncastable.longitude.message" = "Boylam bulunamadı veya aktarılamadı!";
 "extensions.notification_content.camera.mute" = "Mute";
@@ -925,19 +925,19 @@
 "onboarding.invitation.screen_title" = "You've been invited";
 "onboarding.invitation.security_warning" = "Only accept this invite if you trust the person who shared it. Connecting to an unknown server could give it access to data you enter or is sent by the app, such as your location and device information.";
 "onboarding.invitation.title" = "Apporo aiot Daveti";
-"onboarding.local_access.description" = "Bu uygulama evden uzakta olduğunuzu bildiğinde, Ev Asistanı sisteminize bağlanmak için daha güvenli bir yol seçebilir. Bunun için konum servislerinin etkinleştirilmesi gerekir.";
+"onboarding.local_access.description" = "Bu uygulama evden uzakta olduğunuzu bildiğinde, Apporo aiot sisteminize bağlanmak için daha güvenli bir yol seçebilir. Bunun için konum servislerinin etkinleştirilmesi gerekir.";
 "onboarding.local_access.less_secure_option.title" = "Daha az güvenli: Bu uygulamanın evde olduğunuzu bilmesine izin vermeyin";
 "onboarding.local_access.next_button" = "Sonraki";
 "onboarding.local_access.privacy_disclaimer" = "Bu veriler hiçbir zaman Apporo aiot projesi veya üçüncü taraflarla paylaşılmayacaktır.";
 "onboarding.local_access.secure_option.title" = "En güvenli: Bu uygulamanın evde olduğunuzu bilmesine izin verin";
 "onboarding.local_access.title" = "Uzaktan bağlantınızı güvence altına almamıza izin verin";
 "onboarding.local_only_disclaimer.primary_button.title" = "Anladım";
-"onboarding.local_only_disclaimer.primary_description" = "Ev Asistanınız yalnızca ev ağınız üzerinden erişilebilir. Akıllı evinizi her yerden kontrol etmek için daha sonra ayarlarınızdan uzaktan erişimi ayarlayabilirsiniz.";
+"onboarding.local_only_disclaimer.primary_description" = "Apporo aiot sisteminiz yalnızca ev ağınız üzerinden erişilebilir. Akıllı evinizi her yerden kontrol etmek için daha sonra ayarlarınızdan uzaktan erişimi ayarlayabilirsiniz.";
 "onboarding.local_only_disclaimer.secondary_description" = "Şimdilik yerel ağınıza güvenli bir şekilde bağlısınız.";
 "onboarding.local_only_disclaimer.title" = "Varsayılan olarak yerel. \
  Hazır olduğunuzda uzaktan.";
 "onboarding.location_access.primary_action.title" = "Konumumu paylaş";
-"onboarding.location_access.primary_description" = "Konum paylaşımı, evden çıktığınızda ısıtmayı kapatmak gibi güçlü otomasyonlara olanak tanır. Bu seçenek, cihazın konumunu yalnızca Ev Asistanı sisteminizle paylaşır.";
+"onboarding.location_access.primary_description" = "Konum paylaşımı, evden çıktığınızda ısıtmayı kapatmak gibi güçlü otomasyonlara olanak tanır. Bu seçenek, cihazın konumunu yalnızca Apporo aiot sisteminizle paylaşır.";
 "onboarding.location_access.secondary_action.title" = "Konumumu paylaşma";
 "onboarding.location_access.secondary_description" = "Bu veriler evinizde kalır ve asla üçüncü taraflarla paylaşılmaz. Ayrıca, Apporo aiot'a olan bağlantınızın güvenliğini güçlendirmeye de yardımcı olur.";
 "onboarding.location_access.title" = "Otomasyonlar için bu cihazın konumunu kullanın";
@@ -951,10 +951,10 @@
 "onboarding.manual_setup.no_scheme.message" = "Http: // veya https: // kullanarak bağlanmayı denemeli miyiz?";
 "onboarding.manual_setup.no_scheme.title" = "Şema olmadan girilen URL";
 "onboarding.manual_setup.text_field.placeholder" = "örneğin http://homeassistant.local:8123";
-"onboarding.manual_setup.text_field.title" = "Home Asistanınızın URL'si";
+"onboarding.manual_setup.text_field.title" = "Apporo aiot URL'niz";
 "onboarding.manual_setup.title" = "URL girin";
 "onboarding.manual_url_entry.primary_action.title" = "Bağlan";
-"onboarding.manual_url_entry.title" = "Ev Asistanı adresiniz nedir?";
+"onboarding.manual_url_entry.title" = "Apporo aiot adresiniz nedir?";
 "onboarding.network_input.disclaimer.body" = "Genel Wi-Fi ağları eklemek veya birden fazla ethernet/VPN bağlantısı kullanmak, uygulamanız veya sunucunuz hakkında bilgi veya erişimi istemeden ifşa edebilir.";
 "onboarding.network_input.disclaimer.title" = "Ev ağınızı doğru kurduğunuzdan emin olun.";
 "onboarding.network_input.hardware.input_field.title" = "Donanım Adresi";
@@ -980,7 +980,7 @@
 "onboarding.permissions.change_later_note" = "Bu izni daha sonra Ayarlar'dan değiştirebilirsiniz.";
 "onboarding.permissions.focus.bullet.automations" = "Odak tabanlı otomasyonlar";
 "onboarding.permissions.focus.bullet.instant" = "Durum değiştiğinde anında güncelleme";
-"onboarding.permissions.focus.description" = "Odak modunda olup olmadığınızın Ev Asistanına gönderilmesine izin verin";
+"onboarding.permissions.focus.description" = "Odak modunda olup olmadığınızın Apporo aiot'a gönderilmesine izin verin";
 "onboarding.permissions.focus.grant_description" = "Rahatsız etmeyin olarak da bilinen odak durumunuz için sensörler oluşturmak için odak iznine izin verin.";
 "onboarding.permissions.focus.title" = "Odak";
 "onboarding.permissions.location.bullet.automations" = "Varlık tabanlı otomasyonlar";
@@ -998,7 +998,7 @@
 "onboarding.permissions.notification.bullet.alert" = "Bildirimlerden uyarı alın";
 "onboarding.permissions.notification.bullet.badge" = "Uygulama simgesi rozetini güncelle";
 "onboarding.permissions.notification.bullet.commands" = "Cihazınıza komutlar gönderin";
-"onboarding.permissions.notification.description" = "Ev Asistanınızın anlık bildirimleri göndermesine izin verin";
+"onboarding.permissions.notification.description" = "Apporo aiot sisteminizin anlık bildirimleri göndermesine izin verin";
 "onboarding.permissions.notification.grant_description" = "Cihazınız için bir bildirim hizmeti oluşturmak üzere bildirim iznine izin verin.";
 "onboarding.permissions.notification.title" = "Bildirimler";
 "onboarding.scanning.discovered_announcement" = "Bulundu:%@";
@@ -1013,20 +1013,20 @@
 "onboarding.server_import.reauthenticate.message" = "Bir adım daha: %@ adresini geri yüklemeyi tamamlamak için tekrar oturum açın.";
 "onboarding.server_import.reauthenticate.title" = "Apporo aiot'a yeniden bağlanın";
 "onboarding.server_import.reauthenticate.url_picker_title" = "Bir bağlantı seçin";
-"onboarding.server_import.title" = "Homa Assistant içe aktarılıyor";
+"onboarding.server_import.title" = "Apporo aiot içe aktarılıyor";
 "onboarding.servers.auto_connect.button" = "Bağlan";
 "onboarding.servers.docs.read" = "Belgeleri okuyun";
-"onboarding.servers.search.loader.text" = "Ev Asistanınızın açık olduğundan ve aynı ağa bağlı olduğunuzdan emin olun. Adresi biliyorsanız manuel olarak girebilirsiniz.";
+"onboarding.servers.search.loader.text" = "Apporo aiot sisteminizin açık olduğundan ve aynı ağa bağlı olduğunuzdan emin olun. Adresi biliyorsanız manuel olarak girebilirsiniz.";
 "onboarding.servers.search.message" = "Yakındaki sunucular aranıyor...";
 "onboarding.servers.title" = "Ev ağında arama yapılıyor";
-"onboarding.welcome.body" = "Ev Asistanı kurulumunuza hareket halindeyken erişmenizi sağlar. Ev Asistanı Green veya Raspberry Pi gibi bir cihaz aracılığıyla evinizde yerel olarak çalışır.";
+"onboarding.welcome.body" = "Apporo aiot kurulumunuza hareket halindeyken erişmenizi sağlar. Home Assistant Green veya Raspberry Pi gibi bir cihaz aracılığıyla evinizde yerel olarak çalışır.";
 "onboarding.welcome.description" = "Bu uygulama, Apporo aiot sunucunuza bağlanır ve siz ve telefonunuz hakkındaki verilerin entegre edilmesini sağlar. \
 \
  Apporo aiot, yerel kontrol ve gizliliğe odaklanan ücretsiz ve açık kaynaklı bir ev otomasyon yazılımıdır.";
-"onboarding.welcome.header" = "Ev Asistanı Yardımcı Uygulaması";
+"onboarding.welcome.header" = "Apporo aiot Uygulaması";
 "onboarding.welcome.learn_more" = "Daha fazla bilgi edin";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot logosu";
-"onboarding.welcome.primary_button" = "Ev Asistanıma bağlanın";
+"onboarding.welcome.primary_button" = "Apporo aiot'a bağlanın";
 "onboarding.welcome.secondary_button" = "Başlarken";
 "onboarding.welcome.title" = "Apporo aiot'a Hoş Geldiniz %@!";
 "onboarding.welcome.updated.body" = "Hareket halindeyken Ev Asistanı sunucunuza erişin. \
@@ -1228,14 +1228,14 @@ Ev Asistanı açık kaynaklıdır, gizliliği savunur ve evinizde yerel olarak �
 "settings.mac_toolbar.title" = "Toolbar";
 "settings.navigation_bar.about_button.title" = "Hakkında";
 "settings.navigation_bar.title" = "Ayarlar";
-"settings.reset_section.reset_alert.message" = "Ayarlarınız sıfırlanacak ve bu cihazın anlık bildirimlerdeki kaydı silinecek ve ayrıca Ev Asistanı yapılandırmanızdan kaldırılacak.";
+"settings.reset_section.reset_alert.message" = "Ayarlarınız sıfırlanacak ve bu cihazın anlık bildirimlerdeki kaydı silinecek ve ayrıca Apporo aiot yapılandırmanızdan kaldırılacak.";
 "settings.reset_section.reset_alert.title" = "Sıfırla";
 "settings.reset_section.reset_app.title" = "Uygulamayı Sıfırla (Sunucuları ve verileri kaldır)";
 "settings.reset_section.reset_row.title" = "Sıfırla";
 "settings.reset_section.reset_web_cache.title" = "Ön önbelleği sıfırla";
 "settings.server_select.title" = "Sunucu";
 "settings.status_section.header" = "Durum";
-"settings.status_section.location_name_row.placeholder" = "Ev Asistanım";
+"settings.status_section.location_name_row.placeholder" = "Apporo aiot'um";
 "settings.status_section.location_name_row.title" = "Ad";
 "settings.status_section.version_row.placeholder" = "0.92.0";
 "settings.status_section.version_row.title" = "Sürüm";
@@ -1469,7 +1469,7 @@ Ev Asistanı açık kaynaklıdır, gizliliği savunur ve evinizde yerel olarak �
 "settings_details.notifications.title" = "Bildirimler";
 "settings_details.privacy.alerts.description" = "Güvenlik açıkları gibi önemli uyarıların kontrol edilmesini sağlar.";
 "settings_details.privacy.alerts.title" = "Uyarılar";
-"settings_details.privacy.analytics.generic_description" = "Cihazınız ve uygulama ile etkileşimleriniz hakkında temel bilgilerin toplanmasına izin verir. Ev Asistanı URL'leriniz ve belirteçleriniz dahil olmak üzere hiçbir kullanıcı tanımlanabilir veri paylaşılmaz. Bu ayarda yapılan değişikliklerin etkili olması için uygulamayı yeniden başlatmalısınız.";
+"settings_details.privacy.analytics.generic_description" = "Cihazınız ve uygulama ile etkileşimleriniz hakkında temel bilgilerin toplanmasına izin verir. Apporo aiot URL'leriniz ve belirteçleriniz dahil olmak üzere hiçbir kullanıcı tanımlanabilir veri paylaşılmaz. Bu ayarda yapılan değişikliklerin etkili olması için uygulamayı yeniden başlatmalısınız.";
 "settings_details.privacy.analytics.generic_title" = "Analitik";
 "settings_details.privacy.body" = "Verilerinizin kontrolü sizde.";
 "settings_details.privacy.crash_reporting.description" = "Uygulamadaki kilitlenmelerin ve diğer hataların daha derin bir şekilde izlenmesine izin vererek düzeltmelerin daha hızlı yayınlanmasını sağlar. Temel cihaz bilgileri dışında hiçbir kullanıcı tanımlayıcı bilgi gönderilmez. Bu ayarda yapılan değişikliklerin etkili olması için uygulamayı yeniden başlatmalısınız.";
@@ -1531,7 +1531,7 @@ Ev Asistanı açık kaynaklıdır, gizliliği savunur ve evinizde yerel olarak �
 "thread.store_in_keychain.error.message" = "Anahtar zincirinde iş parçacığı kimlik bilgilerinin depolanması başarısız oldu, hata: %@";
 "thread.store_in_keychain.error.title" = "Operasyon başarısız";
 "thread.transter_to_apple.title" = "Apple Anahtarlık'a Aktar";
-"thread.transter_to_homeassistant.title" = "Home Asistanına Aktar";
+"thread.transter_to_homeassistant.title" = "Apporo aiot'a Aktar";
 "token_error.connection_failed" = "Bağlantı kurulamadı.";
 "token_error.expired" = "Anahtar süresi doldu.";
 "token_error.token_unavailable" = "Anahtar kullanılamıyor.";
@@ -1977,7 +1977,7 @@ Ev Asistanı açık kaynaklıdır, gizliliği savunur ve evinizde yerel olarak �
 "widgets.custom.show_update_time.title" = "Son güncelleme:";
 "widgets.custom.subtitle" = "Kendi stilinizle widget'lar yaratın";
 "widgets.custom.title" = "Kişiselleştirilmiş widget'lar";
-"widgets.details.description" = "Metinde Home Asistanı'nın kullanıldığı durumları görüntüleme";
+"widgets.details.description" = "Apporo aiot'tan gelen durumları metin olarak görüntüleyin";
 "widgets.details.description_with_warning" = "Apporo aiot'tan metinde durumları görüntüle. DİKKAT: Şablon erişimi için kullanıcının yönetici olması gerekir";
 "widgets.details.parameters.action" = "Eylem";
 "widgets.details.parameters.details_template" = "Ayrıntılar Metin Şablonu (yalnızca dikdörtgen ailede)";

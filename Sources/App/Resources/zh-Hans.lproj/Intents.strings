@@ -93,7 +93,7 @@
 "fnz838" = "传感器已更新";
 "foI0Fv" = "失败：Apporo aiot 当前不可达";
 "ftQHJw" = "哪个服务器 ？";
-"fuRWMi" = "z - (Deprecated) 向HomeAsssiant发送此位置 ${location}";
+"fuRWMi" = "z - (Deprecated) 向 Apporo aiot 发送此位置 ${location}";
 "g8g7Af" = "执行此动作";
 "gI3mme" = "您想发送什么服务数据 ？";
 "gePUyy" = "位置";

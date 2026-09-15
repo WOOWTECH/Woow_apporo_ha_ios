@@ -784,7 +784,7 @@
 "magic_item.icon_color.title" = "圖示顏色";
 "magic_item.icon_name.title" = "圖示名稱";
 "magic_item.item_type.action.list.title" = "iOS 操作";
-"magic_item.item_type.action.list.warning.title" = "我們即將停止支援 iOS 操作、請考慮改用 Hom Assist 腳本或場景進行替代。";
+"magic_item.item_type.action.list.warning.title" = "我們即將停止支援 iOS 操作、請考慮改用 Apporo aiot 腳本或場景進行替代。";
 "magic_item.item_type.app.list.title" = "App";
 "magic_item.item_type.assist_prompt.title" = "助理提示";
 "magic_item.item_type.assist_prompt.unsupported.title" = "助理提示 (iOS 26.4+)";

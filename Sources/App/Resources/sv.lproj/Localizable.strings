@@ -928,7 +928,7 @@ Taggar fungerar på alla enheter med Apporo aiot installerat och som har hårdva
 "onboarding.local_access.secure_option.title" = "Säkrast: Tillåt att den här appen vet när du är hemma";
 "onboarding.local_access.title" = "Låt oss hjälpa dig att säkra din fjärranslutning";
 "onboarding.local_only_disclaimer.primary_button.title" = "Uppfattat";
-"onboarding.local_only_disclaimer.primary_description" = "Din hemassistent är endast tillgänglig i ditt hemnätverk. Om du vill styra ditt smarta hem från var som helst kan du ställa in fjärråtkomst senare i dina inställningar.";
+"onboarding.local_only_disclaimer.primary_description" = "Apporo aiot är endast tillgängligt i ditt hemnätverk. Om du vill styra ditt smarta hem från var som helst kan du ställa in fjärråtkomst senare i dina inställningar.";
 "onboarding.local_only_disclaimer.secondary_description" = "För tillfället är du säkert ansluten till ditt lokala nätverk.";
 "onboarding.local_only_disclaimer.title" = "Lokal som standard, fjärrstyrd när du är redo.";
 "onboarding.location_access.primary_action.title" = "Dela min plats";

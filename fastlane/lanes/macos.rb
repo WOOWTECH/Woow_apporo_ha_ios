@@ -37,7 +37,7 @@ platform :mac do
       notarize(
         package: developer_id_app_path,
         # not the _app_ bundle id, just an id that notarize uses for referencing
-        bundle_id: 'io.home-assistant.fastlane.developer-id'
+        bundle_id: 'com.apporo.aiot.fastlane.developer-id'
       )
     rescue StandardError => e
       puts "Failed with #{e}; retrying notarize in a few seconds..."
@@ -58,7 +58,7 @@ platform :mac do
       '--sequesterRsrc',
       '--keepParent',
       File.expand_path(developer_id_app_path),
-      '../build/macos/home-assistant-mac.zip'
+      '../build/macos/apporo-aiot-mac.zip'
     )
     upload_binary_to_apple(
       type: 'osx',

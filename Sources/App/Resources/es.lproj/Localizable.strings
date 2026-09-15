@@ -1883,7 +1883,7 @@ Apporo aiot is open source, advocates for privacy and runs locally in your home.
 "widgets.action.name.navigate" = "Navigate";
 "widgets.action.name.nothing" = "Nothing";
 "widgets.action.name.run_script" = "Run Script";
-"widgets.actions.description" = "Realiza acciones del Hombre Assistante.";
+"widgets.actions.description" = "Realiza acciones de Apporo aiot.";
 "widgets.actions.not_configured" = "No se ha configurado ninguna acción";
 "widgets.actions.parameters.action" = "Action";
 "widgets.actions.title" = "Acciones";

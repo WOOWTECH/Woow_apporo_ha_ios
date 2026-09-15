@@ -7,7 +7,7 @@
 "NSLocationAlwaysUsageDescription" = "iBeacons、ジオフェンス、バックグラウンドでの位置情報の更新、正確なレポートなどの機能のために、常に位置情報にアクセスする必要があります。";
 "NSLocationUsageDescription" = "有効にすると、デバイスの位置情報がデバイス トラッカーとしてApporo aiotに送信されます。";
 "NSLocationWhenInUseUsageDescription" = "このアプリは、Apporo aiot インストールに直接接続するために位置情報へのアクセスが必要です。 \n \n 1️⃣ あなたの位置情報は、ローカルネットワークに接続しているかどうかを確認するためにのみ使用されます。 \n \n 2️⃣ 誰とも共有されません。 \n \n 3️⃣ 許可しない場合、アプリは常にインターネット経由で接続します。設定されていない場合、アプリはデータを保護するために接続を拒否します。";
-"NSMicrophoneUsageDescription" = "HomeAssistantフロントエンドを使用してオーディオを録音します。";
+"NSMicrophoneUsageDescription" = "Apporo aiot のフロントエンドを使用してオーディオを録音します。";
 "NSMotionUsageDescription" = "モーションは、現在のモーション タイプで位置情報の更新を改善し、基本的な歩数計データを提供するために使用されます。";
 "NSPhotoLibraryAddUsageDescription" = "Web ビューから写真を保存できるようにするには、フォト ライブラリへのアクセスが必要です。";
 "NSPhotoLibraryUsageDescription" = "Web ビューから写真を保存できるようにするには、フォト ライブラリへのアクセスが必要です。";

@@ -186,7 +186,7 @@
 "assist_pipeline_picker.placeholder" = "Pick pipeline";
 "camera_list.edit.off.title" = "Edita";
 "camera_list.edit.on.title" = "Fet";
-"camera_list.empty.message" = "No s'han trobat entitats de càmera a la configuració de l'Assistent de casa.";
+"camera_list.empty.message" = "No s'han trobat entitats de càmera a la configuració d'Apporo aiot.";
 "camera_list.empty.title" = "Sense càmeres";
 "camera_list.no_results.message" = "No hi ha càmeres que coincideixin amb la teva cerca";
 "camera_list.no_results.title" = "Sense resultats";
@@ -498,7 +498,7 @@ This server requires a client certificate (mTLS) but the operation was cancelled
 "ha_api.api_error.invalid_response" = "S'ha rebut una resposta invàlida del Apporo aiot";
 "ha_api.api_error.manager_not_available" = "El gestor API HA no està disponible";
 "ha_api.api_error.mobile_app_component_not_loaded" = "El component mobile_app no s'ha carregat. Afegiu-lo a la configuració, reinicieu el Apporo aiot i torneu-ho a provar.";
-"ha_api.api_error.must_upgrade_home_assistant" = "La versió de l'assistent per a la llar ( %@ ) és massa antiga, heu d'actualitzar almenys a la versió %@ per utilitzar l'aplicació.";
+"ha_api.api_error.must_upgrade_home_assistant" = "La versió d'Apporo aiot ( %@ ) és massa antiga, heu d'actualitzar almenys a la versió %@ per utilitzar l'aplicació.";
 "ha_api.api_error.no_available_api" = "No API available, double check if internal URL or external URL are available.";
 "ha_api.api_error.not_configured" = "L'API HA no està configurada";
 "ha_api.api_error.unacceptable_status_code" = "Codi d'estat inacceptable %1$li.";
@@ -998,7 +998,7 @@ Remote when you're ready.";
 "onboarding.permissions.notification.bullet.alert" = "Rebre alertes de notificacions";
 "onboarding.permissions.notification.bullet.badge" = "Actualitza la insígnia de la icona d'aplicació";
 "onboarding.permissions.notification.bullet.commands" = "Enviament d'ordres al dispositiu";
-"onboarding.permissions.notification.description" = "Permet que s'enviïn notificacions push des del Home Assistent";
+"onboarding.permissions.notification.description" = "Permet que s'enviïn notificacions push des d'Apporo aiot";
 "onboarding.permissions.notification.grant_description" = "Permet el permís de notificació per crear un servei de notificació en aquest dispositiu.";
 "onboarding.permissions.notification.title" = "Notificacions";
 "onboarding.scanning.discovered_announcement" = "S'ha descobert: %@";

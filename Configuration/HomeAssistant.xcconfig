@@ -21,7 +21,7 @@ BRAND_URL_SCHEME_SUFFIX =
 //
 // Upstream wrote these as $(ENABLE_X_$(DEVELOPMENT_TEAM)) and only ever defined the
 // _QMQYCKL255 variants. Our team is W4UWZ8NP2P, so every one of them expanded to an empty
-// string and all six entitlements were SILENTLY disabled. Values are now explicit, so "off"
+// string and all of those entitlements were SILENTLY disabled. Values are now explicit, so "off"
 // is a recorded decision rather than an accident.
 //
 // Set these BEFORE the overrides include so a local overrides file can still flip one.
@@ -30,8 +30,11 @@ ENABLE_PUSH_PROVIDER = 0
 ENABLE_CARPLAY = 0
 // ^ Apporo aiot 1.0 excludes CarPlay (both carplay-driving-task and
 //   carplay-voice-based-conversation come from this one flag).
-ENABLE_THREAD_NETWORK_CREDENTIALS = 0
-// ^ Matter / Thread is not carried over into the Apporo product at all.
+//
+// ENABLE_THREAD_NETWORK_CREDENTIALS used to sit here. Owner decision 2026-09-14: Matter /
+// Thread is removed from the product entirely — the Extensions-Matter target, the Thread
+// credential UI and the MatterSupport / ThreadNetwork framework links are all gone — so there
+// is no flag left to switch and activate_special_entitlements.sh no longer reads one.
 
 // UNDECIDED — parked at 0 on purpose, see the report / IMPL-SPEC §2.5 B-3.
 // Critical alerts require a separate entitlement that Apple must grant to team W4UWZ8NP2P
@@ -132,6 +135,5 @@ CLANG_ANALYZER_NONNULL = YES
 CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES
 GCC_NO_COMMON_BLOCKS = YES
 
-// Add ThreadNetwork weak reference for iOS and macOS
-OTHER_LDFLAGS[sdk=iphoneos*] = $(inherited) -weak_framework ThreadNetwork
-OTHER_LDFLAGS[sdk=macosx*] = $(inherited) -weak_framework ThreadNetwork
+// The upstream "-weak_framework ThreadNetwork" OTHER_LDFLAGS lines were removed together with
+// Matter / Thread: nothing in the product links ThreadNetwork any more.

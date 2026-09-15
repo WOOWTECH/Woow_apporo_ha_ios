@@ -1183,7 +1183,7 @@ Apporo aiot is open source, komt op voor privacy en draait lokaal bij jou in hui
 "settings.debugging.keychain_restart_required.title" = "App herstart vereist";
 "settings.debugging.shake_disclaimer.title" = "Als je nu de app schudt, krijg je toegang tot de debugfuncties.";
 "settings.debugging.shake_disclaimer_optional.title" = "Schud de app om debug te openen";
-"settings.debugging.thread.footer" = "Controleer welke Thread-referenties er in de Apple Sleutelhanger staan, je kunt ze ook importeren in Home Assistent of verwijderen uit Sleutelhanger.";
+"settings.debugging.thread.footer" = "Controleer welke Thread-referenties er in de Apple Sleutelhanger staan, je kunt ze ook importeren in Apporo aiot of verwijderen uit Sleutelhanger.";
 "settings.debugging.title" = "Foutopsporing";
 "settings.details_section.location_settings_row.title" = "Locatie";
 "settings.details_section.notification_settings_row.title" = "Meldingen";

@@ -361,7 +361,7 @@
 "connection.error.failed_connect.cloud.title" = "Veendu, et Home Assistant Cloudi tellimus oleks aktiivne ja serveriga ühendatud. Saad seda kontrollida saidil [Nabu Casa](https://account.nabucasa.com)";
 "connection.error.failed_connect.cloud_inactive.title" = "Oled rakenduses Home Assistant Cloudi kasutamise keelanud. Kui vajad seda kaugjuurdepääsuks, ava kaasrakenduse seaded ja luba see.";
 "connection.error.failed_connect.subtitle" = "Kontrolli oma ühendust ja proovi uuesti. Kui ei ole kodus, veendu, et oled seadistanud kaugjuurdepääsu.";
-"connection.error.failed_connect.title" = "Me ei saanud ome Assistantiga ühendust";
+"connection.error.failed_connect.title" = "Me ei saanud ühendust teenusega Apporo aiot";
 "connection.error.failed_connect.url" = "Rakendus loob praegu ühendust";
 "connection.error.generic_title" = "Oh oh! Näib, et ei saa ühendust luua.";
 "connection.permission.internal_url.body1" = "Selleks, et pääseda Apporo aiotile turvaliselt ligi, pead andma asukoha kasutamise loa (\"Alati\").";
@@ -1016,7 +1016,7 @@ Sildid toimivad igas seadmes, kuhu on paigaldatud Apporo aiot, millel on nende l
 "onboarding.server_import.title" = "Apporo aiotist importimine";
 "onboarding.servers.auto_connect.button" = "Ühenda";
 "onboarding.servers.docs.read" = "Loe dokumentatsiooni";
-"onboarding.servers.search.loader.text" = "Kontrolli, et koduassistent oleks sisse lülitatud ja  oled ühendatud samasse võrku. Kui tead aadressi, võid selle käsitsi sisestada.";
+"onboarding.servers.search.loader.text" = "Kontrolli, et Apporo aiot oleks sisse lülitatud ja  oled ühendatud samasse võrku. Kui tead aadressi, võid selle käsitsi sisestada.";
 "onboarding.servers.search.message" = "Otsin läheduses olevaid servereid...";
 "onboarding.servers.title" = "Otsing koduvõrgus";
 "onboarding.welcome.body" = "Võimaldab oma Apporo aiotile liikvel olles ligi pääseda. See töötab teie kodus lokaalselt seadme, näiteks Home Assistant Greeni või Raspberry Pi kaudu.";
