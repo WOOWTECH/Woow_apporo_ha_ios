@@ -986,6 +986,7 @@
 		42B7BFEF2E97CDE40056BADC /* HomeNetworkInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7BFEE2E97CDE40056BADC /* HomeNetworkInputView.swift */; };
 		42B7BFF12E97D1540056BADC /* HomeNetworkInputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B7BFF02E97D1540056BADC /* HomeNetworkInputViewModel.swift */; };
 		42B89EAC2E080494000224A2 /* AppConstants.test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B89EAB2E080494000224A2 /* AppConstants.test.swift */; };
+		42B89EAE2E080494000224A2 /* AppIcon.test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B89EAD2E080494000224A2 /* AppIcon.test.swift */; };
 		42B942F62CAA1E5600E36E02 /* PayloadConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B942F52CAA1E5600E36E02 /* PayloadConstants.swift */; };
 		42B942F82CAA1ECC00E36E02 /* PayloadConstants.test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B942F72CAA1ECC00E36E02 /* PayloadConstants.test.swift */; };
 		42B94BDE2B9606CD00DEE060 /* AssistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42B94BDB2B9606CD00DEE060 /* AssistViewModel.swift */; };
@@ -2928,6 +2929,7 @@
 		42B7BFEE2E97CDE40056BADC /* HomeNetworkInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNetworkInputView.swift; sourceTree = "<group>"; };
 		42B7BFF02E97D1540056BADC /* HomeNetworkInputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNetworkInputViewModel.swift; sourceTree = "<group>"; };
 		42B89EAB2E080494000224A2 /* AppConstants.test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.test.swift; sourceTree = "<group>"; };
+		42B89EAD2E080494000224A2 /* AppIcon.test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.test.swift; sourceTree = "<group>"; };
 		42B942F52CAA1E5600E36E02 /* PayloadConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadConstants.swift; sourceTree = "<group>"; };
 		42B942F72CAA1ECC00E36E02 /* PayloadConstants.test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayloadConstants.test.swift; sourceTree = "<group>"; };
 		42B94BDA2B9606CD00DEE060 /* AssistChatItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssistChatItem.swift; sourceTree = "<group>"; };
@@ -3414,7 +3416,7 @@
 		B655E923227FF19C00CFDC94 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Intents.strings; sourceTree = "<group>"; };
 		B655E925227FF19D00CFDC94 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Intents.strings; sourceTree = "<group>"; };
 		B655E927227FF19E00CFDC94 /* nb */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nb; path = nb.lproj/Intents.strings; sourceTree = "<group>"; };
-		B657A8E61CA646EB00121384 /* Apporo SmartHome Δ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apporo SmartHome Δ.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B657A8E61CA646EB00121384 /* Apporo aiot Δ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Apporo aiot Δ.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B657A8E91CA646EB00121384 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		B657A8F51CA646EB00121384 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B657A8F71CA646EB00121384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -6936,7 +6938,7 @@
 		B657A8E71CA646EB00121384 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B657A8E61CA646EB00121384 /* Apporo SmartHome Δ.app */,
+				B657A8E61CA646EB00121384 /* Apporo aiot Δ.app */,
 				B657A8FC1CA646EB00121384 /* HomeAssistant-Tests-App.xctest */,
 				B657A9071CA646EB00121384 /* HomeAssistant-Tests-UI.xctest */,
 				B6AAD7A11D827DD40090B220 /* HomeAssistant-Extensions-NotificationService.appex */,
@@ -6994,6 +6996,7 @@
 				B45BC7B1F36F7DAA48E961CA /* Kiosk */,
 				429C33BE2F17988D0033EF5E /* EntityPicker */,
 				42B89EAB2E080494000224A2 /* AppConstants.test.swift */,
+				42B89EAD2E080494000224A2 /* AppIcon.test.swift */,
 				42646B762E0BE6F100F6B367 /* BackgroundTask.test.swift */,
 				11EFD3C1272642FC000AF78B /* Additions */,
 				422E626A2CDCF00000987BD0 /* Area */,
@@ -7927,7 +7930,7 @@
 				42991E602FF4474500C2C76B /* ImproviOS */,
 			);
 			productName = HomeAssistant;
-			productReference = B657A8E61CA646EB00121384 /* Apporo SmartHome Δ.app */;
+			productReference = B657A8E61CA646EB00121384 /* Apporo aiot Δ.app */;
 			productType = "com.apple.product-type.application";
 		};
 		B657A8FB1CA646EB00121384 /* Tests-App */ = {
@@ -9973,6 +9976,7 @@
 				BB77559927344584B2C0E987 /* OnboardingAuthError.test.swift in Sources */,
 				420F53EE2C4EA025003C8415 /* WidgetsKindTests.swift in Sources */,
 				42B89EAC2E080494000224A2 /* AppConstants.test.swift in Sources */,
+				42B89EAE2E080494000224A2 /* AppIcon.test.swift in Sources */,
 				11ED43962726599D00B5FD45 /* OnboardingAuthStepModels.test.swift in Sources */,
 				11ED439C2726600000B5FD45 /* OnboardingAuthStepSensors.test.swift in Sources */,
 				42A47A8A2C452DB500C9B43D /* MockWebViewController.swift in Sources */,
@@ -11147,7 +11151,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_MODULE_NAME = HomeAssistant;
-				PRODUCT_NAME = ApporoSmartHome;
+				PRODUCT_NAME = ApporoAiot;
 			};
 			name = Debug;
 		};
@@ -11155,7 +11159,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				PRODUCT_MODULE_NAME = HomeAssistant;
-				PRODUCT_NAME = ApporoSmartHome;
+				PRODUCT_NAME = ApporoAiot;
 			};
 			name = Release;
 		};
@@ -11327,7 +11331,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Configuration/Entitlements/$(ENTITLEMENTS_VARIANT)/Launcher.entitlements";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				INFOPLIST_FILE = Sources/Launcher/Info.plist;
-				PRODUCT_NAME = "Apporo SmartHome Launcher";
+				PRODUCT_NAME = "Apporo aiot Launcher";
 				PROVISIONING_SUFFIX = .Launcher;
 				SDKROOT = macosx;
 			};
@@ -11339,7 +11343,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Configuration/Entitlements/$(ENTITLEMENTS_VARIANT)/Launcher.entitlements";
 				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				INFOPLIST_FILE = Sources/Launcher/Info.plist;
-				PRODUCT_NAME = "Apporo SmartHome Launcher";
+				PRODUCT_NAME = "Apporo aiot Launcher";
 				PROVISIONING_SUFFIX = .Launcher;
 				SDKROOT = macosx;
 			};
@@ -11532,7 +11536,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Configuration/Entitlements/$(ENTITLEMENTS_VARIANT)/App-ios.entitlements";
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Configuration/Entitlements/$(ENTITLEMENTS_VARIANT)/App-catalyst.entitlements";
 				DISABLE_SWIFTLINT = 1;
-				ENV_URL_HANDLER = apporohome;
+				ENV_URL_HANDLER = "$(BRAND_URL_SCHEME)$(BRAND_URL_SCHEME_SUFFIX)";
 				INFOPLIST_FILE = Sources/App/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -11557,7 +11561,7 @@
 					"-fprofile-instr-generate",
 				);
 				PRODUCT_MODULE_NAME = HomeAssistant;
-				PRODUCT_NAME = "Apporo SmartHome Δ";
+				PRODUCT_NAME = "Apporo aiot Δ";
 				SKIP_INSTALL = NO;
 				SUPPORTS_MACCATALYST = YES;
 			};
@@ -11573,7 +11577,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Configuration/Entitlements/$(ENTITLEMENTS_VARIANT)/App-ios.entitlements";
 				"CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "Configuration/Entitlements/$(ENTITLEMENTS_VARIANT)/App-catalyst.entitlements";
 				DISABLE_SWIFTLINT = 1;
-				ENV_URL_HANDLER = apporohome;
+				ENV_URL_HANDLER = "$(BRAND_URL_SCHEME)$(BRAND_URL_SCHEME_SUFFIX)";
 				INFOPLIST_FILE = Sources/App/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -11598,7 +11602,7 @@
 					"-fprofile-instr-generate",
 				);
 				PRODUCT_MODULE_NAME = HomeAssistant;
-				PRODUCT_NAME = "Apporo SmartHome";
+				PRODUCT_NAME = "Apporo aiot";
 				SKIP_INSTALL = NO;
 				SUPPORTS_MACCATALYST = YES;
 			};
@@ -11610,8 +11614,8 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = Tests/App/Resources/Info.plist;
-				PROVISIONING_SUFFIX = .HomeAssistantTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Apporo SmartHome Δ.app/Apporo SmartHome Δ";
+				PROVISIONING_SUFFIX = .ApporoAiotTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Apporo aiot Δ.app/Apporo aiot Δ";
 			};
 			name = Debug;
 		};
@@ -11621,8 +11625,8 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = Tests/App/Resources/Info.plist;
-				PROVISIONING_SUFFIX = .HomeAssistantTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Apporo SmartHome Δ.app/Apporo SmartHome Δ";
+				PROVISIONING_SUFFIX = .ApporoAiotTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Apporo aiot Δ.app/Apporo aiot Δ";
 			};
 			name = Release;
 		};
@@ -11635,7 +11639,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PROVISIONING_SUFFIX = .HomeAssistantUITests;
+				PROVISIONING_SUFFIX = .ApporoAiotUITests;
 				TEST_TARGET_NAME = HomeAssistant;
 			};
 			name = Debug;
@@ -11649,7 +11653,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PROVISIONING_SUFFIX = .HomeAssistantUITests;
+				PROVISIONING_SUFFIX = .ApporoAiotUITests;
 				TEST_TARGET_NAME = HomeAssistant;
 			};
 			name = Release;

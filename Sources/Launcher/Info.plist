@@ -23,7 +23,7 @@
 	<key>LSMinimumSystemVersion</key>
 	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2021 Home Assistant. All rights reserved.</string>
+	<string>Copyright © 2026 APPORO UNION INC. All rights reserved. Built on Home Assistant for Apple Platforms, © Home Assistant contributors, licensed under the Apache License 2.0.</string>
 	<key>LSBackgroundOnly</key>
 	<true/>
 </dict>

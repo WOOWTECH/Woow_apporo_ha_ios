@@ -2,13 +2,50 @@
 VERSIONING_SYSTEM = apple-generic
 #include "Version.xcconfig"
 
-DEVELOPMENT_TEAM = QMQYCKL255
+// Signing team. The real value lives in the git-ignored HomeAssistant.overrides.xcconfig
+// (currently W4UWZ8NP2P) and is included below. Deliberately left EMPTY here instead of
+// carrying upstream's QMQYCKL255 fallback: that is Home Assistant's own team, it can never
+// sign com.apporo.*, and having it as a fallback made a missing overrides file look like a
+// working configuration. Empty means device builds fail loudly with "no team selected".
+DEVELOPMENT_TEAM =
 BUNDLE_ID_PREFIX = com.apporo
-ENABLE_CRITICAL_ALERTS_QMQYCKL255 = 1
-ENABLE_PUSH_PROVIDER_QMQYCKL255 = 1
-ENABLE_DEVICE_NAME_QMQYCKL255 = 1
-ENABLE_THREAD_NETWORK_CREDENTIALS_QMQYCKL255 = 1
-ENABLE_CARPLAY_QMQYCKL255 = 1
+
+// Suffix appended to BRAND_URL_SCHEME to build the app's custom URL scheme.
+// Empty for Release; HomeAssistant.debug.xcconfig sets it to "-dev" so a dev build and a
+// production build installed on the same device cannot steal each other's deep links.
+BRAND_URL_SCHEME_SUFFIX =
+
+// --- Special entitlements ----------------------------------------------------------------
+// Consumed at build time by Configuration/Entitlements/activate_special_entitlements.sh,
+// which adds the entitlement only when the value is exactly 1.
+//
+// Upstream wrote these as $(ENABLE_X_$(DEVELOPMENT_TEAM)) and only ever defined the
+// _QMQYCKL255 variants. Our team is W4UWZ8NP2P, so every one of them expanded to an empty
+// string and all six entitlements were SILENTLY disabled. Values are now explicit, so "off"
+// is a recorded decision rather than an accident.
+//
+// Set these BEFORE the overrides include so a local overrides file can still flip one.
+ENABLE_PUSH_PROVIDER = 0
+// ^ Apporo aiot 1.0 excludes iOS Local Push (the PushProvider network extension).
+ENABLE_CARPLAY = 0
+// ^ Apporo aiot 1.0 excludes CarPlay (both carplay-driving-task and
+//   carplay-voice-based-conversation come from this one flag).
+ENABLE_THREAD_NETWORK_CREDENTIALS = 0
+// ^ Matter / Thread is not carried over into the Apporo product at all.
+
+// UNDECIDED — parked at 0 on purpose, see the report / IMPL-SPEC §2.5 B-3.
+// Critical alerts require a separate entitlement that Apple must grant to team W4UWZ8NP2P
+// (https://developer.apple.com/contact/request/notifications-critical-alerts). Setting this
+// to 1 before that grant exists makes signing/upload fail, so it must stay 0 until Apple
+// approves. Consequence of 0: notifications cannot bypass Do Not Disturb / silent mode.
+ENABLE_CRITICAL_ALERTS = 0
+
+// UNDECIDED — parked at 0 on purpose.
+// com.apple.developer.device-information.user-assigned-device-name also needs an Apple
+// entitlement request. Consequence of 0: the device_name sensor and the name shown during
+// onboarding fall back to the generic model name ("iPhone") instead of the user's own name
+// for the device. Note upstream also forced this to 0 for debug builds.
+ENABLE_DEVICE_NAME = 0
 
 // cascades down
 PRODUCT_BUNDLE_IDENTIFIER = ${BUNDLE_ID_PREFIX}.$(BRAND_BUNDLE_BASE)${BUNDLE_ID_SUFFIX}${PROVISIONING_SUFFIX}
@@ -26,13 +63,8 @@ CODE_SIGN_STYLE_DEFAULT = Automatic
 // Create this file to override configuration. It's ignored by git
 #include? "HomeAssistant.overrides.xcconfig"
 
-// set after overrides in case the team is changed by them - this is customized in e.g. the Release xcconfig
-// only iOS, not catalyst, because no critical alerts provisioning for us exists on mac
-ENABLE_CRITICAL_ALERTS[sdk=iphoneos*] = $(ENABLE_CRITICAL_ALERTS_$(DEVELOPMENT_TEAM))
-ENABLE_PUSH_PROVIDER[sdk=iphoneos*] = $(ENABLE_PUSH_PROVIDER_$(DEVELOPMENT_TEAM))
-ENABLE_DEVICE_NAME[sdk=iphoneos*] = $(ENABLE_DEVICE_NAME_$(DEVELOPMENT_TEAM))
-ENABLE_THREAD_NETWORK_CREDENTIALS[sdk=iphoneos*] = $(ENABLE_THREAD_NETWORK_CREDENTIALS_$(DEVELOPMENT_TEAM))
-ENABLE_CARPLAY[sdk=iphoneos*] = $(ENABLE_CARPLAY_$(DEVELOPMENT_TEAM))
+// (The ENABLE_* entitlement flags used to be re-derived here from $(DEVELOPMENT_TEAM).
+//  They are now set explicitly above the overrides include — see the block near the top.)
 
 // We mutate the entitlements at build time to support other development teams
 CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION = YES
@@ -59,7 +91,7 @@ COPY_PHASE_STRIP = NO
 SKIP_INSTALL = YES
 
 // makes the executable more HA-specific so it is in crash logs sorted nicely
-PRODUCT_NAME = ApporoSmartHome-$(TARGET_NAME)
+PRODUCT_NAME = ApporoAiot-$(TARGET_NAME)
 PRODUCT_MODULE_NAME = $(TARGET_NAME:c99extidentifier)
 
 // Catalyst-specific
