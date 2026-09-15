@@ -1605,6 +1605,7 @@
 		DB54626ADCE0C32094C8C0B9 /* LoadingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BFD0D30836C69840AB63A8A /* LoadingButton.swift */; };
 		DE8048842D9FB6C90459E229 /* QuickActionWindowSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1948705C52B43ACD36FD0B32 /* QuickActionWindowSceneDelegate.swift */; };
 		DFB59CC17BC47B8A6949B81C /* KioskScreensaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71373DD7455D9CE893EB450B /* KioskScreensaverView.swift */; };
+		E239DC305244EF0324CEC83E /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 2EB850BB3BD6ADA9B983F325 /* PrivacyInfo.xcprivacy */; };
 		E33F645682064B22AC4CDFBB /* SFSafeSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = C6ACD1840F0E4F5FBFDDE88B /* SFSafeSymbols */; };
 		E3A02409794174F002C8BB4F /* IconSearchPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC23DE131CA8813C2DBD657 /* IconSearchPicker.swift */; };
 		E60778133EC44B10A61D551C /* TestFlightCommunicationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212E30CB76DE4ED1B6E317CD /* TestFlightCommunicationModels.swift */; };
@@ -2221,6 +2222,7 @@
 		273BF4150C522259C6183B32 /* Pods-watchOS-Shared-watchOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchOS-Shared-watchOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-watchOS-Shared-watchOS/Pods-watchOS-Shared-watchOS.debug.xcconfig"; sourceTree = "<group>"; };
 		28B40938BEB944969AAB2895 /* CarPlayPreferredServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlayPreferredServer.swift; sourceTree = "<group>"; };
 		2A674A3ACB31BFCEB70423FE /* Pods-watchOS-WatchExtension-Watch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-watchOS-WatchExtension-Watch.release.xcconfig"; path = "Pods/Target Support Files/Pods-watchOS-WatchExtension-Watch/Pods-watchOS-WatchExtension-Watch.release.xcconfig"; sourceTree = "<group>"; };
+		2EB850BB3BD6ADA9B983F325 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		2F5A1F2C65420338C176B7BD /* CameraZoomGestureOverlay.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = CameraZoomGestureOverlay.swift; sourceTree = "<group>"; };
 		332C060487B468055C487070 /* TemplatePreviewSection.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = TemplatePreviewSection.swift; sourceTree = "<group>"; };
 		33CA7FF55788E7084DA5E4B3 /* Pods_iOS_Extensions_Share.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_iOS_Extensions_Share.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -6704,6 +6706,7 @@
 				11A71C6924A463EE00D9565F /* ZoneManager */,
 				B69933961E232AF50054453D /* Resources */,
 				422DB25E2FF4FE3700C0ED3D /* MainWindowGroupCommands.swift */,
+				2EB850BB3BD6ADA9B983F325 /* PrivacyInfo.xcprivacy */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -8269,6 +8272,7 @@
 				B60616501D1F117700249C11 /* US-EN-Morgan-Freeman-Turning-On-The-Mood-Lights.wav in Resources */,
 				11F893B125C5F56700820C61 /* GoogleService-Info-Release.plist in Resources */,
 				38A4EBA18ADEEE555AD14F52 /* Pods-iOS-App-metadata.plist in Resources */,
+				E239DC305244EF0324CEC83E /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

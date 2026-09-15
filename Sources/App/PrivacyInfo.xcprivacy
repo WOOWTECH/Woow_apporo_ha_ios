@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!--
+	  Apple's privacy manifest. Required because the app references required-reason APIs; a
+	  missing or incomplete declaration is rejected at upload as ITMS-91053.
+
+	  Every entry below was derived from the BUILT BINARIES, not from reading the source:
+
+	      find "$APP" -type f -exec file {} \; | grep Mach-O | cut -d: -f1 > bins.txt
+	      while read b; do nm -u "$b" | grep -E '<symbol pattern>'; done < bins.txt
+
+	  That matters because Apple's scanner looks for symbol references in the binary, not for
+	  code that runs. Compiling out the only *caller* of an API does not remove the symbol —
+	  see DeviceWrapper.volumes, which kept the whole DiskSpace category in Shared.framework
+	  long after StorageSensor had been gated out. Re-run the scan after changing dependencies.
+	-->
+
+	<key>NSPrivacyTracking</key>
+	<false/>
+
+	<!-- No tracking, so no tracking domains. -->
+	<key>NSPrivacyTrackingDomains</key>
+	<array/>
+
+	<!--
+	  Nothing is collected by us today.
+
+	  Home data (states, history, sensor readings) is sent to the server in the user's own
+	  building, which we neither run nor read, so it is not "collected by the developer".
+	  The iOS app bundles no analytics and no crash-reporting SDK.
+
+	  ⚠️ REVISIT WHEN THE PUSH RELAY SHIPS. Once notifications route through our own relay,
+	  the device push token is transmitted to infrastructure we operate, and that has to be
+	  declared here AND in the App Store Connect privacy questionnaire — the two must agree.
+	-->
+	<key>NSPrivacyCollectedDataTypes</key>
+	<array/>
+
+	<key>NSPrivacyAccessedAPITypes</key>
+	<array>
+		<dict>
+			<!-- Settings, server list, tokens' metadata. Read back only by this app. -->
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryUserDefaults</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>CA92.1</string>
+			</array>
+		</dict>
+		<dict>
+			<!--
+			  Log files under AppConstants.LogsDirectory (rotation and the "export logs"
+			  action) and the imported notification sounds list. All inside our own app
+			  and app-group containers, which is what DDA9.1 covers.
+			-->
+			<key>NSPrivacyAccessedAPIType</key>
+			<string>NSPrivacyAccessedAPICategoryFileTimestamp</string>
+			<key>NSPrivacyAccessedAPITypeReasons</key>
+			<array>
+				<string>DDA9.1</string>
+			</array>
+		</dict>
+	</array>
+</dict>
+</plist>
