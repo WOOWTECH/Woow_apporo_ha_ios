@@ -42,6 +42,12 @@ public enum L10n {
   public static var previewOutput: String { return L10n.tr("Localizable", "preview_output") }
   /// Privacy
   public static var privacyLabel: String { return L10n.tr("Localizable", "privacyLabel") }
+  /// You have sent more than %1$@ notifications today. New notifications will arrive again after midnight UTC.
+  public static func rateLimitNotificationBody(_ p1: Any) -> String {
+    return L10n.tr("Localizable", "rate_limit_notification_body", String(describing: p1))
+  }
+  /// Notifications rate limited
+  public static var rateLimitNotificationTitle: String { return L10n.tr("Localizable", "rate_limit_notification_title") }
   /// Requires %@ or later.
   public static func requiresVersion(_ p1: Any) -> String {
     return L10n.tr("Localizable", "requires_version", String(describing: p1))

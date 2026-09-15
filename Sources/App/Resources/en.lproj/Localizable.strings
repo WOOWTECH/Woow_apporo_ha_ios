@@ -1047,6 +1047,8 @@ Apporo aiot is open source, advocates for privacy and runs locally in your home.
 "post_onboarding.permission.notification.title" = "Do you want to receive notifications?";
 "preview_output" = "Preview Output";
 "privacyLabel" = "Privacy";
+"rate_limit_notification_body" = "You have sent more than %1$@ notifications today. New notifications will arrive again after midnight UTC.";
+"rate_limit_notification_title" = "Notifications rate limited";
 "requires_version" = "Requires %@ or later.";
 "retry_label" = "Retry";
 "room_view.section.hidden" = "Hidden";

@@ -1045,6 +1045,8 @@ Apporo aiot 為開源軟體、倡導隱私保護並於您的家中進行本地�
 "post_onboarding.permission.notification.title" = "是否要接收通知？";
 "preview_output" = "預覽輸出";
 "privacyLabel" = "隱私權";
+"rate_limit_notification_body" = "您今天已送出超過 %1$@ 則通知。要等到世界標準時間午夜之後，才會再收到新的通知。";
+"rate_limit_notification_title" = "通知已達每日上限";
 "requires_version" = "需要 %@ 或更新版本。";
 "retry_label" = "重試";
 "room_view.section.hidden" = "已隱藏";
