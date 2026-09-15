@@ -207,7 +207,16 @@ public enum AppConstants {
         /// **Android** client's page. iOS was authenticating under Android's identity, which is why
         /// this moved onto the brand host.
         ///
-        /// ⚠️ THIS PAGE IS NOT PUBLISHED YET. Home Assistant's IndieAuth implementation really does
+        /// ⚠️ TEMPORARY HOST. `https://aiot.apporo.ai/ios` — the intended final location — is not
+        /// served yet (the Cloudflare Worker for that zone is not deployed), so login failed with
+        /// `invalid redirect uri` on real devices: Home Assistant fetched the client_id URL, got a
+        /// 404, ended up with an empty redirect_uri list, and rejected the callback.
+        ///
+        /// Until the Worker is live this points at the GitHub Pages site of the **Android** repo,
+        /// which already has Pages enabled and now serves an `/ios` page declaring both schemes.
+        /// Switch back to `https://\(AppConstants.brandHost)/ios` once that host answers.
+        ///
+        /// Home Assistant's IndieAuth implementation really does
         /// fetch this URL during login, so before App Review submission confirm that it:
         ///   * is readable anonymously — not a 404, not a login page, not a redirect to one;
         ///   * is served over HTTPS with a certificate the OS trusts;
@@ -216,7 +225,7 @@ public enum AppConstants {
         ///     `apporoaiot-dev://auth-callback` (Debug) — otherwise Debug builds cannot log in;
         ///   * keeps `<link rel="redirect_uri">` in sync whenever `urlScheme` changes.
         /// Until it is live, login fails against any Home Assistant that enforces IndieAuth discovery.
-        public static let clientID = "https://\(AppConstants.brandHost)/ios"
+        public static let clientID = "https://woowtech.github.io/Woow_apporo_ha_app/ios"
         public static let redirectURI = "\(AppConstants.urlScheme)://auth-callback"
     }
 
