@@ -47,36 +47,73 @@ class TagActivityManager: TagManager {
         .generic
     }
 
-    fileprivate static func url(for identifier: String) -> URL {
+    /// Builds the address written onto a newly provisioned NFC tag.
+    ///
+    /// Newly written tags always carry the brand host so that they can be claimed by this app's
+    /// associated domains. Returns `nil` — instead of trapping — when the identifier could not be
+    /// embedded in an address that `identifier(from:)` would read back unchanged.
+    static func url(for identifier: String) -> URL? {
+        guard isValidTagIdentifier(identifier) else { return nil }
+
         var components = URLComponents()
         components.scheme = "https"
-        components.host = "www.home-assistant.io"
+        components.host = AppConstants.brandHost
         components.path = "/tag/" + identifier
-        return components.url!
+        return components.url
     }
 
-    fileprivate static func identifier(from url: URL) -> String? {
-        guard isSupportedTagHost(url.host?.lowercased()) else {
+    /// Reads the tag identifier out of the address stored on an NFC tag.
+    ///
+    /// A tag is a piece of hardware anybody can hand to the user, so its address is untrusted input.
+    /// Only an exact `https://<accepted host>/tag/<identifier>` address is accepted: plain HTTP, a
+    /// look-alike host, embedded user information, an explicit port, a query string, a fragment or
+    /// any extra path segment is rejected rather than scanned.
+    static func identifier(from url: URL) -> String? {
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              components.scheme?.lowercased() == "https",
+              components.user == nil,
+              components.password == nil,
+              components.port == nil,
+              components.query == nil,
+              components.fragment == nil,
+              isSupportedTagHost(components.host?.lowercased()) else {
             return nil
         }
 
-        if url.pathComponents.starts(with: ["/", "tag"]) {
-            // ["/", "tag", "5f0ba733-172f-430d-a7f8-e4ad940c88d7"] for example
-            let value = url.pathComponents.dropFirst(2).joined(separator: "/")
-            if !value.isEmpty {
-                return value
-            } else {
-                return nil
-            }
-        } else {
+        // Split the still-encoded path so that a percent-encoded separator cannot smuggle extra
+        // segments past the count check below.
+        let encodedParts = components.percentEncodedPath.split(separator: "/", omittingEmptySubsequences: false)
+        guard encodedParts.count == 3,
+              encodedParts[0].isEmpty,
+              encodedParts[1] == "tag",
+              let identifier = String(encodedParts[2]).removingPercentEncoding,
+              isValidTagIdentifier(identifier) else {
             return nil
         }
+        return identifier
     }
 
+    private static func isValidTagIdentifier(_ identifier: String) -> Bool {
+        !identifier.isEmpty
+            && identifier != "."
+            && identifier != ".."
+            && !identifier.contains("/")
+            && !identifier.contains("?")
+            && !identifier.contains("#")
+    }
+
+    /// Hosts accepted when reading a tag.
+    ///
+    /// `AppConstants.brandHost` is the host this app writes. `www.home-assistant.io` is kept for
+    /// read compatibility with tags provisioned by the upstream Home Assistant app (and by earlier
+    /// internal builds of this app, which also wrote that host); it matches the Android manifest's
+    /// `NDEF_DISCOVERED` compatibility entry. The retired `aiot.apporo.io` host is deliberately
+    /// *not* accepted: that domain never resolved, so no tag in the field can carry it, and
+    /// accepting an unregistered domain would let whoever registers it later mint valid tags.
     private static func isSupportedTagHost(_ host: String?) -> Bool {
         guard let host else { return false }
 
-        var hosts = ["www.home-assistant.io"]
+        var hosts = [AppConstants.brandHost, "www.home-assistant.io"]
         if Current.appConfiguration == .debug {
             hosts.append("next.home-assistant.io")
         }
@@ -106,8 +143,9 @@ class iOSTagManager: TagActivityManager {
     }
 
     override func writeNFC(value: String) -> Promise<String> {
-        guard let uriPayload = NFCNDEFPayload.wellKnownTypeURIPayload(url: Self.url(for: value)),
-              let aarPayload = NFCNDEFPayload.androidPackage(payload: "io.homeassistant.companion.android") else {
+        guard let tagURL = Self.url(for: value),
+              let uriPayload = NFCNDEFPayload.wellKnownTypeURIPayload(url: tagURL),
+              let aarPayload = NFCNDEFPayload.androidPackage(payload: "com.apporo.aiot") else {
             return .init(error: TagManagerError.notHomeAssistantTag)
         }
 

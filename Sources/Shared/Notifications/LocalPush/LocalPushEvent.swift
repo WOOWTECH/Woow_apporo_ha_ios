@@ -53,7 +53,9 @@ struct LocalPushEvent: HADataDecodable {
         let parser = LegacyNotificationParserImpl(pushSource: "local")
         let result = parser.result(from: value, defaultRegistrationInfo: [
             "os_version": Current.device.systemVersion(),
-            "app_id": "com.apporo.home",
+            // Derived from the running bundle so the dev build reports `com.apporo.aiot.dev`
+            // rather than silently claiming to be the App Store build.
+            "app_id": AppConstants.BundleID,
         ])
         self.init(headers: result.headers, payload: result.payload)
         self.confirmID = data.decode("hass_confirm_id", fallback: nil)

@@ -10,43 +10,51 @@ struct AppConstantsTests {
         assert(result == expected, "Expected \(expected), got \(String(describing: result))")
     }
 
-    @Test func testWebURLs() async throws {
-        assert(AppConstants.WebURLs.homeAssistant.absoluteString == "https://www.home-assistant.io")
-        assert(
-            AppConstants.WebURLs.homeAssistantGetStarted
-                .absoluteString == "https://www.home-assistant.io/installation/"
-        )
-        assert(AppConstants.WebURLs.companionAppDocs.absoluteString == "https://companion.home-assistant.io")
-        assert(
-            AppConstants.WebURLs.companionAppDocsTroubleshooting
-                .absoluteString == "https://companion.home-assistant.io/docs/troubleshooting/errors"
-        )
-        assert(AppConstants.WebURLs.beta.absoluteString == "https://companion.home-assistant.io/app/ios/beta")
-        assert(AppConstants.WebURLs.betaMac.absoluteString == "https://companion.home-assistant.io/app/ios/beta_mac")
-        assert(AppConstants.WebURLs.review.absoluteString == "https://companion.home-assistant.io/app/ios/review")
-        assert(
-            AppConstants.WebURLs.reviewMac
-                .absoluteString == "https://companion.home-assistant.io/app/ios/review_mac"
-        )
-        assert(AppConstants.WebURLs.translate.absoluteString == "https://companion.home-assistant.io/app/ios/translate")
-        assert(AppConstants.WebURLs.forums.absoluteString == "https://community.home-assistant.io/")
-        assert(AppConstants.WebURLs.chat.absoluteString == "https://companion.home-assistant.io/app/ios/chat")
-        assert(AppConstants.WebURLs.twitter.absoluteString == "https://twitter.com/home_assistant")
-        assert(AppConstants.WebURLs.facebook.absoluteString == "https://www.facebook.com/292963007723872")
-        assert(AppConstants.WebURLs.repo.absoluteString == "https://companion.home-assistant.io/app/ios/repo")
-        assert(AppConstants.WebURLs.issues.absoluteString == "https://companion.home-assistant.io/app/ios/issues")
-        assert(
-            AppConstants.WebURLs.companionAppConnectionSecurityLevel
-                .absoluteString == "https://companion.home-assistant.io/docs/getting_started/connection-security-level"
-        )
-        assert(
-            AppConstants.WebURLs.companionLocalPush
-                .absoluteString == "https://companion.home-assistant.io/app/ios/local-push"
-        )
-        assert(
-            AppConstants.WebURLs.nfcDocs
-                .absoluteString == "https://companion.home-assistant.io/app/ios/nfc"
-        )
+    @Test func testBrandHost() async throws {
+        assert(AppConstants.brandHost == "aiot.apporo.ai", "brand host must be the aiot.apporo.ai domain")
+    }
+
+    @Test func testWebURLsAllLiveOnBrandHost() async throws {
+        // Guards the regression this migration exists to fix: a help link left on an upstream
+        // Home Assistant domain, or on the dead `aiot.apporo.io` domain.
+        let all: [URL] = [
+            AppConstants.WebURLs.homeAssistant,
+            AppConstants.WebURLs.support,
+            AppConstants.WebURLs.privacy,
+            AppConstants.WebURLs.homeAssistantGetStarted,
+            AppConstants.WebURLs.homeAssistantCompanionGetStarted,
+            AppConstants.WebURLs.companionAppDocs,
+            AppConstants.WebURLs.companionAppDocsTroubleshooting,
+            AppConstants.WebURLs.companionAppConnectionSecurityLevel,
+            AppConstants.WebURLs.notificationsDocs,
+            AppConstants.WebURLs.actionableNotificationsDocs,
+            AppConstants.WebURLs.notificationSoundsDocs,
+            AppConstants.WebURLs.liveActivitiesDocs,
+            AppConstants.WebURLs.companionLocalPush,
+            AppConstants.WebURLs.widgetsDocs,
+            AppConstants.WebURLs.appleWatchDocs,
+            AppConstants.WebURLs.nfcDocs,
+            AppConstants.WebURLs.appleDropSupportiOS15,
+            AppConstants.WebURLs.issues,
+        ]
+        for url in all {
+            assert(url.scheme == "https", "\(url) must use https")
+            assert(url.host == AppConstants.brandHost, "\(url) must be served by \(AppConstants.brandHost)")
+        }
+    }
+
+    @Test func testWebURLPaths() async throws {
+        let root = "https://\(AppConstants.brandHost)"
+        assert(AppConstants.WebURLs.homeAssistant.absoluteString == root)
+        assert(AppConstants.WebURLs.support.absoluteString == "\(root)/support")
+        assert(AppConstants.WebURLs.privacy.absoluteString == "\(root)/privacy")
+        assert(AppConstants.WebURLs.companionAppDocs.absoluteString == "\(root)/docs")
+        assert(AppConstants.WebURLs.companionAppDocsTroubleshooting.absoluteString == "\(root)/docs/troubleshooting")
+        assert(AppConstants.WebURLs.notificationsDocs.absoluteString == "\(root)/docs/notifications")
+        assert(AppConstants.WebURLs.nfcDocs.absoluteString == "\(root)/docs/nfc")
+        // The upstream community entry points (forums / chat / twitter / facebook / repo) are gone;
+        // anything that used to "report an issue" now goes to our support page instead.
+        assert(AppConstants.WebURLs.issues == AppConstants.WebURLs.support)
     }
 
     @Test func testQueryItemsRawValues() async throws {
@@ -114,12 +122,33 @@ struct AppConstantsTests {
         assert(queryValues["add_item"] == nil, "URL should not include add_item in query item")
     }
 
-    @available(iOS 16.0, *)
-    @Test func testFirebaseURL() async throws {
+    @Test func testPushEndpointsAreOnOurOwnRelay() async throws {
+        // Blocker B-7: if either of these drifts back to mobile-apps.home-assistant.io, every push
+        // for every user is registered with and delivered through Home Assistant's public relay.
         assert(
-            AppConstants.Firebase.pushURLString == "https://mobile-apps.home-assistant.io/api/sendPushNotification",
-            "Firebase push URL should match expected value"
+            AppConstants.Firebase.pushURLString == "https://\(AppConstants.brandHost)/api/sendPushNotification",
+            "push_url must point at our own relay"
         )
+        assert(
+            AppConstants.Firebase.rateLimitURL
+                .absoluteString == "https://\(AppConstants.brandHost)/api/checkRateLimits",
+            "rate limit lookup must point at our own relay"
+        )
+    }
+
+    @Test func testURLSchemeAndOAuthClientIdentity() async throws {
+        // The scheme is read from the running bundle's CFBundleURLTypes (ENV_URL_HANDLER), so this
+        // also catches the Info.plist and the Swift constant disagreeing.
+        assert(
+            AppConstants.urlScheme == AppConstants.expectedURLScheme,
+            "Info.plist URL scheme (\(AppConstants.urlScheme)) disagrees with the compile-time "
+                + "expectation (\(AppConstants.expectedURLScheme)) — check ENV_URL_HANDLER"
+        )
+        assert(AppConstants.urlScheme.hasPrefix("apporoaiot"), "scheme must be the aiot scheme")
+        assert(AppConstants.deeplinkURL.absoluteString == "\(AppConstants.urlScheme)://")
+        // Blocker B-6: iOS used to authenticate with the Android client's client_id.
+        assert(AppConstants.OAuth.clientID == "https://\(AppConstants.brandHost)/ios")
+        assert(AppConstants.OAuth.redirectURI == "\(AppConstants.urlScheme)://auth-callback")
     }
 
     @Test func testNormalizedNavigationDestination() async throws {
@@ -130,8 +159,8 @@ struct AppConstantsTests {
         // Slash-less HA path — rooted so it still navigates the frontend.
         assert(normalized("map/0") == "/map/0")
         // Deep links are left untouched — the URL handler processes them as deep links.
-        assert(normalized("apporohome://navigate/map/0") == "apporohome://navigate/map/0")
-        assert(normalized("apporohome://navigate/map/0") == "apporohome://navigate/map/0")
+        let deeplink = "\(AppConstants.urlScheme)://navigate/map/0"
+        assert(normalized(deeplink) == deeplink)
         // External URLs — untouched so they open in the browser.
         assert(normalized("https://google.com") == "https://google.com")
         assert(normalized("https://www.google.com") == "https://www.google.com")

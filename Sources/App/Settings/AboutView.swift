@@ -5,13 +5,6 @@ import SwiftUI
 struct AboutView: View {
     @State private var showVersionAlert = false
 
-    var shouldHideSocialsNotAvailableInChina: Bool {
-        if let lang = Locale.current.languageCode, lang.hasPrefix("zh") {
-            return true
-        }
-        return false
-    }
-
     var body: some View {
         List {
             AppleLikeListTopRowHeader(
@@ -29,46 +22,21 @@ struct AboutView: View {
                 showVersionAlert = true
             }
 
+            // The upstream screen also linked to the Home Assistant beta programme, its app-store
+            // review page, Lokalise translation, the community forums and chat, the project's
+            // Twitter/Facebook accounts and its GitHub repo + issue tracker. Those are Home
+            // Assistant's channels, not Apporo's; shipping them under the Apporo brand would be
+            // misleading and a trademark problem, so they are removed rather than re-pointed.
             Section {
-                Link(
-                    L10n.About.Beta.title,
-                    destination: Current.isCatalyst ? AppConstants.WebURLs.betaMac : AppConstants.WebURLs.beta
-                )
-
                 NavigationLink(destination: AcknowledgementsView()) {
                     Text(L10n.About.Acknowledgements.title)
                 }
-
-                Link(
-                    L10n.About.Review.title,
-                    destination: Current.isCatalyst ? AppConstants.WebURLs.reviewMac : AppConstants.WebURLs.review
-                )
-
-                Link(L10n.About.HelpLocalize.title, destination: AppConstants.WebURLs.translate)
             }
 
             Section {
                 Link(L10n.About.Website.title, destination: AppConstants.WebURLs.homeAssistant)
 
-                Link(L10n.About.Forums.title, destination: AppConstants.WebURLs.forums)
-
-                Link(L10n.About.Chat.title, destination: AppConstants.WebURLs.chat)
-
                 Link(L10n.About.Documentation.title, destination: AppConstants.WebURLs.companionAppDocs)
-            }
-
-            if !shouldHideSocialsNotAvailableInChina {
-                Section {
-                    Link(L10n.About.HomeAssistantOnTwitter.title, destination: AppConstants.WebURLs.twitter)
-
-                    Link(L10n.About.HomeAssistantOnFacebook.title, destination: AppConstants.WebURLs.facebook)
-                }
-            }
-
-            Section {
-                Link(L10n.About.Github.title, destination: AppConstants.WebURLs.repo)
-
-                Link(L10n.About.GithubIssueTracker.title, destination: AppConstants.WebURLs.issues)
             }
         }
         .navigationTitle(L10n.About.title)

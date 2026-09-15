@@ -27,7 +27,16 @@ class OnboardingAuthLoginViewControllerImplTests: XCTestCase {
     }
 
     func testNonCallbackAppURLsDoNotCompleteLogin() {
-        for value in ["apporohomex://auth-callback", "apporohome://navigate", "woowhome://auth-callback"] {
+        let scheme = AppConstants.urlScheme
+        for value in [
+            // A scheme that merely *starts with* ours must not be accepted: the original
+            // implementation used hasPrefix and would have matched this.
+            "\(scheme)x://auth-callback",
+            // Our scheme, but not the callback host.
+            "\(scheme)://navigate",
+            // Another app's scheme entirely.
+            "woowhome://auth-callback",
+        ] {
             let url = URL(string: value)!
             controller.webView(
                 controller.webViewForTests,
@@ -39,7 +48,7 @@ class OnboardingAuthLoginViewControllerImplTests: XCTestCase {
     }
 
     func testDecisionHandlerWithCallbackURL() {
-        let url = URL(string: "apporohome://auth-callback")!
+        let url = URL(string: "\(AppConstants.urlScheme)://auth-callback")!
 
         let expectation = expectation(description: "decision handler")
         controller.webView(
@@ -66,7 +75,7 @@ class OnboardingAuthLoginViewControllerImplTests: XCTestCase {
         )
         wait(for: [httpExpectation], timeout: 10.0)
 
-        let callbackURL = URL(string: "apporohome://auth-callback?code=code_123")!
+        let callbackURL = URL(string: "\(AppConstants.urlScheme)://auth-callback?code=code_123")!
         let callbackExpectation = expectation(description: "callback nav")
         controller.webView(
             controller.webViewForTests,

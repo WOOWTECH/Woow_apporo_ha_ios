@@ -82,12 +82,49 @@ ok "PushServer 預設 topic（附帶）"
 # ---------------------------------------------------------------------------
 say "2/10 Entitlements 品牌代換 + 雙軌（dev 精簡 / release 完整）"
 ENT=Configuration/Entitlements
+
+# associated-domains 正規化:上游有 3 筆不同的 home-assistant.io 網域,
+# 逐筆 sed 會把它們換成 3 筆一模一樣的 ${BRAND_HOST}(WOOW/Apporo 都踩過)。
+# → 直接把整個 array 重寫成單一條目,天生不會重複。
+set_domains() { # set_domains <file> <host>
+  python3 - "$1" "$2" <<'PY'
+import re, sys
+p, host = sys.argv[1], sys.argv[2]
+t = open(p, encoding="utf-8").read()
+pat = re.compile(r"(<key>com\.apple\.developer\.associated-domains</key>\s*\n(\s*)<array>\n)"
+                 r"(?:\s*<string>[^<]*</string>\n)+(\s*</array>)")
+new, n = pat.subn(lambda m: m.group(1) + m.group(2) + "\t<string>applinks:%s</string>\n" % host
+                            + m.group(3), t, count=1)
+if n:
+    open(p, "w", encoding="utf-8").write(new)
+sys.exit(0 if n else 3)
+PY
+}
+# aps-environment 必須依 variant 決定:release=production,dev=development。
+# 上游模板一律是 development,直接沿用會讓 App Store 版收不到正式推播。
+set_aps() { # set_aps <file> <development|production>
+  python3 - "$1" "$2" <<'PY'
+import re, sys
+p, env = sys.argv[1], sys.argv[2]
+t = open(p, encoding="utf-8").read()
+new, n = re.subn(r"(<key>aps-environment</key>\s*\n\s*<string>)[^<]*(</string>)",
+                 lambda m: m.group(1) + env + m.group(2), t, count=1)
+if n:
+    open(p, "w", encoding="utf-8").write(new)
+sys.exit(0 if n else 3)
+PY
+}
+
 for f in App-ios App-catalyst Extension-ios Extension-catalyst; do
-  must_sed "$ENT/$f.entitlements" "s|\.homeassistant\$(BUNDLE_ID_SUFFIX)|.${BUNDLE_ID_BASE}\$(BUNDLE_ID_SUFFIX)|; s|\.HomeAssistant\$(BUNDLE_ID_SUFFIX)|.${BUNDLE_ID_BASE}\$(BUNDLE_ID_SUFFIX)|" "$f 品牌代換"
+  # 用 $(BRAND_BUNDLE_BASE) 而非硬編 ${BUNDLE_ID_BASE}:日後改 bundle base 只需動 Brand.xcconfig
+  must_sed "$ENT/$f.entitlements" "s|\.homeassistant\$(BUNDLE_ID_SUFFIX)|.\$(BRAND_BUNDLE_BASE)\$(BUNDLE_ID_SUFFIX)|; s|\.HomeAssistant\$(BUNDLE_ID_SUFFIX)|.\$(BRAND_BUNDLE_BASE)\$(BUNDLE_ID_SUFFIX)|" "$f 品牌代換 → \$(BRAND_BUNDLE_BASE)"
 done
-# release 完整版: applinks 改品牌網域
-must_sed "$ENT/App-ios.entitlements" "s|applinks:my\.home-assistant\.io|applinks:${BRAND_HOST}|; s|applinks:\*\.home-assistant\.io|applinks:${BRAND_HOST}|; s|applinks:home-assistant\.io|applinks:${BRAND_HOST}|" "App-ios applinks → ${BRAND_HOST}"
-sedi "s|applinks:my\.home-assistant\.io|applinks:${BRAND_HOST}|; s|applinks:\*\.home-assistant\.io|applinks:${BRAND_HOST}|; s|applinks:home-assistant\.io|applinks:${BRAND_HOST}|" "$ENT/App-catalyst.entitlements" || true
+# applinks 改品牌網域（去重）
+set_domains "$ENT/App-ios.entitlements"      "${BRAND_HOST}" || die "App-ios 找不到 associated-domains array"
+set_domains "$ENT/App-catalyst.entitlements" "${BRAND_HOST}" || die "App-catalyst 找不到 associated-domains array"
+[[ $(grep -c "applinks:${BRAND_HOST}" "$ENT/App-ios.entitlements") -eq 1 ]] || die "App-ios applinks 不是剛好 1 筆"
+[[ $(grep -c "applinks:${BRAND_HOST}" "$ENT/App-catalyst.entitlements") -eq 1 ]] || die "App-catalyst applinks 不是剛好 1 筆"
+ok "applinks → applinks:${BRAND_HOST}（各 1 筆,已去重）"
 
 # 產生雙軌目錄
 mkdir -p "$ENT/dev" "$ENT/release"
@@ -95,18 +132,37 @@ for f in App-ios App-catalyst Extension-ios Extension-catalyst Launcher; do
   cp "$ENT/$f.entitlements" "$ENT/release/$f.entitlements"
   cp "$ENT/$f.entitlements" "$ENT/dev/$f.entitlements"
 done
-# dev 精簡: 拔免費 Personal Team 簽不了的 key
-strip_key() { /usr/libexec/PlistBuddy -c "Delete :$2" "$1" 2>/dev/null || true; }
-DEVAPP="$ENT/dev/App-ios.entitlements"
-for k in aps-environment com.apple.developer.associated-domains \
-         com.apple.developer.nfc.readersession.formats com.apple.developer.siri \
-         com.apple.developer.usernotifications.communication \
-         com.apple.developer.usernotifications.time-sensitive \
-         com.apple.developer.networking.wifi-info; do strip_key "$DEVAPP" "$k"; done
-for k in aps-environment com.apple.developer.associated-domains \
-         com.apple.developer.usernotifications.communication; do strip_key "$ENT/dev/App-catalyst.entitlements" "$k"; done
-strip_key "$ENT/dev/Extension-ios.entitlements" "com.apple.developer.networking.wifi-info"
-ok "dev 精簡版產生（拔 aps/applinks/NFC/Siri/wifi-info/通訊通知）"
+
+# release 完整版: 正式 APNs 環境
+set_aps "$ENT/release/App-ios.entitlements"      production || die "release/App-ios 找不到 aps-environment"
+set_aps "$ENT/release/App-catalyst.entitlements" production || die "release/App-catalyst 找不到 aps-environment"
+ok "release aps-environment = production"
+
+# dev 軌: 由 conf 的 DEV_ENTITLEMENTS_PROFILE 決定
+#   personal（預設,向後相容 Simon）= 免費 Personal Team,拔掉簽不了的 key
+#   team                          = 付費 Team,保留推播與 universal link 以便開發期驗證
+case "${DEV_ENTITLEMENTS_PROFILE:-personal}" in
+  personal)
+    strip_key() { /usr/libexec/PlistBuddy -c "Delete :$2" "$1" 2>/dev/null || true; }
+    DEVAPP="$ENT/dev/App-ios.entitlements"
+    for k in aps-environment com.apple.developer.associated-domains \
+             com.apple.developer.nfc.readersession.formats com.apple.developer.siri \
+             com.apple.developer.usernotifications.communication \
+             com.apple.developer.usernotifications.time-sensitive \
+             com.apple.developer.networking.wifi-info; do strip_key "$DEVAPP" "$k"; done
+    for k in aps-environment com.apple.developer.associated-domains \
+             com.apple.developer.usernotifications.communication; do strip_key "$ENT/dev/App-catalyst.entitlements" "$k"; done
+    strip_key "$ENT/dev/Extension-ios.entitlements" "com.apple.developer.networking.wifi-info"
+    ok "dev 精簡版產生（Personal Team:拔 aps/applinks/NFC/Siri/wifi-info/通訊通知）"
+    ;;
+  team)
+    set_aps "$ENT/dev/App-ios.entitlements"      development || die "dev/App-ios 找不到 aps-environment"
+    set_aps "$ENT/dev/App-catalyst.entitlements" development || die "dev/App-catalyst 找不到 aps-environment"
+    ok "dev 完整版產生（付費 Team:aps-environment=development,保留 applinks:${BRAND_HOST}）"
+    echo "     ⚠ 需先在 Apple Developer 後台註冊 App ID ${BUNDLE_ID_PREFIX}.${BUNDLE_ID_BASE}.dev 並開啟 Push / Associated Domains"
+    ;;
+  *) die "DEV_ENTITLEMENTS_PROFILE 只能是 personal 或 team（現值: ${DEV_ENTITLEMENTS_PROFILE}）" ;;
+esac
 
 # pbxproj 的 CODE_SIGN_ENTITLEMENTS 改走 $(ENTITLEMENTS_VARIANT)
 # 兩種形態都要吃: CODE_SIGN_ENTITLEMENTS = path; 與 "CODE_SIGN_ENTITLEMENTS[sdk=macosx*]" = "path";

@@ -23,6 +23,108 @@ struct NFCTagApprovalTests {
         }
     }
 
+    @Test("New NFC tags use the branded URL and refuse identifiers that cannot be read back")
+    func newTagsUseBrandedURL() {
+        #expect(TagActivityManager.url(for: "front-door")?.absoluteString == "https://aiot.apporo.ai/tag/front-door")
+        #expect(TagActivityManager.url(for: "") == nil)
+        #expect(TagActivityManager.url(for: ".") == nil)
+        #expect(TagActivityManager.url(for: "..") == nil)
+        #expect(TagActivityManager.url(for: "floor/door") == nil)
+        #expect(TagActivityManager.url(for: "door?x=1") == nil)
+        #expect(TagActivityManager.url(for: "door#frag") == nil)
+    }
+
+    @Test("Branded and upstream tag URLs are read with exact secure semantics")
+    func readsOnlySupportedTagURLs() throws {
+        for url in [
+            "https://aiot.apporo.ai/tag/front-door",
+            // Read compatibility with tags written by the upstream Home Assistant app and by
+            // earlier internal builds of this app, which both wrote this host.
+            "https://www.home-assistant.io/tag/front-door",
+        ] {
+            let parsedURL = try #require(URL(string: url))
+            #expect(TagActivityManager.identifier(from: parsedURL) == "front-door")
+        }
+
+        for url in [
+            "http://aiot.apporo.ai/tag/front-door",
+            "https://aiot.apporo.ai.evil.example/tag/front-door",
+            "https://evil.example/tag/front-door",
+            // The retired domain must NOT be accepted: it never resolved, so no tag can carry it.
+            "https://aiot.apporo.io/tag/front-door",
+            "https://aiot.apporo.ai/other/tag/front-door",
+            "https://aiot.apporo.ai/tag/",
+            "https://aiot.apporo.ai/tag/front-door/extra",
+            "https://aiot.apporo.ai/tag/../../etc/passwd",
+            "https://aiot.apporo.ai/tag/front-door?url=https://evil.example",
+            "https://aiot.apporo.ai/tag/front-door#fragment",
+            "https://user@aiot.apporo.ai/tag/front-door",
+            "https://user:password@aiot.apporo.ai/tag/front-door",
+            "https://aiot.apporo.ai:443/tag/front-door",
+            "https://aiot.apporo.ai/tag/%2F",
+            "https://aiot.apporo.ai/tag/%2E%2E",
+        ] {
+            let parsedURL = try #require(URL(string: url))
+            #expect(TagActivityManager.identifier(from: parsedURL) == nil, "Unexpectedly accepted \(url)")
+        }
+    }
+
+    @Test("Branded redirect, invitation and tag routes require the exact host and path")
+    func brandedUniversalLinkRoutes() throws {
+        let redirect = try #require(
+            URL(string: "https://aiot.apporo.ai/redirect/config_flow_start?domain=mobile_app")
+        )
+        let legacyRedirect = try #require(
+            URL(string: "https://my.home-assistant.io/redirect/config_flow_start?domain=mobile_app")
+        )
+        #expect(BrandedUniversalLink.route(for: redirect) == .redirect(legacyRedirect))
+
+        // Both invitation spellings are accepted; `/invite/` is the canonical form shared with Android.
+        let inviteWithSlash = try #require(URL(string: "https://aiot.apporo.ai/invite/#url=https%3A%2F%2Fha.example"))
+        let inviteWithoutSlash = try #require(URL(string: "https://aiot.apporo.ai/invite#url=https%3A%2F%2Fha.example"))
+        #expect(BrandedUniversalLink.route(for: inviteWithSlash) == .invite(inviteWithSlash))
+        #expect(BrandedUniversalLink.route(for: inviteWithoutSlash) == .invite(inviteWithoutSlash))
+
+        let tag = try #require(URL(string: "https://aiot.apporo.ai/tag/front-door"))
+        #expect(BrandedUniversalLink.route(for: tag) == .tag("front-door"))
+
+        for url in [
+            // Wrong scheme, wrong host, or an origin carrying extra credentials / a port.
+            "http://aiot.apporo.ai/redirect/config_flow_start?domain=mobile_app",
+            "https://aiot.apporo.ai.evil.example/redirect/config_flow_start?domain=mobile_app",
+            "https://evil.example/redirect/config_flow_start",
+            "https://aiot.apporo.io/redirect/config_flow_start",
+            "https://user@aiot.apporo.ai/redirect/config_flow_start",
+            "https://user:password@aiot.apporo.ai/redirect/config_flow_start",
+            "https://aiot.apporo.ai:443/redirect/config_flow_start",
+            "https://user@aiot.apporo.ai/invite/#url=https%3A%2F%2Fha.example",
+            "https://aiot.apporo.ai:8443/invite/#url=https%3A%2F%2Fha.example",
+            // Malformed or traversing paths.
+            "https://aiot.apporo.ai/redirect/",
+            "https://aiot.apporo.ai/redirect//config_flow_start",
+            "https://aiot.apporo.ai/redirect/../config_flow_start",
+            "https://aiot.apporo.ai/redirect/%2E%2E/config_flow_start",
+            "https://aiot.apporo.ai/not-redirect/config_flow_start",
+            "https://aiot.apporo.ai/",
+            "https://aiot.apporo.ai/invite/extra#url=https%3A%2F%2Fha.example",
+            // Fragment must be exactly one http(s) `url` item.
+            "https://aiot.apporo.ai/invite",
+            "https://aiot.apporo.ai/invite#",
+            "https://aiot.apporo.ai/invite#other=https%3A%2F%2Fha.example",
+            "https://aiot.apporo.ai/invite#url=javascript%3Aalert(1)",
+            "https://aiot.apporo.ai/invite#url=file%3A%2F%2F%2Fetc%2Fpasswd",
+            "https://aiot.apporo.ai/invite#url=https%3A%2F%2Fha.example&url=https%3A%2F%2Fevil.example",
+            "https://aiot.apporo.ai/invite#url=https%3A%2F%2Fha.example&mobile=1",
+            "https://aiot.apporo.ai/invite?url=https%3A%2F%2Fevil.example#url=https%3A%2F%2Fha.example",
+            // A redirect must not smuggle an invitation fragment past the redirect branch.
+            "https://aiot.apporo.ai/redirect/config_flow_start#url=https%3A%2F%2Fevil.example",
+            "https://aiot.apporo.ai/tag/",
+        ] {
+            let parsedURL = try #require(URL(string: url))
+            #expect(BrandedUniversalLink.route(for: parsedURL) == nil, "Unexpectedly accepted \(url)")
+        }
+    }
+
     @Test("Allowed Home Assistant tags are handled immediately")
     func allowedTagsAreHandledImmediately() throws {
         try withAllowedTagDatabase {
@@ -61,7 +163,7 @@ struct NFCTagApprovalTests {
 
     private func userActivity(tag: String) -> NSUserActivity {
         let activity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb)
-        activity.webpageURL = URL(string: "https://www.home-assistant.io/tag/\(tag)")!
+        activity.webpageURL = URL(string: "https://aiot.apporo.ai/tag/\(tag)")!
         return activity
     }
 
