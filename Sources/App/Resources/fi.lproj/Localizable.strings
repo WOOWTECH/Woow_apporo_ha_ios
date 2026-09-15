@@ -1023,7 +1023,7 @@ Remote when you're ready.";
 "onboarding.welcome.description" = "Tämä sovellus yhdistää Apporo aiot -palvelimeesi ja mahdollistaa tietojen integroinnin sinusta ja puhelimestasi.\
 \
 Apporo aiot on ilmainen ja avoimen lähdekoodin automaatio-ohjelmisto, joka painottaa paikallista hallinnoitavuutta ja yksityisyyttä.";
-"onboarding.welcome.header" = "Apporo aiot App";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Lisätietoja";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot logo";
 "onboarding.welcome.primary_button" = "Yhdistä Apporo aiotiin";

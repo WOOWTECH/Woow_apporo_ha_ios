@@ -1022,7 +1022,7 @@
 "onboarding.welcome.description" = "このアプリは、あなたのApporo aiotのサーバーに接続し、あなたとあなたの携帯電話に関するデータを統合することができます。\
 \
 Apporo aiotは、ローカルコントロールとプライバシーに重点を置いた、フリーでオープンソースなホームオートメーションソフトウェアです。";
-"onboarding.welcome.header" = "Apporo aiot アプリ";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "もっと詳しく知る";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot のロゴ";
 "onboarding.welcome.primary_button" = "Apporo aiotに接続";

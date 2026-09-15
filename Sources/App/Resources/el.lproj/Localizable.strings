@@ -1023,7 +1023,7 @@
 "onboarding.welcome.description" = "Αυτή η εφαρμογή συνδέεται με τον διακομιστή Apporo aiot και επιτρέπει την ενσωμάτωση δεδομένων σχετικά με εσάς και το τηλέφωνό σας. \
 \
  Το Apporo aiot είναι δωρεάν και ανοιχτού κώδικα λογισμικό αυτοματισμού σπιτιού με έμφαση στον τοπικό έλεγχο και την ιδιωτικότητα.";
-"onboarding.welcome.header" = "Εφαρμογή Apporo aiot";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Μάθετε περισσότερα";
 "onboarding.welcome.logo.accessibility_label" = "Λογότυπο Apporo aiot";
 "onboarding.welcome.primary_button" = "Σύνδεση με το Apporo aiot μου";

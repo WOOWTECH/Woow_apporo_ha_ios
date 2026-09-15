@@ -1023,7 +1023,7 @@ Remote when you're ready.";
 "onboarding.welcome.description" = "Това приложение се свързва с вашия Apporo aiot сървър и позволява интегриране на данни за вас и вашия телефон.\
 \
 Apporo aiot е безплатен и с отворен код софтуер за автоматизация на дома с акцент върху локалния контрол и поверителността.";
-"onboarding.welcome.header" = "Apporo aiot App";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Learn more";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot logo";
 "onboarding.welcome.primary_button" = "Connect to my Apporo aiot";

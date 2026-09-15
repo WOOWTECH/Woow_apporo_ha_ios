@@ -1023,7 +1023,7 @@ Remote when you're ready.";
 "onboarding.welcome.description" = "Aquesta aplicació es connecta al vostre servidor Apporo aiot i permet integrar dades sobre tu i el teu telèfon. \
 \
 Apporo aiot és un programari d'automatització de la llar gratuït i de codi obert, centrat en el control local i la privadesa.";
-"onboarding.welcome.header" = "Apporo aiot App";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Learn more";
 "onboarding.welcome.logo.accessibility_label" = "Logo de Apporo aiot";
 "onboarding.welcome.primary_button" = "Connecta't al meu Apporo aiot";

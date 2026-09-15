@@ -1023,7 +1023,7 @@
 "onboarding.welcome.description" = "이 앱은 Apporo aiot 서버에 연결하여 사용자와 휴대전화에 대한 데이터를 통합할 수 있습니다.\
 \
 Apporo aiot는 로컬 제어와 개인정보 보호를 중시하는 무료 오픈 소스 홈 자동화 소프트웨어입니다.";
-"onboarding.welcome.header" = "Apporo aiot 앱";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "더 알아보기";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot 로고";
 "onboarding.welcome.primary_button" = "내 Apporo aiot에 연결";

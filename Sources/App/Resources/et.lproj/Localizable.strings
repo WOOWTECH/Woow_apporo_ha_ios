@@ -1023,7 +1023,7 @@ Sildid toimivad igas seadmes, kuhu on paigaldatud Apporo aiot, millel on nende l
 "onboarding.welcome.description" = "See rakendus loob ühenduse Apporo aioti serveriga ja võimaldab integreerida teie ja teie telefoni andmeid. \
 \
  Apporo aiot on tasuta avatud lähtekoodiga koduautomaatika tarkvara, mis keskendub kohalikule juhtimisele ja privaatsusele.";
-"onboarding.welcome.header" = "Apporo aioti kaasrakendus";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Lisateave";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aioti logo";
 "onboarding.welcome.primary_button" = "Apporo aiotiga ühenduse loomine";

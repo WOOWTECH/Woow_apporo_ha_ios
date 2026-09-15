@@ -1018,7 +1018,7 @@ Taggar fungerar på alla enheter med Apporo aiot installerat och som har hårdva
 "onboarding.welcome.description" = "Den här appen ansluter till din Apporo aiot-server och låter dig integrera data om dig och din telefon. \
 \
 Apporo aiot är gratis och öppen källkod för hemautomatisering med fokus på lokal kontroll och integritet.";
-"onboarding.welcome.header" = "Apporo aiot-app";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Läs mer";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot-logotyp";
 "onboarding.welcome.primary_button" = "Anslut till min Apporo aiot";

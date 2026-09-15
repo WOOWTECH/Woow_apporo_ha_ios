@@ -1022,7 +1022,7 @@ A címkék minden olyan eszközön működnek, amelyre telepítve van a Apporo a
 "onboarding.welcome.description" = "Ez az alkalmazás csatlakozik a Apporo aiot szerverhez és lehetővé teszi az Önre és telefonjára vonatkozó adatok integrálását.\
 \
 A Apporo aiot egy ingyenes és nyílt forráskódú otthoni automatizálási szoftver, amely a vezérlés helyben történő kivitelezésére és az adatvédelemre összpontosít.";
-"onboarding.welcome.header" = "Apporo aiot Mobilalkalmazás";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Tudjon meg többet";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot logo";
 "onboarding.welcome.primary_button" = "Csatlakozás a saját Apporo aiot rendszeremhez";

@@ -1023,7 +1023,7 @@
 "onboarding.welcome.description" = "App 將連線至 Apporo aiot 伺服器並允許整合關於你與手機的資料。\
 \
 Apporo aiot 為一款免費且開源的家庭自動化軟體、專制於本地端控制與隱私議題。";
-"onboarding.welcome.header" = "Apporo aiot App";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "了解更多";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot logo";
 "onboarding.welcome.primary_button" = "連線至我的 Apporo aiot";

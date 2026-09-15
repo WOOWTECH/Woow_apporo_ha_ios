@@ -1023,7 +1023,7 @@
 "onboarding.welcome.description" = "Это приложение подключается к вашему серверу Apporo aiot и позволяет интегрировать данные о вас и вашем телефоне.\
 \
 Apporo aiot - это бесплатное программное обеспечение для домашней автоматизации с открытым исходным кодом, ориентированное на локальный контроль и конфиденциальность.";
-"onboarding.welcome.header" = "Приложение-компаньон Apporo aiot";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Узнать больше";
 "onboarding.welcome.logo.accessibility_label" = "Логотип Apporo aiot";
 "onboarding.welcome.primary_button" = "Подключиться к моему Apporo aiot";

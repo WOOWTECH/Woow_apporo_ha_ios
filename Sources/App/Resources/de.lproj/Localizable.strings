@@ -1023,7 +1023,7 @@ Mit Fernzugriff, wenn du bereit bist.";
 "onboarding.welcome.description" = "Diese App stellt eine Verbindung zu deinem Apporo aiot-Server her und ermöglicht die Integration von Daten über dich und dein Telefon.\
 \
 Apporo aiot ist eine kostenlose und Open-Source Heimautomationssoftware mit dem Schwerpunkt auf lokaler Kontrolle und Datenschutz.";
-"onboarding.welcome.header" = "Apporo aiot-App";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Mehr erfahren";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot-Logo";
 "onboarding.welcome.primary_button" = "Mit meinem Apporo aiot verbinden";

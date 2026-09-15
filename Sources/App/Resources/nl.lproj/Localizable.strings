@@ -1023,7 +1023,7 @@ Op afstand wanneer je er klaar voor bent.";
 "onboarding.welcome.description" = "Deze app maakt verbinding met je Apporo aiot-server en maakt het mogelijk gegevens over jou en je telefoon te integreren.\
 \
 Apporo aiot is gratis en open source domotica-software met een focus op lokale controle en privacy.";
-"onboarding.welcome.header" = "Apporo aiot App";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Meer informatie";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot-logo";
 "onboarding.welcome.primary_button" = "Maak verbinding met mijn Apporo aiot";

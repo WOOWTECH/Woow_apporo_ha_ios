@@ -1023,7 +1023,7 @@ Remote when you're ready.";
 "onboarding.welcome.description" = "יישומון זו מתחבר לשרת Apporo aiot ומאפשרת שילוב נתונים עליך ועל הטלפון שלך. \
 \
 Apporo aiot היא תוכנת אוטומציה ביתית חינמית ובקוד פתוח המתמקדת בשליטה מקומית ופרטיות.";
-"onboarding.welcome.header" = "Apporo aiot App";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Learn more";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot logo";
 "onboarding.welcome.primary_button" = "Connect to my Apporo aiot";

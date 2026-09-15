@@ -1025,7 +1025,7 @@ Remote when you're ready.";
 "onboarding.welcome.description" = "This app connects to your Apporo aiot server and allows integrating data about you and your phone.\
 \
 Apporo aiot is free and open source home automation software with a focus on local control and privacy.";
-"onboarding.welcome.header" = "Apporo aiot App";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Learn more";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot logo";
 "onboarding.welcome.primary_button" = "Connect to my Apporo aiot";

@@ -1023,7 +1023,7 @@ Remote when you're ready.";
 "onboarding.welcome.description" = "Ứng dụng này kết nối với máy chủ Apporo aiot và cho phép tích hợp dữ liệu về bạn và điện thoại của bạn. \
 \
 Apporo aiot là phần mềm tự động hóa gia đình mã nguồn mở và miễn phí, tập trung vào quyền kiểm soát và quyền riêng tư cục bộ.";
-"onboarding.welcome.header" = "Ứng dụng đồng hành Apporo aiot";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Learn more";
 "onboarding.welcome.logo.accessibility_label" = "Biểu trưng Apporo aiot";
 "onboarding.welcome.primary_button" = "Kết nối với Apporo aiot của tôi";

@@ -1023,7 +1023,7 @@ Les balises fonctionneront sur tout appareil sur lequel Apporo aiot est install�
 "onboarding.welcome.description" = "Cette application se connecte à votre serveur Apporo aiot et permet d'intégrer des données sur vous et votre téléphone.\
 \
 Apporo aiot est un logiciel de domotique gratuit et open source axé sur le contrôle local et la confidentialité.";
-"onboarding.welcome.header" = "Application Companion Apporo aiot";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "En savoir plus";
 "onboarding.welcome.logo.accessibility_label" = "Logo Apporo aiot";
 "onboarding.welcome.primary_button" = "Se connecter à mon Apporo aiot";

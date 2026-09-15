@@ -1022,7 +1022,7 @@ Tag akan berfungsi di semua perangkat apa yang dipasangi Apporo aiot, yang memil
 "onboarding.welcome.description" = "Aplikasi ini terhubung ke server Apporo aiot Anda dan memungkinkan integrasi data tentang Anda dan ponsel Anda.\
 \
 Apporo aiot adalah perangkat lunak otomasi rumah gratis dan sumber terbuka dengan fokus pada kontrol dan privasi lokal.";
-"onboarding.welcome.header" = "Aplikasi Apporo aiot";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Pelajari lebih lanjut";
 "onboarding.welcome.logo.accessibility_label" = "Logo Apporo aiot";
 "onboarding.welcome.primary_button" = "Hubungkan ke Apporo aiot saya";

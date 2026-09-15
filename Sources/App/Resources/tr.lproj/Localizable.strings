@@ -1023,15 +1023,15 @@
 "onboarding.welcome.description" = "Bu uygulama, Apporo aiot sunucunuza bağlanır ve siz ve telefonunuz hakkındaki verilerin entegre edilmesini sağlar. \
 \
  Apporo aiot, yerel kontrol ve gizliliğe odaklanan ücretsiz ve açık kaynaklı bir ev otomasyon yazılımıdır.";
-"onboarding.welcome.header" = "Apporo aiot Uygulaması";
+"onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Daha fazla bilgi edin";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot logosu";
 "onboarding.welcome.primary_button" = "Apporo aiot'a bağlanın";
 "onboarding.welcome.secondary_button" = "Başlarken";
 "onboarding.welcome.title" = "Apporo aiot'a Hoş Geldiniz %@!";
-"onboarding.welcome.updated.body" = "Hareket halindeyken Ev Asistanı sunucunuza erişin. \
+"onboarding.welcome.updated.body" = "Hareket halindeyken Apporo aiot sunucunuza erişin. \
 \
-Ev Asistanı açık kaynaklıdır, gizliliği savunur ve evinizde yerel olarak çalışır.";
+Apporo aiot açık kaynaklıdır, gizliliği savunur ve evinizde yerel olarak çalışır.";
 "onboarding.welcome.updated.secondary_button" = "Daha fazla bilgi edin";
 "open_label" = "Açık";
 "permission.notification.body" = "Bildirimleri etkinleştirin ve evinizde neler olup bittiğini öğrenin; sızıntıları tespit etmekten açık bırakılan kapılara kadar, size ne söylediği konusunda tam kontrole sahip olun.";
