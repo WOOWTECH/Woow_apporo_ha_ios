@@ -1,5 +1,11 @@
 #include "HomeAssistant.xcconfig"
 
+// 首版對外版號固定 1.0，與 Version.xcconfig 的上游版號（隨 upstream 合併而變動）脫鉤。
+// CURRENT_PROJECT_VERSION（build number）不在此覆寫，仍由 CI/Archive 流程決定。
+// 對照：Android 在 app/build.gradle.kts 以 androidComponents 做同樣的 versionName override。
+MARKETING_VERSION = 1.0
+
+
 CODE_SIGN_STYLE = Manual
 CODE_SIGN_IDENTITY[sdk=iphoneos*] = Apple Distribution
 CODE_SIGN_IDENTITY[sdk=watchos*] = Apple Distribution
