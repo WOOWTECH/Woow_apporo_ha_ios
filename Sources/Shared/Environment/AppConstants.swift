@@ -13,15 +13,16 @@ public enum AppConstants {
 
     /// Single source of truth for the brand host used by help-center links and OAuth client metadata.
     /// Changing the brand domain should only ever require editing this one line.
-    public static let brandHost = "aiot.apporo.ai"
+    public static let brandHost = "www.apporo.ai"
 
     /// Help-center / documentation destinations.
     ///
-    /// WARNING: the help-center articles behind these paths have NOT been written yet. The paths
-    /// below are the planned, structured layout (`https://<brandHost>/<path>`) so that call sites can
-    /// be pointed at stable names now and the content can be filled in later.
-    /// Before App Store submission every URL here MUST be opened and confirmed to return a readable
-    /// page — a reviewer following an in-app help link into a 404 is a rejection risk.
+    /// These pages are published at `https://www.apporo.ai/help`, served by the customer's Odoo
+    /// website, and are live and anonymously readable.
+    ///
+    /// The layout is shared with the Android app (`AppSupportLinks.kt`) so both platforms link into
+    /// the same articles — move a path here and the Android constant has to move with it, or the two
+    /// apps drift apart. The pages are NOT in this repo: they live in Odoo and are edited there.
     public enum WebURLs {
         private static let root = "https://\(AppConstants.brandHost)"
 
@@ -32,35 +33,35 @@ public enum AppConstants {
         // MARK: Landing / general
 
         public static let homeAssistant = URL(string: root)!
-        public static let support = page("support")
+        public static let support = page("help/support")
         public static let privacy = page("privacy")
 
         // MARK: Getting started
 
-        public static let homeAssistantGetStarted = page("docs/getting-started")
-        public static let homeAssistantCompanionGetStarted = page("docs/getting-started")
-        public static let companionAppDocs = page("docs")
+        public static let homeAssistantGetStarted = page("help/getting-started")
+        public static let homeAssistantCompanionGetStarted = page("help/getting-started")
+        public static let companionAppDocs = page("help")
 
         // MARK: Troubleshooting
 
-        public static let companionAppDocsTroubleshooting = page("docs/troubleshooting")
+        public static let companionAppDocsTroubleshooting = page("help/troubleshooting")
         public static let companionAppConnectionSecurityLevel =
-            page("docs/troubleshooting#connection-security-level")
+            page("help/connection/security-level")
 
         // MARK: Notifications
 
-        public static let notificationsDocs = page("docs/notifications")
-        public static let actionableNotificationsDocs = page("docs/notifications#actionable-notifications")
-        public static let notificationSoundsDocs = page("docs/notifications#notification-sounds")
-        public static let liveActivitiesDocs = page("docs/notifications#live-activities")
-        public static let companionLocalPush = page("docs/notifications#local-push")
+        public static let notificationsDocs = page("help/notifications")
+        public static let actionableNotificationsDocs = page("help/notifications/advanced#actionable-notifications")
+        public static let notificationSoundsDocs = page("help/notifications/advanced#notification-sounds")
+        public static let liveActivitiesDocs = page("help/notifications/advanced#live-activities")
+        public static let companionLocalPush = page("help/notifications/local-push")
 
         // MARK: Platform features
 
-        public static let widgetsDocs = page("docs/widgets")
-        public static let appleWatchDocs = page("docs/apple-watch")
-        public static let nfcDocs = page("docs/nfc")
-        public static let appleDropSupportiOS15 = page("docs/troubleshooting")
+        public static let widgetsDocs = page("help/widgets")
+        public static let appleWatchDocs = page("help/apple-watch")
+        public static let nfcDocs = page("help/nfc")
+        public static let appleDropSupportiOS15 = page("help/troubleshooting")
 
         // MARK: Support
         //
@@ -241,7 +242,7 @@ public enum AppConstants {
             .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return nil
         }
-        return URL(string: "https://my.home-assistant.io/invite/#url=\(encodedURLString)")
+        return URL(string: "https://\(AppConstants.brandHost)/invite/#url=\(encodedURLString)")
     }
 
     public static func navigateDeeplinkURL(

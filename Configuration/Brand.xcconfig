@@ -5,6 +5,6 @@
 // new hard-coded brand string out of the tree and reference the variable instead.
 BRAND_ID = apporo
 BRAND_APP_NAME = Apporo aiot
-BRAND_HOST = aiot.apporo.ai
+BRAND_HOST = www.apporo.ai
 BRAND_URL_SCHEME = apporoaiot
 BRAND_BUNDLE_BASE = aiot

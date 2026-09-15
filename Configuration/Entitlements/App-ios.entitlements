@@ -6,7 +6,7 @@
 	<string>production</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:aiot.apporo.ai</string>
+		<string>applinks:www.apporo.ai</string>
 	</array>
 	<key>com.apple.developer.networking.wifi-info</key>
 	<true/>
