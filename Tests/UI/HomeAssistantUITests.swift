@@ -221,16 +221,30 @@ final class StoreScreenshotTests: XCTestCase {
         dismissSystemAlerts()
         snapshot("03Dashboard")
 
-        // 示範主機有 611 個實體(28 盞燈、15 個窗簾、8 個播放器),
-        // 捲動儀表板可以拍到不同的裝置卡片,比只拍第一屏有代表性。
-        //
-        // ⚠️ 不要用 `webView.swipeUp()`。它送到的是 WebView 這個容器,
-        //    HA 的儀表板是網頁內部捲動,實測不一定吃得到。用座標拖曳穩定得多。
-        scrollWebViewUp(webView)
-        snapshot("04Devices")
+        // ⚠️ **不要用捲動來產生不同的畫面。** 捲多少才會變是看裝置尺寸的:
+        //    iPhone 上捲一次有效、捲兩次就到底;iPad 13" 的儀表板整頁裝得下,
+        //    **捲一次就完全沒有作用**。兩種情況都不會報錯,只會默默產出重複的圖
+        //    (實測 iPhone 04==05、iPad 03==04,md5 一致)。
+        //    改成點進去看真正不同的畫面 —— 尺寸無關,而且跟 Android 那組構成一致。
+        let room = app.webViews.buttons["Living Room"]
+        XCTAssertTrue(
+            room.waitForExistence(timeout: 20),
+            "找不到房間卡片「Living Room」。示範主機的區域名稱改過了?\n\(app.debugDescription)"
+        )
+        room.tap()
+        sleep(6)
+        snapshot("04Room")
 
-        scrollWebViewUp(webView)
-        snapshot("05MoreDevices")
+        // 單一裝置的控制面板(亮度、色溫)—— 商店素材裡最有說服力的一張。
+        let light = app.webViews.buttons
+            .matching(NSPredicate(format: "label BEGINSWITH %@", "Ceiling Lights")).firstMatch
+        XCTAssertTrue(
+            light.waitForExistence(timeout: 20),
+            "房間裡找不到「Ceiling Lights」。\n\(app.debugDescription)"
+        )
+        light.tap()
+        sleep(5)
+        snapshot("05LightControl")
     }
 
     /// 上線流程在連上伺服器之後還有幾個步驟(命名裝置、權限說明等),
@@ -316,14 +330,6 @@ final class StoreScreenshotTests: XCTestCase {
             if !tapped { return }
             sleep(2)
         }
-    }
-
-    /// 捲動 WebView 內的網頁內容。
-    private func scrollWebViewUp(_ webView: XCUIElement) {
-        let start = webView.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.85))
-        let end = webView.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.15))
-        start.press(forDuration: 0.05, thenDragTo: end)
-        sleep(4)
     }
 
     /// 點一個按鈕,然後**確認畫面真的前進了**;沒前進就重點。

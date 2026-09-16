@@ -950,7 +950,7 @@
 "onboarding.manual_setup.input_error.title" = "網址無效";
 "onboarding.manual_setup.no_scheme.message" = "是否要嘗試以 http:// 或 https:// 進行連線？";
 "onboarding.manual_setup.no_scheme.title" = "所輸入 URL 不符結構";
-"onboarding.manual_setup.text_field.placeholder" = "http://<your Apporo aiot ip>:8123";
+"onboarding.manual_setup.text_field.placeholder" = "http://<ipaddress>:8123";
 "onboarding.manual_setup.text_field.title" = "Apporo aiot 網址";
 "onboarding.manual_setup.title" = "輸入 URL";
 "onboarding.manual_url_entry.primary_action.title" = "連線";
@@ -1107,7 +1107,7 @@ Apporo aiot 倡導隱私資安保護並於您的家中進行本地端運行。";
 "settings.connection_section.external_base_url.title" = "外部 URL";
 "settings.connection_section.header" = "連線";
 "settings.connection_section.home_assistant_cloud.title" = "Home Assistant Cloud 服務";
-"settings.connection_section.internal_base_url.placeholder" = "例如、http://homeassistant.local:8123/";
+"settings.connection_section.internal_base_url.placeholder" = "http://<ipaddress>:8123/";
 "settings.connection_section.internal_base_url.requires_setup.title" = "需要設定";
 "settings.connection_section.internal_base_url.ssid_bssid_required.title" = "欲使用內部網址，需要指定 Wifi 網路名稱（SSID）或硬體位址、否則應用程式將保持預設為外部網址。";
 "settings.connection_section.internal_base_url.ssid_required.title" = "欲使用內部網址，需要指定 Wifi 網路名稱（SSID）、否則應用程式將保持預設為外部網址。";

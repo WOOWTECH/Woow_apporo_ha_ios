@@ -952,7 +952,7 @@ Remote when you're ready.";
 "onboarding.manual_setup.input_error.title" = "Invalid URL";
 "onboarding.manual_setup.no_scheme.message" = "Should we try connecting using http:// or https://?";
 "onboarding.manual_setup.no_scheme.title" = "URL entered without scheme";
-"onboarding.manual_setup.text_field.placeholder" = "http://<your Apporo aiot ip>:8123";
+"onboarding.manual_setup.text_field.placeholder" = "http://<ipaddress>:8123";
 "onboarding.manual_setup.text_field.title" = "Your Apporo aiot URL";
 "onboarding.manual_setup.title" = "Enter URL";
 "onboarding.manual_url_entry.primary_action.title" = "Connect";
@@ -1109,7 +1109,7 @@ Apporo aiot advocates for privacy and information security and runs locally in y
 "settings.connection_section.external_base_url.title" = "External URL";
 "settings.connection_section.header" = "Connection";
 "settings.connection_section.home_assistant_cloud.title" = "Home Assistant Cloud";
-"settings.connection_section.internal_base_url.placeholder" = "e.g. http://homeassistant.local:8123/";
+"settings.connection_section.internal_base_url.placeholder" = "http://<ipaddress>:8123/";
 "settings.connection_section.internal_base_url.requires_setup.title" = "Requires setup";
 "settings.connection_section.internal_base_url.ssid_bssid_required.title" = "To use internal URL you need to specify your Wifi network name (SSID) or hardware addresses, otherwise the App will always default to external URL.";
 "settings.connection_section.internal_base_url.ssid_required.title" = "To use internal URL you need to specify your Wifi network name (SSID), otherwise the App will always default to external URL.";

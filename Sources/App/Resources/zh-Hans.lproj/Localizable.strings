@@ -950,7 +950,7 @@
 "onboarding.manual_setup.input_error.title" = "网址无效";
 "onboarding.manual_setup.no_scheme.message" = "使用 http:// 还是 https:// 尝试连接 ？";
 "onboarding.manual_setup.no_scheme.title" = "输入的 URL 没有方案";
-"onboarding.manual_setup.text_field.placeholder" = "例如 http://homeassistant.local:8123";
+"onboarding.manual_setup.text_field.placeholder" = "http://<ipaddress>:8123";
 "onboarding.manual_setup.text_field.title" = "您的 Apporo aiot 网址";
 "onboarding.manual_setup.title" = "输入网址";
 "onboarding.manual_url_entry.primary_action.title" = "连接";
@@ -1104,7 +1104,7 @@ Apporo aiot 是开源的，倡导隐私保护，并在您的家中本地运行�
 "settings.connection_section.external_base_url.title" = "外部 URL";
 "settings.connection_section.header" = "连接";
 "settings.connection_section.home_assistant_cloud.title" = "Home Assistant Cloud";
-"settings.connection_section.internal_base_url.placeholder" = "示例 http://homeassistant.local:8123/";
+"settings.connection_section.internal_base_url.placeholder" = "http://<ipaddress>:8123/";
 "settings.connection_section.internal_base_url.requires_setup.title" = "需要设置";
 "settings.connection_section.internal_base_url.ssid_bssid_required.title" = "要使用内部网址，您需要指定您的无线网络名称（SSID）或硬件地址，否则应用将始终默认使用外部网址。";
 "settings.connection_section.internal_base_url.ssid_required.title" = "要使用内部网址，您需要指定您的无线网络名称（SSID），否则应用将始终默认使用外部网址。";
