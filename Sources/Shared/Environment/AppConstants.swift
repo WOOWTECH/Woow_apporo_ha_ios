@@ -1,5 +1,6 @@
 import Foundation
 import KeychainAccess
+import os.log
 import UIKit
 import Version
 
@@ -326,7 +327,21 @@ public enum AppConstants {
         let groupDir = fileManager.containerURL(forSecurityApplicationGroupIdentifier: AppConstants.AppGroupID)
 
         guard let groupDir else {
-            Current.Log.error("Unable to get app group container URL; falling back to temporary directory")
+            // ⚠️ 這裡**不能碰 `Current`**。這個 getter 會在 `AppEnvironment.init()` 內被呼叫到
+            // （init → DiskCacheImpl.init → DiskCacheImpl.URL(containerName:) → 這裡），
+            // 而 `Current` 本身是 dispatch_once 的一次性初始化。在它初始化到一半時再讀它
+            // 會造成 dispatch_once 重入，直接 EXC_BREAKPOINT / SIGTRAP ——
+            // 也就是說,原本用來「優雅降級」的那行錯誤記錄,會把降級變成當機。
+            //
+            // 上游的寫法是 `Current.Log.error(...)`（ec3a82b5b, 2026-07-13）。
+            // 實測：只要 App Group 容器取不到就一定崩潰，例如 entitlement 被剝掉
+            // （`CODE_SIGNING_ALLOWED=NO` 的測試執行）或正式版佈建設定漏了 App Group。
+            // 改用 os_log,它不依賴 `Current`,任何時機呼叫都安全。
+            os_log(
+                .error,
+                log: OSLog(subsystem: BundleID, category: "AppConstants"),
+                "Unable to get app group container URL; falling back to temporary directory"
+            )
             return URL(fileURLWithPath: NSTemporaryDirectory())
         }
 
