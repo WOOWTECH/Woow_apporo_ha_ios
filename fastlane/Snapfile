@@ -3,22 +3,24 @@
 devices(
   [
     'iPhone 17 Pro Max',
-    'iPad Pro 13-inch (M4)'
+    'iPad Pro 13-inch (M5)'
   ]
 )
 
 # Must stay in sync with the locale folders under fastlane/metadata/ --
 # deliver uploads a localization for any locale that has screenshots, even
 # when that locale has no metadata folder.
-languages(
-  [
-    'en-US',
-    'zh-Hant',
-    'zh-Hans'
-  ]
-)
+# 首版商店頁只出 en-US(Owner 2026-09-15 拍板),中文 metadata 已移到
+# fastlane/metadata-parked/。deliver 會為任何「有截圖」的語系建立 localization,
+# 所以這裡多列一個語系就會多開一個沒有 metadata 的商店頁。
+#
+# ⚠️ 另外:上線流程沒有任何無障礙識別碼,截圖測試只能靠可見文字比對,
+#    非 en 的語系會全部找不到元素。要加語系必須先補識別碼。
+languages(['en-US'])
 
 scheme('Tests-UI')
+
+only_testing(['Tests-UI/StoreScreenshotTests'])
 
 clear_previous_screenshots(true)
 

@@ -11112,7 +11112,7 @@
 					"@loader_path/Frameworks",
 				);
 				PROVISIONING_SUFFIX = .ApporoAiotUITests;
-				TEST_TARGET_NAME = HomeAssistant;
+				TEST_TARGET_NAME = App;
 			};
 			name = Debug;
 		};
@@ -11126,7 +11126,7 @@
 					"@loader_path/Frameworks",
 				);
 				PROVISIONING_SUFFIX = .ApporoAiotUITests;
-				TEST_TARGET_NAME = HomeAssistant;
+				TEST_TARGET_NAME = App;
 			};
 			name = Release;
 		};

@@ -3287,7 +3287,7 @@ public enum L10n {
         public static var title: String { return L10n.tr("Localizable", "onboarding.manual_setup.no_scheme.title") }
       }
       public enum TextField {
-        /// e.g. http://homeassistant.local:8123
+        /// http://<your Apporo aiot ip>:8123
         public static var placeholder: String { return L10n.tr("Localizable", "onboarding.manual_setup.text_field.placeholder") }
         /// Your Apporo aiot URL
         public static var title: String { return L10n.tr("Localizable", "onboarding.manual_setup.text_field.title") }
@@ -3514,7 +3514,7 @@ public enum L10n {
       /// 
       /// Apporo aiot is free and open source home automation software with a focus on local control and privacy.
       public static var description: String { return L10n.tr("Localizable", "onboarding.welcome.description") }
-      /// Apporo aiot
+      /// Apporo aiot app
       public static var header: String { return L10n.tr("Localizable", "onboarding.welcome.header") }
       /// Learn more
       public static var learnMore: String { return L10n.tr("Localizable", "onboarding.welcome.learn_more") }
@@ -3531,9 +3531,9 @@ public enum L10n {
         public static var accessibilityLabel: String { return L10n.tr("Localizable", "onboarding.welcome.logo.accessibility_label") }
       }
       public enum Updated {
-        /// Access your Apporo aiot server on the go. 
+        /// Access your Apporo aiot server on the go.
         /// 
-        /// Apporo aiot is open source, advocates for privacy and runs locally in your home.
+        /// Apporo aiot advocates for privacy and information security and runs locally in your home.
         public static var body: String { return L10n.tr("Localizable", "onboarding.welcome.updated.body") }
         /// Learn more
         public static var secondaryButton: String { return L10n.tr("Localizable", "onboarding.welcome.updated.secondary_button") }
