@@ -952,7 +952,7 @@ Remote when you're ready.";
 "onboarding.manual_setup.input_error.title" = "Invalid URL";
 "onboarding.manual_setup.no_scheme.message" = "Should we try connecting using http:// or https://?";
 "onboarding.manual_setup.no_scheme.title" = "URL entered without scheme";
-"onboarding.manual_setup.text_field.placeholder" = "e.g. http://homeassistant.local:8123";
+"onboarding.manual_setup.text_field.placeholder" = "http://<your Apporo aiot ip>:8123";
 "onboarding.manual_setup.text_field.title" = "Your Apporo aiot URL";
 "onboarding.manual_setup.title" = "Enter URL";
 "onboarding.manual_url_entry.primary_action.title" = "Connect";
@@ -1025,15 +1025,15 @@ Remote when you're ready.";
 "onboarding.welcome.description" = "This app connects to your Apporo aiot server and allows integrating data about you and your phone.\
 \
 Apporo aiot is free and open source home automation software with a focus on local control and privacy.";
-"onboarding.welcome.header" = "Apporo aiot";
+"onboarding.welcome.header" = "Apporo aiot app";
 "onboarding.welcome.learn_more" = "Learn more";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot logo";
 "onboarding.welcome.primary_button" = "Connect to my Apporo aiot";
 "onboarding.welcome.secondary_button" = "Getting started";
 "onboarding.welcome.title" = "Welcome to Apporo aiot %@!";
-"onboarding.welcome.updated.body" = "Access your Apporo aiot server on the go. \
+"onboarding.welcome.updated.body" = "Access your Apporo aiot server on the go.\
 \
-Apporo aiot is open source, advocates for privacy and runs locally in your home.";
+Apporo aiot advocates for privacy and information security and runs locally in your home.";
 "onboarding.welcome.updated.secondary_button" = "Learn more";
 "open_label" = "Open";
 "permission.notification.body" = "Enable notifications and get what's happening in your home, from detecting leaks to doors left open, you have full control over what it tells you.";
