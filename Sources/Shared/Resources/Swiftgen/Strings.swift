@@ -3287,7 +3287,7 @@ public enum L10n {
         public static var title: String { return L10n.tr("Localizable", "onboarding.manual_setup.no_scheme.title") }
       }
       public enum TextField {
-        /// http://<your Apporo aiot ip>:8123
+        /// http://<ipaddress>:8123
         public static var placeholder: String { return L10n.tr("Localizable", "onboarding.manual_setup.text_field.placeholder") }
         /// Your Apporo aiot URL
         public static var title: String { return L10n.tr("Localizable", "onboarding.manual_setup.text_field.title") }
@@ -3775,7 +3775,7 @@ public enum L10n {
         public static var title: String { return L10n.tr("Localizable", "settings.connection_section.home_assistant_cloud.title") }
       }
       public enum InternalBaseUrl {
-        /// e.g. http://homeassistant.local:8123/
+        /// http://<ipaddress>:8123/
         public static var placeholder: String { return L10n.tr("Localizable", "settings.connection_section.internal_base_url.placeholder") }
         /// Internal URL
         public static var title: String { return L10n.tr("Localizable", "settings.connection_section.internal_base_url.title") }
