@@ -256,19 +256,25 @@ final class StoreScreenshotTests: XCTestCase {
         // ⚠️ 這份清單是**照著原始碼裡的實際字串**列的,不是猜的。漏一個,流程就靜靜停住,
         //    而外層只會看到「儀表板沒有載入」,完全指不到真正卡住的那一頁:
         //      - "Got it"                   LocalAccessOnlyDisclaimerView
-        //      - "Share my location" /
-        //        "Do not share my location" LocationPermissionView
+        //      - "Share my location"        LocationPermissionView。**只剩這一顆**——
+        //                                   「Do not share my location」已依 App Store
+        //                                   審查指南 5.1.1(iv) 移除(Apple 2026-09-21 退件),
+        //                                   所以這裡一定會叫出系統定位對話框,
+        //                                   交給下面的 springboard 分支處理。
         //      - "Next"                     HomeNetworkInputView / LocalAccessPermissionView
         //      - "Allow notifications" /
         //        "Do not allow"             通知授權頁。它是 **App 自己的畫面**(不是系統
         //                                   對話框),而且疊在**儀表板之上** —— 漏了它,
         //                                   03Dashboard 會拍到下半截被遮住的畫面。
         //
-        //    這裡一律挑**不會叫出系統對話框**的那一個(Do not share / Do not allow):
-        //    商店截圖不需要這些權限,少一個系統對話框就少一個不穩定來源。
+        //    通知那一頁仍然挑**不會叫出系統對話框**的「Do not allow」:商店截圖不需要
+        //    通知權限,少一個系統對話框就少一個不穩定來源。
+        //
+        //    ⚠️ 定位頁已經沒有這個選擇了(見上),按下去必定跳出系統對話框;
+        //       下面的 springboard 迴圈會處理掉,別把它當成流程卡住。
         let next = [
             "Got it", "Next", "Save", "Continue", "Done", "Finish", "Get started",
-            "Do not share my location", "Do not allow", "Skip", "Not now", "Later",
+            "Share my location", "Do not allow", "Skip", "Not now", "Later",
         ]
         // ⚠️ **不能用「有 WebView 就代表進了主畫面」當結束條件。**
         //    HA 的 OAuth 登入頁本身就是 WKWebView,那個判斷會在登入當下就成立,
