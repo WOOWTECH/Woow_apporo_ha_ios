@@ -920,7 +920,6 @@
 "onboarding.device_name_check.error.title" = "Υπάρχει ήδη μια συσκευή με το όνομα \"%1$@\"";
 "onboarding.invitation.accept_button" = "Αποδοχή";
 "onboarding.invitation.address_title" = "Διεύθυνση Apporo aiot";
-"onboarding.invitation.description" = "Το Apporo aiot είναι ένα σύστημα αυτοματισμών σπιτιού ανοιχτού κώδικα που θέτει τον τοπικό έλεγχο και την ιδιωτικότητα σε προτεραιότητα.";
 "onboarding.invitation.reject_button" = "Απόρριψη";
 "onboarding.invitation.screen_title" = "Εχετε προσκληθεί";
 "onboarding.invitation.security_warning" = "Αποδεχτείτε αυτή την πρόσκληση μόνο αν εμπιστεύεστε το άτομο που την κοινοποίησε. Η σύνδεση με έναν άγνωστο server μπορεί να του δώσει πρόσβαση σε δεδομένα που εισάγετε ή έχουν σταλεί από την εφαρμογή, όπως η τοποθεσία σας και οι πληροφορίες της συσκευής σας.";
@@ -1019,19 +1018,12 @@
 "onboarding.servers.search.loader.text" = "Βεβαιωθείτε ότι το Apporo aiot είναι ενεργοποιημένο και ότι είστε συνδεδεμένος/η στο ίδιο δίκτυο. Μπορείτε να εισάγετε τη διεύθυνση χειροκίνητα αν τη γνωρίζετε.";
 "onboarding.servers.search.message" = "Αναζήτηση διακομιστών σε κοντινή απόσταση...";
 "onboarding.servers.title" = "Αναζήτηση στο δίκτυο του σπιτιού";
-"onboarding.welcome.body" = "Σας επιτρέπει να έχετε πρόσβαση στην εγκατάσταση του Apporo aiot εν κινήσει. Εκτελείται τοπικά στο σπίτι σας μέσω μιας συσκευής όπως το Home Assistant Green ή το Raspberry Pi.";
-"onboarding.welcome.description" = "Αυτή η εφαρμογή συνδέεται με τον διακομιστή Apporo aiot και επιτρέπει την ενσωμάτωση δεδομένων σχετικά με εσάς και το τηλέφωνό σας. \
-\
- Το Apporo aiot είναι δωρεάν και ανοιχτού κώδικα λογισμικό αυτοματισμού σπιτιού με έμφαση στον τοπικό έλεγχο και την ιδιωτικότητα.";
 "onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Μάθετε περισσότερα";
 "onboarding.welcome.logo.accessibility_label" = "Λογότυπο Apporo aiot";
 "onboarding.welcome.primary_button" = "Σύνδεση με το Apporo aiot μου";
 "onboarding.welcome.secondary_button" = "Ξεκινώντας";
 "onboarding.welcome.title" = "Καλώς ορίσατε στο Apporo aiot %@!";
-"onboarding.welcome.updated.body" = "Πρόσβαση στον Apporo aiot server εν κινήσει. \
-\
-Το Apporo aiot είναι ανοικτού κώδικα, υποστηρίζει την προστασία της ιδιωτικής ζωής και λειτουργεί τοπικά στο σπίτι σας.";
 "onboarding.welcome.updated.secondary_button" = "Μάθετε περισσότερα";
 "open_label" = "Άνοιγμα";
 "permission.notification.body" = "Ενεργοποιήστε τις ειδοποιήσεις και μάθετε τι συμβαίνει στο σπίτι σας, από την ανίχνευση διαρροών έως τις πόρτες που έχουν μείνει ανοιχτές, έχετε πλήρη έλεγχο του τι σας λέει.";

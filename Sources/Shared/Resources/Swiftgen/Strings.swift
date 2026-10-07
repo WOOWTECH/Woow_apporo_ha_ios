@@ -3197,7 +3197,7 @@ public enum L10n {
       public static var acceptButton: String { return L10n.tr("Localizable", "onboarding.invitation.accept_button") }
       /// Apporo aiot address
       public static var addressTitle: String { return L10n.tr("Localizable", "onboarding.invitation.address_title") }
-      /// Apporo aiot is open source home automation that puts local control and privacy first.
+      /// Apporo aiot is home automation that puts local control and privacy first.
       public static var description: String { return L10n.tr("Localizable", "onboarding.invitation.description") }
       /// Reject
       public static var rejectButton: String { return L10n.tr("Localizable", "onboarding.invitation.reject_button") }
@@ -3518,11 +3518,11 @@ public enum L10n {
       }
     }
     public enum Welcome {
-      /// Allows you to access your Apporo aiot installation on the go. It runs locally in your home via a device like the Home Assistant Green or Raspberry Pi.
+      /// Allows you to access your Apporo aiot installation on the go. It runs locally in your home on your Apporo aiot controller.
       public static var body: String { return L10n.tr("Localizable", "onboarding.welcome.body") }
       /// This app connects to your Apporo aiot server and allows integrating data about you and your phone.
       /// 
-      /// Apporo aiot is free and open source home automation software with a focus on local control and privacy.
+      /// Apporo aiot is home automation software with a focus on local control and privacy.
       public static var description: String { return L10n.tr("Localizable", "onboarding.welcome.description") }
       /// Apporo aiot app
       public static var header: String { return L10n.tr("Localizable", "onboarding.welcome.header") }

@@ -920,7 +920,7 @@
 "onboarding.device_name_check.error.title" = "已存在名称为\"%1$@\"的设备。";
 "onboarding.invitation.accept_button" = "接受";
 "onboarding.invitation.address_title" = "Apporo aiot address";
-"onboarding.invitation.description" = "Apporo aiot is open source home automation that puts local control and privacy first.";
+"onboarding.invitation.description" = "Apporo aiot 是以本地控制和隐私为优先的家庭自动化系统。";
 "onboarding.invitation.reject_button" = "Reject";
 "onboarding.invitation.screen_title" = "You've been invited";
 "onboarding.invitation.security_warning" = "Only accept this invite if you trust the person who shared it. Connecting to an unknown server could give it access to data you enter or is sent by the app, such as your location and device information.";
@@ -1023,8 +1023,8 @@
 "onboarding.servers.search.loader.text" = "请检查您的 Apporo aiot 是否已开启，并且已连接到同一网络。如果您知道地址，可以手动输入。";
 "onboarding.servers.search.message" = "正在寻找附近的服务器...";
 "onboarding.servers.title" = "正在搜索家庭网络";
-"onboarding.welcome.body" = "让您随时随地访问您的 Apporo aiot 。它可以通过 Home Assistant Green 或 Raspberry Pi 等设备在您家中本地运行。";
-"onboarding.welcome.description" = "此应用程序将连接到您的 Apporo aiot 服务器，并将集成有关您和您的移动设备的数据。Apporo aiot 是免费的开源家庭自动化软件，专注于本地控制和隐私保护。";
+"onboarding.welcome.body" = "让您随时随地访问您的 Apporo aiot 服务器。系统通过您家中的 Apporo aiot 控制器在本地运行。";
+"onboarding.welcome.description" = "此应用程序将连接到您的 Apporo aiot 服务器，并将集成有关您和您的移动设备的数据。Apporo aiot 是专注于本地控制和隐私保护的家庭自动化软件。";
 "onboarding.welcome.header" = "Apporo aiot 应用";
 "onboarding.welcome.learn_more" = "了解更多信息";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot 图标";
@@ -1032,7 +1032,7 @@
 "onboarding.welcome.secondary_button" = "入门";
 "onboarding.welcome.title" = "欢迎使用 Apporo aiot %@ ！";
 "onboarding.welcome.updated.body" = "随时随地访问您的 Apporo aiot 服务器。\
-Apporo aiot 是开源的，倡导隐私保护，并在您的家中本地运行。";
+Apporo aiot 倡导隐私与信息安全保护，并在您的家中本地运行。";
 "onboarding.welcome.updated.secondary_button" = "了解更多";
 "open_label" = "打开";
 "permission.notification.body" = "启用通知并获取您家中发生的情况，从检测到泄漏到敞开的门，您可以完全控制它告诉您的内容。";

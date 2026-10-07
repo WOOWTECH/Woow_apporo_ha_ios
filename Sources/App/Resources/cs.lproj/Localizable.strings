@@ -920,7 +920,6 @@ Aktuálně je mTLS podporováno jen v systému iOS 17+. Může způsobovat probl
 "onboarding.device_name_check.error.title" = "Zařízení s názvem \"%1$@\" již existuje";
 "onboarding.invitation.accept_button" = "Přijmout";
 "onboarding.invitation.address_title" = "Adresa Apporo aiota";
-"onboarding.invitation.description" = "Apporo aiot je open source domácí automatizace, která klade důraz na lokální ovládání a soukromí.";
 "onboarding.invitation.reject_button" = "Odmítnout";
 "onboarding.invitation.screen_title" = "Byli jste pozváni";
 "onboarding.invitation.security_warning" = "Tuto pozvánku přijměte jen v případě, že důvěřujete osobě, která ji sdílela. Připojení k neznámému serveru by jí mohlo umožnit přístup k údajům, které zadáváte nebo jsou odesílány aplikací, například k poloze a informacím o zařízení.";
@@ -1019,19 +1018,12 @@ Vzdálené, až budete připraveni.";
 "onboarding.servers.search.loader.text" = "Zkontrolujte, zda je Apporo aiot zapnutý a zda jste připojeni ke stejné síti. Pokud znáte adresu, můžete ji zadat ručně.";
 "onboarding.servers.search.message" = "Hledání serverů v okolí...";
 "onboarding.servers.title" = "Prohledávání domácí sítě";
-"onboarding.welcome.body" = "Umožní vám přístup k vaší instalaci Apporo aiot na cestách. Běží lokálně ve vaší domácnosti prostřednictvím zařízení, jako je Home Assistant Green nebo Raspberry Pi.";
-"onboarding.welcome.description" = "Tato aplikace se připojí k Vašemu Apporo aiotovi a umožní Vám propojení s Vašim telefonem.\
-\
-Apporo aiot je bezplatný a otevřený software pro domácí automatizaci se zaměřením na místní ovládání a soukromí.";
 "onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Více informací";
 "onboarding.welcome.logo.accessibility_label" = "Logo Apporo aiota";
 "onboarding.welcome.primary_button" = "Připojit k mému Apporo aiotovi";
 "onboarding.welcome.secondary_button" = "Začínáme";
 "onboarding.welcome.title" = "Vítejte v Apporo aiotovi %@!";
-"onboarding.welcome.updated.body" = "Přistupujte k serveru Apporo aiot na cestách.\
- \
-Apporo aiot je open source, chrání soukromí a běží lokálně u vás doma.";
 "onboarding.welcome.updated.secondary_button" = "Více informací";
 "open_label" = "Otevřít";
 "permission.notification.body" = "Povolte oznámení a získejte přehled o tom, co se děje ve vaší domácnosti; od detekce netěsností až po otevřené dveře - máte plnou kontrolu nad vším.";

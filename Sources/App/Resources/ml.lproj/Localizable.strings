@@ -920,7 +920,6 @@ Tags will work on any device with Apporo aiot installed which has hardware suppo
 "onboarding.device_name_check.error.title" = "' %1$@ ' എന്ന പേരിൽ ഒരു ഉപകരണം ഇതിനകം നിലവിലുണ്ട്";
 "onboarding.invitation.accept_button" = "Accept";
 "onboarding.invitation.address_title" = "Apporo aiot address";
-"onboarding.invitation.description" = "Apporo aiot is open source home automation that puts local control and privacy first.";
 "onboarding.invitation.reject_button" = "Reject";
 "onboarding.invitation.screen_title" = "You've been invited";
 "onboarding.invitation.security_warning" = "Only accept this invite if you trust the person who shared it. Connecting to an unknown server could give it access to data you enter or is sent by the app, such as your location and device information.";
@@ -1019,19 +1018,12 @@ Remote when you're ready.";
 "onboarding.servers.search.loader.text" = "Check that your Apporo aiot is powered on and you're connected to the same network. You can enter the address manually if you know it.";
 "onboarding.servers.search.message" = "Looking for servers nearby...";
 "onboarding.servers.title" = "Searching on home network";
-"onboarding.welcome.body" = "Allows you to access your Apporo aiot installation on the go. It runs locally in your home via a device like the Home Assistant Green or Raspberry Pi.";
-"onboarding.welcome.description" = "ഈ ആപ്പ് നിങ്ങളുടെ Apporo aiot സെർവറിലേക്ക് കണക്‌റ്റ് ചെയ്യുകയും നിങ്ങളെയും ഫോണിനെയും കുറിച്ചുള്ള ഡാറ്റ സംയോജിപ്പിക്കാൻ അനുവദിക്കുകയും ചെയ്യുന്നു. \
-\
-Apporo aiot തൽസ്ഥല നിയന്ത്രണത്തിലും സ്വകാര്യതയിലും ശ്രദ്ധ കേന്ദ്രീകരിക്കുന്ന സൗജന്യവും ഓപ്പൺ സോഴ്സും ആയ ഹോം ഓട്ടോമേഷൻ സോഫ്‌റ്റ്‌വെയറാണ്.";
 "onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Learn more";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot logo";
 "onboarding.welcome.primary_button" = "Connect to my Apporo aiot";
 "onboarding.welcome.secondary_button" = "Getting started";
 "onboarding.welcome.title" = "Apporo aiot-ലേക്ക് സ്വാഗതം %@ !";
-"onboarding.welcome.updated.body" = "Access your Apporo aiot server on the go. \
-\
-Apporo aiot is open source, advocates for privacy and runs locally in your home.";
 "onboarding.welcome.updated.secondary_button" = "Learn more";
 "open_label" = "Open";
 "permission.notification.body" = "Enable notifications and get what's happening in your home, from detecting leaks to doors left open, you have full control over what it tells you.";

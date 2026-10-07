@@ -920,7 +920,6 @@ A címkék minden olyan eszközön működnek, amelyre telepítve van a Apporo a
 "onboarding.device_name_check.error.title" = "Már létezik egy eszköz a '%1$@' névvel.";
 "onboarding.invitation.accept_button" = "Elfogadás";
 "onboarding.invitation.address_title" = "Apporo aiot cím";
-"onboarding.invitation.description" = "A Apporo aiot egy nyílt forráskódú otthonautomatizálási rendszer, amely a helyi irányítást és az adatvédelmet helyezi előtérbe.";
 "onboarding.invitation.reject_button" = "Elutasítás";
 "onboarding.invitation.screen_title" = "Meghívót kapott";
 "onboarding.invitation.security_warning" = "Csak akkor fogadja el ezt a meghívót, ha megbízik abban, aki megosztotta. Ismeretlen szerverhez való csatlakozás hozzáférést adhat az Ön által megadott vagy az alkalmazás által küldött adatokhoz, például a tartózkodási helyéhez és az eszközadatokhoz.";
@@ -1018,19 +1017,12 @@ A címkék minden olyan eszközön működnek, amelyre telepítve van a Apporo a
 "onboarding.servers.search.loader.text" = "Ellenőrizze, hogy a Apporo aiot be van kapcsolva és ugyanahhoz a hálózathoz csatlakozik. A címet kézzel is megadhatja, ha ismeri.";
 "onboarding.servers.search.message" = "Kiszolgálók keresése a közelben…";
 "onboarding.servers.title" = "Keresés az otthoni hálózaton";
-"onboarding.welcome.body" = "Lehetővé teszi, hogy útközben is elérje a Apporo aiot telepítését. Helyben fut, például egy Home Assistant Green vagy Raspberry Pi eszközön keresztül.";
-"onboarding.welcome.description" = "Ez az alkalmazás csatlakozik a Apporo aiot szerverhez és lehetővé teszi az Önre és telefonjára vonatkozó adatok integrálását.\
-\
-A Apporo aiot egy ingyenes és nyílt forráskódú otthoni automatizálási szoftver, amely a vezérlés helyben történő kivitelezésére és az adatvédelemre összpontosít.";
 "onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Tudjon meg többet";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot logo";
 "onboarding.welcome.primary_button" = "Csatlakozás a saját Apporo aiot rendszeremhez";
 "onboarding.welcome.secondary_button" = "Első lépések";
 "onboarding.welcome.title" = "%@ Apporo aiot üdvözli Önt!";
-"onboarding.welcome.updated.body" = "Érje el a Apporo aiot szerverét útközben is.\
-\
-A Apporo aiot nyílt forráskódú, az adatvédelem mellett áll ki és helyileg fut az otthonában.";
 "onboarding.welcome.updated.secondary_button" = "További információ";
 "open_label" = "Megnyitás";
 "permission.notification.body" = "Engedélyezze az értesítéseket, és kapjon tájékoztatást otthona eseményeiről – a szivárgások és nyitva hagyott ajtók észlelésétől kezdve teljes mértékben Ön szabályozza, miről kap értesítést.";

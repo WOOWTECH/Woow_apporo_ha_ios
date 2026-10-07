@@ -920,7 +920,6 @@ Tags werken op elk apparaat waarop Apporo aiot is geïnstalleerd en dat hardware
 "onboarding.device_name_check.error.title" = "Er bestaat al een apparaat met de naam ' %1$@ '";
 "onboarding.invitation.accept_button" = "Accepteren";
 "onboarding.invitation.address_title" = "Apporo aiot-adres";
-"onboarding.invitation.description" = "Apporo aiot is een open-source systeem voor huisautomatisering dat lokale bediening en privacy op de eerste plaats zet.";
 "onboarding.invitation.reject_button" = "Weigeren";
 "onboarding.invitation.screen_title" = "Je bent uitgenodigd";
 "onboarding.invitation.security_warning" = "Accepteer deze uitnodiging alleen als je de persoon vertrouwt die deze heeft gedeeld. Verbinding maken met een onbekende server kan deze toegang geven tot gegevens die je invoert of die worden verzonden door de app, zoals je locatie en apparaatgegevens.";
@@ -1019,19 +1018,12 @@ Op afstand wanneer je er klaar voor bent.";
 "onboarding.servers.search.loader.text" = "Controleer of je Apporo aiot aan staat en of je verbonden bent met hetzelfde netwerk. Je kunt het adres handmatig invoeren als je het weet.";
 "onboarding.servers.search.message" = "Op zoek naar servers in de buurt...";
 "onboarding.servers.title" = "Zoeken op het thuisnetwerk";
-"onboarding.welcome.body" = "Hiermee heb je onderweg toegang tot je Apporo aiot-installatie. Deze draait lokaal in huis via een apparaat zoals de Home Assistant Green of Raspberry Pi.";
-"onboarding.welcome.description" = "Deze app maakt verbinding met je Apporo aiot-server en maakt het mogelijk gegevens over jou en je telefoon te integreren.\
-\
-Apporo aiot is gratis en open source domotica-software met een focus op lokale controle en privacy.";
 "onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Meer informatie";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot-logo";
 "onboarding.welcome.primary_button" = "Maak verbinding met mijn Apporo aiot";
 "onboarding.welcome.secondary_button" = "Aan de slag";
 "onboarding.welcome.title" = "Welkom bij Apporo aiot %@!";
-"onboarding.welcome.updated.body" = "Onderweg toegang tot je Apporo aiot-server. \
-\
-Apporo aiot is open source, komt op voor privacy en draait lokaal bij jou in huis.";
 "onboarding.welcome.updated.secondary_button" = "Meer informatie";
 "open_label" = "Open";
 "permission.notification.body" = "Schakel meldingen in en krijg te horen wat er in je huis gebeurt, van het detecteren van lekkages tot openstaande deuren, je hebt volledige controle over wat er gemeld wordt.";

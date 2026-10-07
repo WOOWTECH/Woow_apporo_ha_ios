@@ -920,7 +920,6 @@
 "onboarding.device_name_check.error.title" = "이름이 ' %1$@ '인 기기가 이미 존재합니다.";
 "onboarding.invitation.accept_button" = "수락";
 "onboarding.invitation.address_title" = "Apporo aiot 주소";
-"onboarding.invitation.description" = "Apporo aiot는 로컬 제어와 개인정보 보호를 최우선으로 하는 오픈 소스 홈 자동화입니다.";
 "onboarding.invitation.reject_button" = "거절";
 "onboarding.invitation.screen_title" = "초대받았습니다";
 "onboarding.invitation.security_warning" = "이 초대를 공유한 사람을 신뢰하는 경우에만 이 초대를 수락하세요. 알 수 없는 서버에 연결하면 위치 및 기기 정보 등 앱에서 입력하거나 전송한 데이터에 액세스할 수 있습니다.";
@@ -1019,19 +1018,12 @@
 "onboarding.servers.search.loader.text" = "Apporo aiot가 켜져 있고 같은 네트워크에 연결되어 있는지 확인하세요. 주소를 알고 있다면 직접 입력할 수 있습니다.";
 "onboarding.servers.search.message" = "근처의 서버를 찾고 있습니다...";
 "onboarding.servers.title" = "홈 네트워크에서 검색 중";
-"onboarding.welcome.body" = "어디서든 Apporo aiot 설치에 접근할 수 있습니다. Home Assistant Green이나 Raspberry Pi 같은 기기를 통해 집 안에서 로컬로 실행됩니다.";
-"onboarding.welcome.description" = "이 앱은 Apporo aiot 서버에 연결하여 사용자와 휴대전화에 대한 데이터를 통합할 수 있습니다.\
-\
-Apporo aiot는 로컬 제어와 개인정보 보호를 중시하는 무료 오픈 소스 홈 자동화 소프트웨어입니다.";
 "onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "더 알아보기";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot 로고";
 "onboarding.welcome.primary_button" = "내 Apporo aiot에 연결";
 "onboarding.welcome.secondary_button" = "시작하기";
 "onboarding.welcome.title" = "Apporo aiot %@에 오신것을 환영합니다!";
-"onboarding.welcome.updated.body" = "어디서든 Apporo aiot 서버에 접근하세요. \
-\
-Apporo aiot는 오픈 소스이며 개인정보 보호를 중시하고 집 안에서 로컬로 실행됩니다.";
 "onboarding.welcome.updated.secondary_button" = "더 알아보기";
 "open_label" = "열기";
 "permission.notification.body" = "알림을 활성화하고 누수 감지부터 열린 문까지 집에서 일어나는 일을 받아보세요. 어떤 내용을 알려줄지는 사용자가 완전히 제어할 수 있습니다.";

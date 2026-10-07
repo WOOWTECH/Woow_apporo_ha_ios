@@ -920,7 +920,6 @@ Sildid toimivad igas seadmes, kuhu on paigaldatud Apporo aiot, millel on nende l
 "onboarding.device_name_check.error.title" = "Seade nimega \"%1$@\" on juba olemas.";
 "onboarding.invitation.accept_button" = "Nõustu";
 "onboarding.invitation.address_title" = "Apporo aioti aadress";
-"onboarding.invitation.description" = "Apporo aiot on avatud lähtekoodiga koduautomaatika mis seab esikohale kohaliku kontrolli ja privaatsuse.";
 "onboarding.invitation.reject_button" = "Keeldu";
 "onboarding.invitation.screen_title" = "Sind on kutsutud";
 "onboarding.invitation.security_warning" = "Võta see kutse vastu ainult siis kui usaldad seda jaganud inimest. Tundmatu serveriga ühenduse loomine võib anda sellele juurdepääsu sisestatud või rakenduse saadetud andmetele, näiteks asukohale ja seadme teabele.";
@@ -1019,19 +1018,12 @@ Sildid toimivad igas seadmes, kuhu on paigaldatud Apporo aiot, millel on nende l
 "onboarding.servers.search.loader.text" = "Kontrolli, et Apporo aiot oleks sisse lülitatud ja  oled ühendatud samasse võrku. Kui tead aadressi, võid selle käsitsi sisestada.";
 "onboarding.servers.search.message" = "Otsin läheduses olevaid servereid...";
 "onboarding.servers.title" = "Otsing koduvõrgus";
-"onboarding.welcome.body" = "Võimaldab oma Apporo aiotile liikvel olles ligi pääseda. See töötab teie kodus lokaalselt seadme, näiteks Home Assistant Greeni või Raspberry Pi kaudu.";
-"onboarding.welcome.description" = "See rakendus loob ühenduse Apporo aioti serveriga ja võimaldab integreerida teie ja teie telefoni andmeid. \
-\
- Apporo aiot on tasuta avatud lähtekoodiga koduautomaatika tarkvara, mis keskendub kohalikule juhtimisele ja privaatsusele.";
 "onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Lisateave";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aioti logo";
 "onboarding.welcome.primary_button" = "Apporo aiotiga ühenduse loomine";
 "onboarding.welcome.secondary_button" = "Alustamine";
 "onboarding.welcome.title" = "Tere tulemast Apporo aioti %@!";
-"onboarding.welcome.updated.body" = "Pääse oma Apporo aiot serverile ligi liikvel olles. \
- \
- Apporo aiot on avatud lähtekoodiga, kaitseb privaatsust ja töötab lokaalselt sinu kodus.";
 "onboarding.welcome.updated.secondary_button" = "Lisateave";
 "open_label" = "Avatud";
 "permission.notification.body" = "Luba märguanded ja saa teada, mis sinu kodus toimub – lekete tuvastamisest kuni lahti jäänud uste tuvastamiseni – sul on täielik kontroll selle üle, mida see sulle näitab.";

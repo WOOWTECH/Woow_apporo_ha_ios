@@ -922,7 +922,7 @@ Tags will work on any device with Apporo aiot installed which has hardware suppo
 "onboarding.device_name_check.error.title" = "A device already exists with the name '%1$@'";
 "onboarding.invitation.accept_button" = "Accept";
 "onboarding.invitation.address_title" = "Apporo aiot address";
-"onboarding.invitation.description" = "Apporo aiot is open source home automation that puts local control and privacy first.";
+"onboarding.invitation.description" = "Apporo aiot is home automation that puts local control and privacy first.";
 "onboarding.invitation.reject_button" = "Reject";
 "onboarding.invitation.screen_title" = "You've been invited";
 "onboarding.invitation.security_warning" = "Only accept this invite if you trust the person who shared it. Connecting to an unknown server could give it access to data you enter or is sent by the app, such as your location and device information.";
@@ -1025,10 +1025,10 @@ Remote when you're ready.";
 "onboarding.servers.search.loader.text" = "Check that your Apporo aiot is powered on and you're connected to the same network. You can enter the address manually if you know it.";
 "onboarding.servers.search.message" = "Looking for servers nearby...";
 "onboarding.servers.title" = "Searching on home network";
-"onboarding.welcome.body" = "Allows you to access your Apporo aiot installation on the go. It runs locally in your home via a device like the Home Assistant Green or Raspberry Pi.";
+"onboarding.welcome.body" = "Allows you to access your Apporo aiot installation on the go. It runs locally in your home on your Apporo aiot controller.";
 "onboarding.welcome.description" = "This app connects to your Apporo aiot server and allows integrating data about you and your phone.\
 \
-Apporo aiot is free and open source home automation software with a focus on local control and privacy.";
+Apporo aiot is home automation software with a focus on local control and privacy.";
 "onboarding.welcome.header" = "Apporo aiot app";
 "onboarding.welcome.learn_more" = "Learn more";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot logo";

@@ -920,7 +920,6 @@
 "onboarding.device_name_check.error.title" = "%1$@ ' adında bir cihaz zaten var";
 "onboarding.invitation.accept_button" = "Kabul et";
 "onboarding.invitation.address_title" = "Apporo aiot address";
-"onboarding.invitation.description" = "Apporo aiot is open source home automation that puts local control and privacy first.";
 "onboarding.invitation.reject_button" = "Reject";
 "onboarding.invitation.screen_title" = "You've been invited";
 "onboarding.invitation.security_warning" = "Only accept this invite if you trust the person who shared it. Connecting to an unknown server could give it access to data you enter or is sent by the app, such as your location and device information.";
@@ -1019,19 +1018,12 @@
 "onboarding.servers.search.loader.text" = "Apporo aiot sisteminizin açık olduğundan ve aynı ağa bağlı olduğunuzdan emin olun. Adresi biliyorsanız manuel olarak girebilirsiniz.";
 "onboarding.servers.search.message" = "Yakındaki sunucular aranıyor...";
 "onboarding.servers.title" = "Ev ağında arama yapılıyor";
-"onboarding.welcome.body" = "Apporo aiot kurulumunuza hareket halindeyken erişmenizi sağlar. Home Assistant Green veya Raspberry Pi gibi bir cihaz aracılığıyla evinizde yerel olarak çalışır.";
-"onboarding.welcome.description" = "Bu uygulama, Apporo aiot sunucunuza bağlanır ve siz ve telefonunuz hakkındaki verilerin entegre edilmesini sağlar. \
-\
- Apporo aiot, yerel kontrol ve gizliliğe odaklanan ücretsiz ve açık kaynaklı bir ev otomasyon yazılımıdır.";
 "onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Daha fazla bilgi edin";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot logosu";
 "onboarding.welcome.primary_button" = "Apporo aiot'a bağlanın";
 "onboarding.welcome.secondary_button" = "Başlarken";
 "onboarding.welcome.title" = "Apporo aiot'a Hoş Geldiniz %@!";
-"onboarding.welcome.updated.body" = "Hareket halindeyken Apporo aiot sunucunuza erişin. \
-\
-Apporo aiot açık kaynaklıdır, gizliliği savunur ve evinizde yerel olarak çalışır.";
 "onboarding.welcome.updated.secondary_button" = "Daha fazla bilgi edin";
 "open_label" = "Açık";
 "permission.notification.body" = "Bildirimleri etkinleştirin ve evinizde neler olup bittiğini öğrenin; sızıntıları tespit etmekten açık bırakılan kapılara kadar, size ne söylediği konusunda tam kontrole sahip olun.";

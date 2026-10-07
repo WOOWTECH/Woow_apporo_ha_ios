@@ -920,7 +920,6 @@ Koder vil fungere på alle enheter med Apporo aiot installert som har maskinvare
 "onboarding.device_name_check.error.title" = "Det finnes allerede en enhet med navnet ' %1$@ '";
 "onboarding.invitation.accept_button" = "Aksepter";
 "onboarding.invitation.address_title" = "Apporo aiot address";
-"onboarding.invitation.description" = "Apporo aiot is open source home automation that puts local control and privacy first.";
 "onboarding.invitation.reject_button" = "Reject";
 "onboarding.invitation.screen_title" = "You've been invited";
 "onboarding.invitation.security_warning" = "Only accept this invite if you trust the person who shared it. Connecting to an unknown server could give it access to data you enter or is sent by the app, such as your location and device information.";
@@ -1019,19 +1018,12 @@ Remote when you're ready.";
 "onboarding.servers.search.loader.text" = "Check that your Apporo aiot is powered on and you're connected to the same network. You can enter the address manually if you know it.";
 "onboarding.servers.search.message" = "Looking for servers nearby...";
 "onboarding.servers.title" = "Søker på hjemmenettverket";
-"onboarding.welcome.body" = "Allows you to access your Apporo aiot installation on the go. It runs locally in your home via a device like the Home Assistant Green or Raspberry Pi.";
-"onboarding.welcome.description" = "Denne appen kobles til Apporo aiot -serveren og lar deg integrere data om deg og telefonen. \
-\
- Apporo aiot er gratis og åpen kildekode hjemmeautomatiseringsprogramvare med fokus på lokal kontroll og personvern.";
 "onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Learn more";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot logo";
 "onboarding.welcome.primary_button" = "Koble til Apporo aiot-en min";
 "onboarding.welcome.secondary_button" = "Komme i gang";
 "onboarding.welcome.title" = "Velkommen til Apporo aiot %@ !";
-"onboarding.welcome.updated.body" = "Access your Apporo aiot server on the go. \
-\
-Apporo aiot is open source, advocates for privacy and runs locally in your home.";
 "onboarding.welcome.updated.secondary_button" = "Lær mer";
 "open_label" = "Åpen";
 "permission.notification.body" = "Enable notifications and get what's happening in your home, from detecting leaks to doors left open, you have full control over what it tells you.";

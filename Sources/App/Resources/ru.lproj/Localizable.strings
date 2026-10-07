@@ -920,7 +920,6 @@
 "onboarding.device_name_check.error.title" = "Устройство с именем '%1$@' уже существует";
 "onboarding.invitation.accept_button" = "Принять";
 "onboarding.invitation.address_title" = "Apporo aiot address";
-"onboarding.invitation.description" = "Apporo aiot is open source home automation that puts local control and privacy first.";
 "onboarding.invitation.reject_button" = "Reject";
 "onboarding.invitation.screen_title" = "You've been invited";
 "onboarding.invitation.security_warning" = "Only accept this invite if you trust the person who shared it. Connecting to an unknown server could give it access to data you enter or is sent by the app, such as your location and device information.";
@@ -1019,19 +1018,12 @@
 "onboarding.servers.search.loader.text" = "Убедитесь, что ваш Apporo aiot включен и вы подключены к той же сети. Вы можете ввести адрес вручную, если знаете его.";
 "onboarding.servers.search.message" = "Ищу серверы поблизости...";
 "onboarding.servers.title" = "Поиск в домашней сети";
-"onboarding.welcome.body" = "Позволяет получить доступ к вашей установке Apporo aiot в пути. Работает локально в вашем доме через устройство, такое как Home Assistant Green или Raspberry Pi.";
-"onboarding.welcome.description" = "Это приложение подключается к вашему серверу Apporo aiot и позволяет интегрировать данные о вас и вашем телефоне.\
-\
-Apporo aiot - это бесплатное программное обеспечение для домашней автоматизации с открытым исходным кодом, ориентированное на локальный контроль и конфиденциальность.";
 "onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Узнать больше";
 "onboarding.welcome.logo.accessibility_label" = "Логотип Apporo aiot";
 "onboarding.welcome.primary_button" = "Подключиться к моему Apporo aiot";
 "onboarding.welcome.secondary_button" = "Начало работы";
 "onboarding.welcome.title" = "Добро пожаловать в Apporo aiot %@!";
-"onboarding.welcome.updated.body" = "Получите доступ к серверу Apporo aiot, где бы вы ни находились. \
- \
-Apporo aiot — это приложение с открытым исходным кодом, которое обеспечивает конфиденциальность и работает локально у вас дома.";
 "onboarding.welcome.updated.secondary_button" = "Узнать больше";
 "open_label" = "Открыто";
 "permission.notification.body" = "Включите уведомления и получайте информацию о том, что происходит у вас дома: от обнаружения утечек до незакрытых дверей. Вы полностью контролируете то, что вам сообщает система.";

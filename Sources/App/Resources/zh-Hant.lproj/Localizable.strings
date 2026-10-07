@@ -920,7 +920,7 @@
 "onboarding.device_name_check.error.title" = "裝置已存在名稱 '%1$@'";
 "onboarding.invitation.accept_button" = "接受";
 "onboarding.invitation.address_title" = "Apporo aiot 位址";
-"onboarding.invitation.description" = "Apporo aiot 是一款以本地控制和隱私優先的開源家庭自動化系統。";
+"onboarding.invitation.description" = "Apporo aiot 是以本地端控制與隱私為優先的家庭自動化系統。";
 "onboarding.invitation.reject_button" = "拒絕";
 "onboarding.invitation.screen_title" = "您已收到邀請";
 "onboarding.invitation.security_warning" = "只有在您信任分享邀請的人時，才接受此邀請。連線至未知伺服器可能會讓其存取您所輸入或由應用程式傳送的資料，例如位置和裝置資訊。";
@@ -1023,10 +1023,10 @@
 "onboarding.servers.search.loader.text" = "請檢查您的 Apporo aiot 是否已開機，並確認已連線至相同網路。如果知道位址、也可手動輸入。";
 "onboarding.servers.search.message" = "正在搜尋周圍的伺服器...";
 "onboarding.servers.title" = "於家庭網路上搜尋";
-"onboarding.welcome.body" = "可隨時隨地存取 Apporo aiot 伺服器。透過 Home Assistant Green 或 Raspberry Pi 等裝置安全的家中以本地端執行。";
+"onboarding.welcome.body" = "可隨時隨地存取 Apporo aiot 伺服器。系統透過您家中的 Apporo aiot 控制器在本地端執行。";
 "onboarding.welcome.description" = "App 將連線至 Apporo aiot 伺服器並允許整合關於你與手機的資料。\
 \
-Apporo aiot 為一款免費且開源的家庭自動化軟體、專制於本地端控制與隱私議題。";
+Apporo aiot 是一款專注於本地端控制與隱私的家庭自動化軟體。";
 "onboarding.welcome.header" = "Apporo aiot app";
 "onboarding.welcome.learn_more" = "了解更多";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot logo";

@@ -916,7 +916,6 @@ Taggar fungerar på alla enheter med Apporo aiot installerat och som har hårdva
 "onboarding.device_name_check.error.title" = "Det finns redan en enhet med namnet '%1$@'";
 "onboarding.invitation.accept_button" = "Acceptera";
 "onboarding.invitation.address_title" = "Apporo aiot adress";
-"onboarding.invitation.description" = "Apporo aiot är hemautomation med öppen källkod som sätter lokal kontroll och integritet i första rummet.";
 "onboarding.invitation.reject_button" = "Avvisa";
 "onboarding.invitation.screen_title" = "Du har blivit inbjuden";
 "onboarding.invitation.security_warning" = "Acceptera bara den här inbjudan om du litar på personen som delade den. Att ansluta till en okänd server kan ge den åtkomst till data som du anger eller som skickas av appen, till exempel din plats och enhetsinformation.";
@@ -1014,19 +1013,12 @@ Taggar fungerar på alla enheter med Apporo aiot installerat och som har hårdva
 "onboarding.servers.search.loader.text" = "Kontrollera att din Apporo aiot är påslagen och att du är ansluten till samma nätverk. Du kan ange adressen manuellt om du känner till den.";
 "onboarding.servers.search.message" = "Letar efter servrar i närheten...";
 "onboarding.servers.title" = "Söker på hemnätverket";
-"onboarding.welcome.body" = "Gör att du kan komma åt din Apporo aiot-installation när du är på språng. Den körs lokalt i ditt hem via en enhet som Home Assistant Green eller Raspberry Pi.";
-"onboarding.welcome.description" = "Den här appen ansluter till din Apporo aiot-server och låter dig integrera data om dig och din telefon. \
-\
-Apporo aiot är gratis och öppen källkod för hemautomatisering med fokus på lokal kontroll och integritet.";
 "onboarding.welcome.header" = "Apporo aiot";
 "onboarding.welcome.learn_more" = "Läs mer";
 "onboarding.welcome.logo.accessibility_label" = "Apporo aiot-logotyp";
 "onboarding.welcome.primary_button" = "Anslut till min Apporo aiot";
 "onboarding.welcome.secondary_button" = "Så här kommer du igång";
 "onboarding.welcome.title" = "Välkommen till Apporo aiot %@!";
-"onboarding.welcome.updated.body" = "Få åtkomst till din Apporo aiot-server när du är på språng. \
-\
-Apporo aiot är öppen källkod, förespråkar integritet och körs lokalt i ditt hem.";
 "onboarding.welcome.updated.secondary_button" = "Läs mer";
 "open_label" = "Öppen";
 "permission.notification.body" = "Tillåt aviseringar och få reda på vad som händer i ditt hem, från upptäckt av läckage till dörrar som är öppna. Du har full kontroll över vad som meddelas till dig.";
