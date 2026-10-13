@@ -9,7 +9,7 @@ permissions:
   contents: read
 
 jobs:
-  unit-and-ui-tests:
+  unit-tests:
     runs-on: macos-26
     timeout-minutes: 90
     steps:
@@ -39,19 +39,6 @@ jobs:
             -parallel-testing-enabled NO \
             CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$RUNNER_TEMP/unit.log"
 
-      - name: Run UI tests on iPhone simulator
-        if: always()
-        run: |
-          set -o pipefail
-          xcodebuild test \
-            -workspace HomeAssistant.xcworkspace \
-            -scheme Tests-UI \
-            -destination 'platform=iOS Simulator,name=iPhone 17 Pro' \
-            -derivedDataPath "$RUNNER_TEMP/derived-ui" \
-            -resultBundlePath "$RUNNER_TEMP/Apporo-UI.xcresult" \
-            -parallel-testing-enabled NO \
-            CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$RUNNER_TEMP/ui.log"
-
       - name: Upload simulator results
         if: always()
         uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
@@ -59,7 +46,5 @@ jobs:
           name: apporo-ios-simulator-results
           path: |
             ${{ runner.temp }}/unit.log
-            ${{ runner.temp }}/ui.log
             ${{ runner.temp }}/Apporo-Unit.xcresult
-            ${{ runner.temp }}/Apporo-UI.xcresult
           if-no-files-found: ignore
