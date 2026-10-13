@@ -147,8 +147,8 @@ struct HALockScreenView: View {
 }
 
 enum HAActivityVisualStyle {
-    /// Hex string for Home Assistant brand blue — used for UIColor(hex:) fallback.
-    private static let haBlueHex = "#8B6B24"
+    /// Hex string for the Apporo brand colour — used for the `UIColor(hex:)` fallback.
+    private static let defaultAccentHex = BrandColor.primaryHex
 
     /// Treats nil, empty, or whitespace-only as "unset" so the caller's default applies — an empty
     /// `background_color`/`text_color` would otherwise parse to transparent via UIColor(hex:).
@@ -158,7 +158,7 @@ enum HAActivityVisualStyle {
     }
 
     static func uiColor(from color: String?) -> UIColor {
-        UIColor(hex: color ?? haBlueHex)
+        UIColor(hex: color ?? defaultAccentHex)
     }
 
     /// Explicit `background_color`, else `.clear` so the Lock Screen's own translucent,

@@ -53,7 +53,7 @@ struct ComplicationEditView: View {
                 .disabled(!viewModel.isValid)
             }
             ToolbarItem(placement: .primaryAction) {
-                Link(destination: URL(string: "https://aiot.apporo.io/app/ios/apple-watch")!) {
+                Link(destination: AppConstants.WebURLs.appleWatchDocs) {
                     Image(systemSymbol: .questionmarkCircle)
                 }
             }

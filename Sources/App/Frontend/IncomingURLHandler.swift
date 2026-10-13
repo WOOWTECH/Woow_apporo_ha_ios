@@ -5,6 +5,86 @@ import SafariServices
 import Shared
 import SwiftUI
 
+/// The three universal-link routes served by the brand host.
+enum BrandedUniversalLinkRoute: Equatable {
+    /// `https://<brandHost>/redirect/<target>` rewritten onto the my-link service.
+    case redirect(URL)
+    /// `https://<brandHost>/invite` or `/invite/`, carrying the server address in the fragment.
+    case invite(URL)
+    /// `https://<brandHost>/tag/<identifier>`, with the identifier already validated.
+    case tag(String)
+}
+
+/// Strict classifier for links delivered on the brand host.
+///
+/// Universal links arrive from anywhere — a web page, a QR code, an NFC tag, a message — so they are
+/// untrusted input. Everything that is not an exact match for one of the three supported routes is
+/// rejected here rather than being partially interpreted further down the handler. Both entry points
+/// (`onOpenURL` and `onContinueUserActivity`) run through this one classifier so the two cannot drift.
+enum BrandedUniversalLink {
+    static func route(for url: URL) -> BrandedUniversalLinkRoute? {
+        guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false),
+              components.scheme?.lowercased() == "https",
+              components.host?.lowercased() == AppConstants.brandHost,
+              components.user == nil,
+              components.password == nil,
+              components.port == nil else {
+            return nil
+        }
+
+        if let identifier = TagActivityManager.identifier(from: url) {
+            return .tag(identifier)
+        }
+
+        // Decode each path segment separately: decoding the whole path first would let a
+        // percent-encoded `/` or `..` appear as a segment boundary after the checks below.
+        let encodedSegments = components.percentEncodedPath.split(separator: "/", omittingEmptySubsequences: false)
+        let decodedSegments = encodedSegments.compactMap { String($0).removingPercentEncoding }
+        guard decodedSegments.count == encodedSegments.count,
+              decodedSegments.first == "",
+              !decodedSegments.dropFirst().contains(where: { $0 == "." || $0 == ".." }) else {
+            return nil
+        }
+
+        if decodedSegments.count >= 3,
+           decodedSegments[1] == "redirect",
+           !decodedSegments.dropFirst(2).contains(where: \.isEmpty),
+           components.fragment == nil {
+            // The brand host is a static host and does not implement the my-link redirect service,
+            // so the resolution itself is delegated to `my.home-assistant.io`, exactly as the
+            // upstream app does. Only the host is swapped; path and query are carried over verbatim.
+            var legacy = components
+            legacy.host = "my.home-assistant.io"
+            guard let legacyURL = legacy.url else { return nil }
+            return .redirect(legacyURL)
+        }
+
+        if ["/invite", "/invite/"].contains(components.percentEncodedPath),
+           components.query == nil,
+           isValidInvitationFragment(components.fragment) {
+            return .invite(url)
+        }
+
+        return nil
+    }
+
+    /// An invitation fragment must be exactly `url=<http(s) address>` and nothing else, so that a
+    /// second `url=` item, an empty value or a `javascript:` payload cannot reach the onboarding flow.
+    private static func isValidInvitationFragment(_ fragment: String?) -> Bool {
+        guard let fragment,
+              let queryItems = URLComponents(string: "?\(fragment)")?.queryItems,
+              queryItems.count == 1,
+              queryItems[0].name == "url",
+              let value = queryItems[0].value,
+              let serverURL = URL(string: value),
+              ["http", "https"].contains(serverURL.scheme?.lowercased()),
+              serverURL.host != nil else {
+            return false
+        }
+        return true
+    }
+}
+
 class IncomingURLHandler {
     private(set) weak var coordinator: AppCoordinator!
 
@@ -35,13 +115,27 @@ class IncomingURLHandler {
         }
         guard let host = url.host else { return true }
 
-        // Universal / web links (e.g. `my.home-assistant.io`, including HACS "my" redirect links) can be
-        // delivered through `onOpenURL` as well as `onContinueUserActivity` under the SwiftUI lifecycle.
-        // They are not deep-link actions, so route them to the my-link handler instead of treating the
-        // host as an `IncomingURLAction` (which would otherwise show a "not a valid route" error).
-        // Restrict to web schemes since `showMy(for:)` presents an `SFSafariViewController`, which only
-        // supports http/https; this also prevents a crafted `apporohome://my.home-assistant.io/...`
-        // from reaching Safari.
+        // Universal / web links can be delivered through `onOpenURL` as well as
+        // `onContinueUserActivity` under the SwiftUI lifecycle. They are not deep-link actions, so
+        // classify them before the host is looked up as an `IncomingURLAction` (which would
+        // otherwise show a "not a valid route" error).
+        if let route = BrandedUniversalLink.route(for: url) {
+            switch route {
+            case let .redirect(legacyURL):
+                return showMy(for: legacyURL)
+            case let .invite(invitationURL):
+                return handleInvitation(url: invitationURL)
+            case .tag:
+                let activity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb)
+                activity.webpageURL = url
+                return handleTagResult(Current.tags.handle(userActivity: activity))
+            }
+        }
+
+        // Preserve the complete legacy my.home-assistant.io protocol (including HACS "my" redirect
+        // links). Restrict it to web schemes since `showMy(for:)` presents an
+        // `SFSafariViewController`, which only supports http/https; this also prevents a crafted
+        // `apporoaiot://my.home-assistant.io/...` from reaching Safari.
         if ["http", "https"].contains(url.scheme?.lowercased()), host.lowercased() == "my.home-assistant.io" {
             return showMy(for: url)
         }
@@ -99,7 +193,7 @@ class IncomingURLHandler {
                         view.modalPresentationStyle = .overFullScreen
                         webViewController.present(view, animated: true)
                     }
-            case .navigate: // apporohome://navigate/lovelace/dashboard
+            case .navigate: // apporoaiot://navigate/lovelace/dashboard
                 guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
                     return false
                 }
@@ -221,22 +315,8 @@ class IncomingURLHandler {
                         webViewController.presentOverlayController(controller: controller, animated: true)
                     }
             case .invite:
-                // apporohome://invite#url=http%3A%2F%2Fhomeassistant.local%3A8123
-                Current.Log.verbose("Received Home Assistant invitation URL: \(url)")
-                guard let fragment = url.fragment else {
-                    Current.Log.error("Home Assistant invitation does not contain a fragment (e.g. #url=...)")
-                    return false
-                }
-
-                // Convert fragment into query items (#url=... -> ?url=...)
-                let components = URLComponents(string: "?\(fragment)")
-                let urlParam = components?.queryItems?.first(where: { $0.name == "url" })?.value
-
-                let inviteUrl = URL(string: urlParam.orEmpty)
-
-                Current.sceneManager.appCoordinator.done { coordinator in
-                    coordinator.presentInvitation(url: inviteUrl)
-                }
+                // apporoaiot://invite#url=http%3A%2F%2Fhomeassistant.local%3A8123
+                return handleInvitation(url: url)
             }
         } else {
             Current.Log.warning("Can't route incoming URL: \(url)")
@@ -270,21 +350,32 @@ class IncomingURLHandler {
             return true
         }
 
-        switch Current.tags.handle(userActivity: userActivity) {
-        case let .handled(type):
-            showTagReadConfirmation(type: type)
-            return true
-        case let .requiresApproval(tag, type):
-            showTagApproval(tag: tag, type: type)
-            return true
-        case let .open(url):
-            // NFC-based URL
-            return handle(url: url)
+        // Universal links must go through the same strict classifier as `onOpenURL` before the
+        // generic tag manager's legacy `?url=` wrapper support gets a chance to inspect them.
+        if let webpageURL = userActivity.webpageURL, let host = webpageURL.host?.lowercased() {
+            if host == AppConstants.brandHost {
+                guard let route = BrandedUniversalLink.route(for: webpageURL) else { return false }
+                switch route {
+                case .tag:
+                    // Hand the original activity to the tag manager so that its NDEF payload — and
+                    // therefore the style of the read confirmation — survives.
+                    return handleTagResult(Current.tags.handle(userActivity: userActivity))
+                case .redirect, .invite:
+                    return handle(url: webpageURL)
+                }
+            }
+            if host == "my.home-assistant.io" {
+                return handle(url: webpageURL)
+            }
+        }
+
+        let tagResult = Current.tags.handle(userActivity: userActivity)
+        switch tagResult {
+        case .handled, .requiresApproval, .open:
+            return handleTagResult(tagResult)
         case .unhandled:
             // not a tag
-            if let url = userActivity.webpageURL, url.host?.lowercased() == "my.home-assistant.io" {
-                return showMy(for: url)
-            } else if let interaction = userActivity.interaction {
+            if let interaction = userActivity.interaction {
                 if
                     let intent = interaction.intent as? OpenPageIntent,
                     let panel = intent.page, let path = panel.identifier {
@@ -605,6 +696,40 @@ class IncomingURLHandler {
         }
     }
 
+    private func handleInvitation(url: URL) -> Bool {
+        Current.Log.verbose("Received Home Assistant invitation URL: \(url)")
+        guard let fragment = url.fragment else {
+            Current.Log.error("Home Assistant invitation does not contain a fragment (e.g. #url=...)")
+            return false
+        }
+
+        // Convert fragment into query items (#url=... -> ?url=...). Only the exact `url` item is consumed.
+        let components = URLComponents(string: "?\(fragment)")
+        let urlParam = components?.queryItems?.first(where: { $0.name == "url" })?.value
+        let inviteURL = URL(string: urlParam.orEmpty)
+
+        Current.sceneManager.appCoordinator.done { coordinator in
+            coordinator.presentInvitation(url: inviteURL)
+        }
+        return true
+    }
+
+    private func handleTagResult(_ result: TagManagerHandleResult) -> Bool {
+        switch result {
+        case let .handled(type):
+            showTagReadConfirmation(type: type)
+            return true
+        case let .requiresApproval(tag, type):
+            showTagApproval(tag: tag, type: type)
+            return true
+        case let .open(url):
+            // NFC-based URL
+            return handle(url: url)
+        case .unhandled:
+            return false
+        }
+    }
+
     private func showMy(for url: URL) -> Bool {
         guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             Current.Log.info("couldn't create url components out of \(url)")
@@ -805,7 +930,7 @@ extension IncomingURLHandler {
     }
 
     private func fireEventURLHandler(_ url: URL, _ serviceData: [String: String]) {
-        // apporohome://fire_event/custom_event?entity_id=device_tracker.entity
+        // apporoaiot://fire_event/custom_event?entity_id=device_tracker.entity
 
         firstly { () -> Promise<Void> in
             if let api = Current.apis.first {
@@ -833,7 +958,7 @@ extension IncomingURLHandler {
         _ callServiceTarget: (fullServiceName: String, domain: String, service: String),
         _ serviceData: [String: String]
     ) {
-        // apporohome://call_service/device_tracker.see?entity_id=device_tracker.entity
+        // apporoaiot://call_service/device_tracker.see?entity_id=device_tracker.entity
         firstly { () -> Promise<Void> in
             if let api = Current.apis.first {
                 return api.CallService(
@@ -879,7 +1004,7 @@ extension IncomingURLHandler {
     }
 
     private func sendLocationURLHandler() {
-        // apporohome://send_location/
+        // apporoaiot://send_location/
         firstly {
             Current.location.oneShotLocation(.URLScheme, nil)
         }.then { location in

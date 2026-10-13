@@ -98,6 +98,15 @@ def main() -> None:
     n = int(r.stdout.strip() or 0)
     check("zh-Hant Localizable 品牌殘留 ≤ 3", n <= 3, f"還有 {n} 條")
 
+    # 6.1 換名後變成不實陳述的句子:上游在介紹 Home Assistant(開源、HA Green 硬體),
+    # 名稱換掉後就變成宣稱品牌 App 開源。只看我們會校對的三種語言;其他語言這幾條已刪除,退回英文。
+    bad = re.compile(r"open[- ]source|开源|開源|Home Assistant Green|Raspberry Pi")
+    hits = []
+    for lang in ("en", "zh-Hant", "zh-Hans"):
+        for path in glob.glob(f"Sources/App/Resources/{lang}.lproj/*.strings"):
+            hits += [f"{path}:{i}" for i, line in enumerate(read(path).splitlines(), 1) if bad.search(line)]
+    check("字串無「開源/HA 硬體」不實陳述", not hits, ", ".join(hits[:5]))
+
     # 7. icon: 1024 無 alpha
     ic = "Sources/App/Resources/Assets.xcassets/AppIcon.appiconset"
     with open(os.path.join(ic, "Contents.json")) as f:

@@ -33,7 +33,9 @@ class ServerAlerterTests: XCTestCase {
         let request = try XCTUnwrap(mock.pendingRequests.first)
         request.completion(.success(.dictionary(["id": "1", "is_admin": userIsAdmin])))
 
-        let url = URL(string: "https://alerts.home-assistant.io/mobile.json")!
+        // Must track `ServerAlerter.apiUrl`. Both are derived from `AppConstants.brandHost` so a
+        // future brand-domain change cannot silently un-stub these tests and send them at real DNS.
+        let url = URL(string: "https://\(AppConstants.brandHost)/mobile.json")!
         stubDescriptors.append(stub(condition: { $0.url == url }, response: { _ in
             switch response {
             case let .success(value):

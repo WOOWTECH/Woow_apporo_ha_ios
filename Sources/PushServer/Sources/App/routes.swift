@@ -6,7 +6,8 @@ func routes(_ app: Application) throws {
     }
 
     app.group("push") { push in
-        let pushTopic = Environment.get("APNS_TOPIC") ?? "com.apporo.home"
+        // Release bundle id; dev deployments override it with APNS_TOPIC=com.apporo.aiot.dev.
+        let pushTopic = Environment.get("APNS_TOPIC") ?? "com.apporo.aiot"
         let pushController = PushController(appIdPrefix: pushTopic)
 
         push.post("send") { req in

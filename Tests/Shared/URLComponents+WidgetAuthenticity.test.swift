@@ -2,11 +2,13 @@
 import XCTest
 
 class URLComponentsWidgetAuthenticityTests: XCTestCase {
+    private let scheme = AppConstants.urlScheme
+
     func testNotAuthentic() throws {
         for urlString in [
-            "apporohome://navigate/bad",
-            "apporohome://navigate/bad?widgetAuthenticity=fake",
-            "apporohome://navigate/bad?widgetAuthenticity=",
+            "\(scheme)://navigate/bad",
+            "\(scheme)://navigate/bad?widgetAuthenticity=fake",
+            "\(scheme)://navigate/bad?widgetAuthenticity=",
         ] {
             var components = try XCTUnwrap(URLComponents(string: urlString))
             XCTAssertFalse(components.popWidgetAuthenticity())
@@ -17,11 +19,11 @@ class URLComponentsWidgetAuthenticityTests: XCTestCase {
     func testInsertRemoveDoesntChangeString() throws {
         for urlString in [
             // no query string
-            "apporohome://navigate/good",
+            "\(scheme)://navigate/good",
             // some query string
-            "apporohome://navigate/good?example=test&dog=cat",
+            "\(scheme)://navigate/good?example=test&dog=cat",
             // already has one for some reason and it's bad
-            "apporohome://navigate/good?widgetAuthenticity=bad",
+            "\(scheme)://navigate/good?widgetAuthenticity=bad",
         ] {
             do {
                 var components = try XCTUnwrap(URLComponents(string: urlString))
@@ -49,7 +51,7 @@ class URLComponentsWidgetAuthenticityTests: XCTestCase {
         let server = servers.all[0]
         Current.servers = servers
 
-        var baseUrl = try XCTUnwrap(URLComponents(string: "apporohome://navigate/path"))
+        var baseUrl = try XCTUnwrap(URLComponents(string: "\(scheme)://navigate/path"))
         baseUrl.insertWidgetServer(server: server)
 
         XCTAssertNil(baseUrl.popWidgetServer(isFromWidget: false))

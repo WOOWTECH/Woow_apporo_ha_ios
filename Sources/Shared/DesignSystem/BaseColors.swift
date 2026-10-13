@@ -16,17 +16,28 @@ public extension Color {
     static var blue95 = Color(hex: "0xFFE8F3FF")
 
     // Brand
-    static var brand05 = Color(hex: "0xFF00222F")
-    static var brand10 = Color(hex: "0xFF003D51")
-    static var brand20 = Color(hex: "0xFF004E67")
-    static var brand30 = Color(hex: "0xFF007093")
-    static var brand40 = Color(hex: "0xFF00A4D4")
-    static var brand50 = Color(hex: "0xFF1FBCF1")
-    static var brand60 = Color(hex: "0xFF37C8FD")
-    static var brand70 = Color(hex: "0xFF7BD4FB")
-    static var brand80 = Color(hex: "0xFFB9E6FC")
-    static var brand90 = Color(hex: "0xFFDFF3FC")
-    static var brand95 = Color(hex: "0xFFEFF9FE")
+    //
+    // Apporo gold ramp, derived from the primary brand colour `BrandColor.primaryHex` (#8B6B24,
+    // ADR-0001). Each step keeps the *exact* CIELAB L* of the ramp step it replaces, so every
+    // contrast ratio against white and against black is preserved to within 0.05 — no existing
+    // component can lose its contrast budget. Only hue and chroma changed: hue is fixed at the
+    // primary's LCh hue (83.1°) and chroma is `min(step's original gamut fullness, 0.791)`,
+    // where 0.791 is the primary's own fraction of the maximum in-gamut chroma at its lightness.
+    // That cap is what keeps the light end a muted gold instead of a saturated yellow.
+    //
+    // NOTE: `Color(hex:)` only accepts 6- or 8-digit strings; the upstream `0xFF…` spelling used
+    // here silently failed to parse and fell back to `haPrimary`. Keep these 6-digit.
+    static var brand05 = Color(hex: "271D09")
+    static var brand10 = Color(hex: "47350F")
+    static var brand20 = Color(hex: "5A4414")
+    static var brand30 = Color(hex: "816321")
+    static var brand40 = Color(hex: "BC9134")
+    static var brand50 = Color(hex: "D7A73D")
+    static var brand60 = Color(hex: "E5B342")
+    static var brand70 = Color(hex: "F7C148")
+    static var brand80 = Color(hex: "FADBA9")
+    static var brand90 = Color(hex: "FCEED9")
+    static var brand95 = Color(hex: "FDF6ED")
 
     // Cyan
     static var cyan05 = Color(hex: "0xFF00151B")
@@ -145,6 +156,18 @@ public extension Color {
     static var yellow90 = Color(hex: "0xFFFFE495")
     static var yellow95 = Color(hex: "0xFFFEF3CD")
 
-    static var brandBlue = Color(hex: "0xFF8B6B24")
-    static var brandBackground = Color(hex: "0xFFF2F4F9")
+    /// Apporo primary brand colour. Single source of truth for the brand accent in Swift code;
+    /// the asset-catalogue twin is `haPrimary` / `accentColor` (both already #8B6B24).
+    static var brandPrimary = Color(hex: BrandColor.primaryHex)
+
+    /// Neutral page background, re-tinted from the upstream cool grey (#F2F4F9) to the brand hue
+    /// at the same L* (96.2), so it reads warm against the gold ramp without changing lightness.
+    static var brandBackground = Color(hex: "F9F3EB")
+}
+
+/// Brand colour values that have to be expressed as hex *strings* (payload fields, `UIColor(hex:)`
+/// call sites, SwiftUI previews) rather than as `Color`.
+public enum BrandColor {
+    /// Apporo primary brand colour — ADR-0001. White text on this reaches 4.88:1 (WCAG AA).
+    public static let primaryHex = "#8B6B24"
 }

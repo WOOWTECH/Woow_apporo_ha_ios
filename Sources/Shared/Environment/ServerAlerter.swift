@@ -101,7 +101,11 @@ public struct ServerAlert: Codable, Equatable {
 }
 
 public class ServerAlerter {
-    private var apiUrl: URL { URL(string: "https://aiot.apporo.io/mobile.json")! }
+    /// ⚠️ A real API the app polls, not a documentation link: `brandHost` MUST actually serve this
+    /// JSON document (the upstream schema — an array of alert objects with `title`/`message`/
+    /// `url`/`ios`/`core` version ranges). If it 404s the app just logs and shows no alerts, so a
+    /// missing file fails silently and this feature is dead without anyone noticing.
+    private var apiUrl: URL { URL(string: "https://\(AppConstants.brandHost)/mobile.json")! }
 
     enum AlerterError: LocalizedError {
         case privacyDisabled

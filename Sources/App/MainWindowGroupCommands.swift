@@ -32,7 +32,7 @@ struct AppMenuBarCommands: Commands {
 
         CommandGroup(replacing: .help) {
             Button(L10n.Menu.Help.help(appName)) {
-                openURLInBrowser(URL(string: "https://aiot.apporo.io")!, nil)
+                openURLInBrowser(AppConstants.WebURLs.homeAssistant, nil)
             }
         }
     }

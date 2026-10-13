@@ -2,6 +2,21 @@ import CoreMotion
 import Foundation
 import PromiseKit
 
+// MARK: - First-release policy boundary (fitness sensors)
+
+//
+// Owner decision 2026-09-14: Apporo aiot 1.0 declares NO health/fitness functionality, so the
+// sensors that collect fitness data are stopped rather than declared. This covers step count,
+// walking distance, floors ascended/descended and motion activity type.
+//
+// Preserved verbatim behind a compilation condition that is intentionally NOT defined in any
+// xcconfig, so it is excluded from every build product. Re-enabling is an explicit, greppable
+// act: define APPORO_ENABLE_FITNESS_SENSORS and re-open the App Store Connect privacy
+// questionnaire's Health & Fitness category.
+//
+// WebhookSensorId cases are deliberately retained for legacy identifier/data compatibility.
+// No sensor history is deleted; the sensors simply stop being reported.
+#if APPORO_ENABLE_FITNESS_SENSORS
 public class ActivitySensor: SensorProvider {
     public enum ActivityError: Error {
         case unauthorized
@@ -57,3 +72,4 @@ public class ActivitySensor: SensorProvider {
         return promise
     }
 }
+#endif

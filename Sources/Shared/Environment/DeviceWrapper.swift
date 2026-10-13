@@ -38,6 +38,20 @@ public class DeviceWrapper {
         ProcessInfo.processInfo.isLowPowerModeEnabled
     }
 
+    // Compiled out for the same reason StorageSensor is: these four URLResourceKeys are Apple's
+    // DiskSpace required-reason API, and none of its reason codes covers a sensor that uploads
+    // disk figures off-device.
+    //
+    // Gating StorageSensor alone was not enough. The scanner Apple runs at submission looks for
+    // *references to the symbols in the built binary*, not for code that executes, and this
+    // property kept `_NSURLVolumeAvailableCapacityKey` and its three siblings in
+    // Shared.framework even with every caller compiled out. Verify with:
+    //
+    //     nm -u Shared.framework/Shared | grep VolumeAvailableCapacity
+    //
+    // Re-enable together with StorageSensor by defining APPORO_ENABLE_STORAGE_SENSOR, and add a
+    // matching DiskSpace entry to PrivacyInfo.xcprivacy at the same time.
+    #if APPORO_ENABLE_STORAGE_SENSOR
     public lazy var volumes: () -> [URLResourceKey: Int64]? = {
         #if os(iOS)
         return try? URL(fileURLWithPath: NSHomeDirectory()).resourceValues(forKeys: [
@@ -58,6 +72,7 @@ public class DeviceWrapper {
         return nil
         #endif
     }
+    #endif
 
     public lazy var identifierForVendor: () -> String? = {
         #if os(iOS)

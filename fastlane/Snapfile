@@ -1,37 +1,26 @@
+# App Store Connect only requires the largest display in each family it will
+# scale down from: 6.9" iPhone (1320x2868) and 13" iPad (2064x2752).
 devices(
   [
-    'iPhone 8',
-    'iPhone 8 Plus',
-    'iPhone SE',
-    'iPhone Xs',
-    'iPhone Xs Max',
-    'iPad Pro (12.9-inch) (2nd generation)',
-    'iPad Pro (10.5-inch)',
-    'iPad Pro (12.9-inch) (3rd generation)'
+    'iPhone 17 Pro Max',
+    'iPad Pro 13-inch (M5)'
   ]
 )
 
-languages(
-  [
-    'de-DE',
-    'en-US',
-    # es-* doesn't have enough coverage as of 06/19.
-    # "es-ES",
-    # "es-MX",
-    'es',
-    'fi',
-    'fr',
-    'it',
-    'nb',
-    'nl',
-    'ru',
-    'sv',
-    'zh-Hans',
-    'zh-Hant'
-  ]
-)
+# Must stay in sync with the locale folders under fastlane/metadata/ --
+# deliver uploads a localization for any locale that has screenshots, even
+# when that locale has no metadata folder.
+# 首版商店頁只出 en-US(Owner 2026-09-15 拍板),中文 metadata 已移到
+# fastlane/metadata-parked/。deliver 會為任何「有截圖」的語系建立 localization,
+# 所以這裡多列一個語系就會多開一個沒有 metadata 的商店頁。
+#
+# ⚠️ 另外:上線流程沒有任何無障礙識別碼,截圖測試只能靠可見文字比對,
+#    非 en 的語系會全部找不到元素。要加語系必須先補識別碼。
+languages(['en-US'])
 
-scheme('HomeAssistantUITests')
+scheme('Tests-UI')
+
+only_testing(['Tests-UI/StoreScreenshotTests'])
 
 clear_previous_screenshots(true)
 

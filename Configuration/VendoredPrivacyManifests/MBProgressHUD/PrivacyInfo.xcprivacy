@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!--
+	  Privacy manifest supplied BY US on behalf of MBProgressHUD.
+
+	  MBProgressHUD is named on Apple's third-party SDK list
+	  (developer.apple.com/support/third-party-SDK-requirements), so an upload without a
+	  manifest for it fails as ITMS-91061. Upstream has shipped nothing since 1.2.0 and
+	  1.2.0 carries no manifest, so there is no version to upgrade to.
+
+	  The contents below were verified against the pod's source, not assumed: MBProgressHUD
+	  is a progress overlay view. It performs no networking, stores nothing, and calls none
+	  of the required-reason APIs, so all three arrays are empty.
+
+	  Re-check when the pod is next updated - if upstream ships its own manifest, delete this
+	  file and the post_install hook in the Podfile that copies it.
+	-->
+	<key>NSPrivacyTracking</key>
+	<false/>
+	<key>NSPrivacyTrackingDomains</key>
+	<array/>
+	<key>NSPrivacyCollectedDataTypes</key>
+	<array/>
+	<key>NSPrivacyAccessedAPITypes</key>
+	<array/>
+</dict>
+</plist>

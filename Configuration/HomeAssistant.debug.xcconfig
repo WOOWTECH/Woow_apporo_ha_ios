@@ -5,12 +5,17 @@ CODE_SIGN_STYLE_QMQYCKL255_Extensions_PushProvider = Manual
 PROVISIONING_PROFILE_SPECIFIER_QMQYCKL255_App = Local Developer: Main App
 PROVISIONING_PROFILE_SPECIFIER_QMQYCKL255_Extensions_PushProvider = Local Developer: Push Provider
 
-// apple did not give us the device name permission in the dev app
-ENABLE_DEVICE_NAME_QMQYCKL255 = 0
+// (Upstream forced ENABLE_DEVICE_NAME_QMQYCKL255 = 0 here because Apple never granted the
+//  device-name permission to the dev App ID. ENABLE_DEVICE_NAME is now 0 unconditionally in
+//  HomeAssistant.xcconfig, so this override is no longer needed. If device name is ever
+//  enabled for Release, re-add `ENABLE_DEVICE_NAME = 0` here rather than the team-keyed form.)
 
 STRIP_INSTALLED_PRODUCT = NO
 
 BUNDLE_ID_SUFFIX = .dev
+// Dev builds get their own URL scheme (apporoaiot-dev) so that a dev build and a production
+// build on the same device cannot claim each other's deep links.
+BRAND_URL_SCHEME_SUFFIX = -dev
 VALIDATE_PRODUCT = NO
 DEBUG_INFORMATION_FORMAT = dwarf
 OTHER_SWIFT_FLAGS = $(inherited) -DDEBUG -Xfrontend -warn-long-expression-type-checking=500 -Xfrontend  -warn-long-function-bodies=500

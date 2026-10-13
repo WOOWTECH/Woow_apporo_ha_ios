@@ -1,39 +1,81 @@
 import Foundation
 import KeychainAccess
+import os.log
 import UIKit
 import Version
 
 /// Contains shared constants
 public enum AppConstants {
+    /// Apporo aiot 1.0 keeps the Watch targets and their source in the repository, but does not
+    /// embed a Watch app in the phone package: the App target no longer has an "Embed Watch
+    /// Content" phase or a WatchApp dependency. UI that would offer to set up or manage the Watch
+    /// app is gated on this flag so it does not advertise something the shipped package cannot do.
+    public static let includesWatchAppInPhonePackage = false
+
+    /// Single source of truth for the brand host used by help-center links and OAuth client metadata.
+    /// Changing the brand domain should only ever require editing this one line.
+    public static let brandHost = "www.apporo.ai"
+
+    /// Help-center / documentation destinations.
+    ///
+    /// These pages are published at `https://www.apporo.ai/help`, served by the customer's Odoo
+    /// website, and are live and anonymously readable.
+    ///
+    /// The layout is shared with the Android app (`AppSupportLinks.kt`) so both platforms link into
+    /// the same articles — move a path here and the Android constant has to move with it, or the two
+    /// apps drift apart. The pages are NOT in this repo: they live in Odoo and are edited there.
     public enum WebURLs {
-        public static var homeAssistant = URL(string: "https://aiot.apporo.io")!
-        public static var homeAssistantGetStarted = URL(string: "https://aiot.apporo.io/installation/")!
-        public static var homeAssistantCompanionGetStarted =
-            URL(string: "https://aiot.apporo.io/docs/getting_started/")!
-        public static var companionAppDocs = URL(string: "https://aiot.apporo.io")!
-        public static var companionAppDocsTroubleshooting =
-            URL(string: "https://aiot.apporo.io/docs/troubleshooting/errors")!
-        public static var beta = URL(string: "https://aiot.apporo.io/app/ios/beta")!
-        public static var betaMac = URL(string: "https://aiot.apporo.io/app/ios/beta_mac")!
-        public static var review = URL(string: "https://aiot.apporo.io/app/ios/review")!
-        public static var reviewMac = URL(string: "https://aiot.apporo.io/app/ios/review_mac")!
-        public static var translate = URL(string: "https://aiot.apporo.io/app/ios/translate")!
-        public static var forums = URL(string: "https://aiot.apporo.io/")!
-        public static var chat = URL(string: "https://aiot.apporo.io/app/ios/chat")!
-        public static var twitter = URL(string: "https://aiot.apporo.io")!
-        public static var facebook = URL(string: "https://aiot.apporo.io")!
-        public static var repo = URL(string: "https://aiot.apporo.io/app/ios/repo")!
-        public static var issues = URL(string: "https://aiot.apporo.io/app/ios/issues")!
-        public static var companionAppConnectionSecurityLevel =
-            URL(string: "https://aiot.apporo.io/docs/getting_started/connection-security-level")!
-        public static var companionLocalPush =
-            URL(string: "https://aiot.apporo.io/app/ios/local-push")!
-        public static var nfcDocs =
-            URL(string: "https://aiot.apporo.io/app/ios/nfc")!
-        public static var liveActivitiesDocs =
-            URL(string: "https://aiot.apporo.io/docs/notifications/live-activities")!
-        public static var appleDropSupportiOS15 =
-            URL(string: "https://aiot.apporo.io")!
+        private static let root = "https://\(AppConstants.brandHost)"
+
+        private static func page(_ path: String) -> URL {
+            URL(string: "\(root)/\(path)")!
+        }
+
+        // MARK: Landing / general
+
+        public static let homeAssistant = URL(string: root)!
+        public static let support = page("help/support")
+        public static let privacy = page("privacy")
+
+        // MARK: Getting started
+
+        public static let homeAssistantGetStarted = page("help/getting-started")
+        public static let homeAssistantCompanionGetStarted = page("help/getting-started")
+        public static let companionAppDocs = page("help")
+
+        // MARK: Troubleshooting
+
+        public static let companionAppDocsTroubleshooting = page("help/troubleshooting")
+        public static let companionAppConnectionSecurityLevel =
+            page("help/connection/security-level")
+
+        // MARK: Notifications
+
+        public static let notificationsDocs = page("help/notifications")
+        public static let actionableNotificationsDocs = page("help/notifications/advanced#actionable-notifications")
+        public static let notificationSoundsDocs = page("help/notifications/advanced#notification-sounds")
+        public static let liveActivitiesDocs = page("help/notifications/advanced#live-activities")
+        public static let companionLocalPush = page("help/notifications/local-push")
+
+        // MARK: Platform features
+
+        public static let widgetsDocs = page("help/widgets")
+        public static let appleWatchDocs = page("help/apple-watch")
+        public static let nfcDocs = page("help/nfc")
+        public static let appleDropSupportiOS15 = page("help/troubleshooting")
+
+        // MARK: Support
+
+        //
+        // The upstream companion app exposed the Home Assistant community here (forums, chat,
+        // Twitter/Facebook, the GitHub repo and its issue tracker, the beta/translate programmes).
+        // Those are Home Assistant's channels, not Apporo's — presenting them under the Apporo
+        // brand is both misleading and a trademark problem — so the call sites were removed.
+        // Everything that used to funnel into them now funnels into a single support destination.
+
+        /// Where a user is sent when they need help from us. Also the fallback for former
+        /// "report an issue" affordances, since the brand has no public issue tracker.
+        public static let issues = support
     }
 
     public enum QueryItems: String, CaseIterable {
@@ -48,8 +90,24 @@ public enum AppConstants {
         ]
     }
 
+    /// Push endpoints served by **our own** relay on `brandHost`.
+    ///
+    /// ⚠️ Blocker B-7: these were inherited pointing at `https://mobile-apps.home-assistant.io`,
+    /// Home Assistant's public relay. Left that way, every notification for every Apporo user is
+    /// registered with, and delivered through, Home Assistant's infrastructure instead of ours —
+    /// the app is not actually white-labelled at the push layer. Never point these back upstream.
+    ///
+    /// ⚠️ Both paths MUST be implemented on `brandHost` before release
+    /// (`POST /api/sendPushNotification`, `POST /api/checkRateLimits`), and the Firebase project the
+    /// app registers against must be ours (blocker B-1) — the two only work as a pair.
     public enum Firebase {
-        public static let pushURLString = "https://mobile-apps.home-assistant.io/api/sendPushNotification"
+        private static let apiRoot = "https://\(AppConstants.brandHost)/api"
+
+        /// Sent to Home Assistant at registration as `push_url`; core POSTs notifications here.
+        public static let pushURLString = "\(apiRoot)/sendPushNotification"
+
+        /// Queried by the notification settings screen to show the remaining daily push quota.
+        public static let rateLimitURL = URL(string: "\(apiRoot)/checkRateLimits")!
     }
 
     /// Home Assistant Blue
@@ -96,23 +154,84 @@ public enum AppConstants {
         removeBundleSuffix = removeBundleSuffix.replacingOccurrences(of: ".Widgets", with: "")
         removeBundleSuffix = removeBundleSuffix.replacingOccurrences(of: ".ShareExtension", with: "")
         removeBundleSuffix = removeBundleSuffix.replacingOccurrences(of: ".PushProvider", with: "")
-        removeBundleSuffix = removeBundleSuffix.replacingOccurrences(of: ".Matter", with: "")
+        // ".Matter" is intentionally absent: the Extensions-Matter target no longer exists, so no
+        // bundle identifier in this app can carry that suffix.
 
         return removeBundleSuffix
     }
 
-    public static var deeplinkURL: URL {
-        switch Current.appConfiguration {
-        case .debug:
-            return URL(string: "apporohome://")!
-        default:
-            return URL(string: "apporohome://")!
+    /// The app's custom URL scheme, used for deep links and for the OAuth redirect.
+    ///
+    /// The single source of truth is the `ENV_URL_HANDLER` build setting, which Xcode substitutes
+    /// into the app's `Info.plist` (`CFBundleURLTypes`): Release `apporoaiot`, Debug
+    /// `apporoaiot-dev` (the Debug build also carries the `.dev` bundle-id suffix, so both variants
+    /// can be installed side by side without fighting over the scheme).
+    ///
+    /// We read the scheme back out of the running bundle rather than hard-coding it, because a
+    /// hard-coded string here would silently drift from `ENV_URL_HANDLER` and the OAuth
+    /// `redirect_uri` would then name a scheme iOS never delivers back to us — login would hang on
+    /// the callback with no error. App extensions (widgets, intents, notification service …) do not
+    /// declare `CFBundleURLTypes`, so they fall back to `expectedURLScheme`.
+    public static let urlScheme: String = registeredURLScheme() ?? expectedURLScheme
+
+    /// Compile-time counterpart of the `ENV_URL_HANDLER` build setting.
+    ///
+    /// ⚠️ MUST be kept in sync by hand with `ENV_URL_HANDLER` in `project.pbxproj` /
+    /// `BRAND_URL_SCHEME` in `Configuration/Brand.xcconfig`. It is what every app extension uses to
+    /// build deep links back into the app, so a mismatch breaks widgets and App Intents even though
+    /// the app itself would keep working off the value read from its own Info.plist.
+    public static let expectedURLScheme: String = {
+        #if DEBUG
+        return "apporoaiot-dev"
+        #else
+        return "apporoaiot"
+        #endif
+    }()
+
+    /// The first non-empty scheme the running bundle registers, or `nil` for bundles (extensions)
+    /// that register none. A literal starting with `$` means the build setting was never
+    /// substituted, which is a misconfiguration rather than a usable scheme.
+    private static func registeredURLScheme() -> String? {
+        guard let urlTypes = Bundle.main.object(forInfoDictionaryKey: "CFBundleURLTypes") as? [[String: Any]] else {
+            return nil
         }
+        return urlTypes
+            .compactMap { $0["CFBundleURLSchemes"] as? [String] }
+            .flatMap { $0 }
+            .first { !$0.isEmpty && !$0.hasPrefix("$") }
+    }
+
+    public static let deeplinkURL = URL(string: "\(urlScheme)://")!
+
+    public enum OAuth {
+        /// Public client metadata URL advertised to Home Assistant as `client_id` (blocker B-6).
+        ///
+        /// It previously pointed at `https://woowtech.github.io/Woow_apporo_ha_app/android` — the
+        /// **Android** client's page. iOS was authenticating under Android's identity, which is why
+        /// this moved onto the brand host.
+        ///
+        /// Home Assistant shows this URL verbatim to the user on the authorization screen, so it
+        /// has to be a brand domain. The page lives on the customer's Odoo website as a
+        /// `website.page` at `/ios` backed by the primary qweb view `apporo_aiot.oauth_ios` —
+        /// the same arrangement woowtech aiot uses. It is NOT in this repo: a scheme change here
+        /// needs the Odoo page edited too.
+        ///
+        /// Home Assistant's IndieAuth implementation really does
+        /// fetch this URL during login, so before App Review submission confirm that it:
+        ///   * is readable anonymously — not a 404, not a login page, not a redirect to one;
+        ///   * is served over HTTPS with a certificate the OS trusts;
+        ///   * returns HTML containing `<link rel="redirect_uri" href="…">` for **every** scheme the
+        ///     app ships with, i.e. both `apporoaiot://auth-callback` (Release) and
+        ///     `apporoaiot-dev://auth-callback` (Debug) — otherwise Debug builds cannot log in;
+        ///   * keeps `<link rel="redirect_uri">` in sync whenever `urlScheme` changes.
+        /// Until it is live, login fails against any Home Assistant that enforces IndieAuth discovery.
+        public static let clientID = "https://www.apporo.ai/ios"
+        public static let redirectURI = "\(AppConstants.urlScheme)://auth-callback"
     }
 
     /// Roots a scheme-less, slash-less navigation path (`map/0` → `/map/0`) so an HA path that is
     /// missing its leading slash still resolves in the frontend. Anything already rooted, or that
-    /// carries a scheme — `https://`, `mailto:`, or the app's own `apporohome://` deep links —
+    /// carries a scheme — `https://`, `mailto:`, or the app's own `apporoaiot://` deep links —
     /// is returned unchanged, so external URLs open in the browser and deep links are handled by
     /// the URL handler as deep links rather than being coerced into a path.
     public static func normalizedNavigationDestination(_ raw: String) -> String {
@@ -125,7 +244,7 @@ public enum AppConstants {
             .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
             return nil
         }
-        return URL(string: "https://my.home-assistant.io/invite/#url=\(encodedURLString)")
+        return URL(string: "https://\(AppConstants.brandHost)/invite/#url=\(encodedURLString)")
     }
 
     public static func navigateDeeplinkURL(
@@ -209,7 +328,21 @@ public enum AppConstants {
         let groupDir = fileManager.containerURL(forSecurityApplicationGroupIdentifier: AppConstants.AppGroupID)
 
         guard let groupDir else {
-            Current.Log.error("Unable to get app group container URL; falling back to temporary directory")
+            // ⚠️ 這裡**不能碰 `Current`**。這個 getter 會在 `AppEnvironment.init()` 內被呼叫到
+            // （init → DiskCacheImpl.init → DiskCacheImpl.URL(containerName:) → 這裡），
+            // 而 `Current` 本身是 dispatch_once 的一次性初始化。在它初始化到一半時再讀它
+            // 會造成 dispatch_once 重入，直接 EXC_BREAKPOINT / SIGTRAP ——
+            // 也就是說,原本用來「優雅降級」的那行錯誤記錄,會把降級變成當機。
+            //
+            // 上游的寫法是 `Current.Log.error(...)`（ec3a82b5b, 2026-07-13）。
+            // 實測：只要 App Group 容器取不到就一定崩潰，例如 entitlement 被剝掉
+            // （`CODE_SIGNING_ALLOWED=NO` 的測試執行）或正式版佈建設定漏了 App Group。
+            // 改用 os_log,它不依賴 `Current`,任何時機呼叫都安全。
+            os_log(
+                .error,
+                log: OSLog(subsystem: BundleID, category: "AppConstants"),
+                "Unable to get app group container URL; falling back to temporary directory"
+            )
             return URL(fileURLWithPath: NSTemporaryDirectory())
         }
 

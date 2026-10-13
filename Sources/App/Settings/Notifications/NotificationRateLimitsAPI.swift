@@ -22,9 +22,10 @@ class NotificationRateLimitsAPI {
     class func rateLimits(pushID: String) -> Promise<RateLimitResponse> {
         firstly { () -> Promise<URLRequest> in
             do {
-                var urlRequest = URLRequest(url: URL(
-                    string: "https://mobile-apps.home-assistant.io/api/checkRateLimits"
-                )!)
+                // Blocker B-7: this used to call Home Assistant's public relay
+                // (mobile-apps.home-assistant.io), which knows nothing about our push tokens.
+                // The endpoint now lives on our own relay; see AppConstants.Firebase.
+                var urlRequest = URLRequest(url: AppConstants.Firebase.rateLimitURL)
                 urlRequest.httpMethod = "POST"
                 urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
                 urlRequest.httpBody = try JSONSerialization.data(withJSONObject: [
