@@ -1,0 +1,65 @@
+name: Apporo simulator acceptance
+
+on:
+  push:
+    branches:
+      - ci/apporo-aiot-ios-sim-20261013
+
+permissions:
+  contents: read
+
+jobs:
+  unit-and-ui-tests:
+    runs-on: macos-26
+    timeout-minutes: 90
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Select Xcode
+        run: |
+          sudo xcode-select --switch /Applications/Xcode_26.6.app/Contents/Developer
+          xcodebuild -version
+
+      - name: Install CocoaPods tooling
+        run: |
+          sudo gem install cocoapods -v 1.17.0 --no-document
+          sudo gem install cocoapods-acknowledgements -v 1.3.0 --no-document
+          pod install --deployment
+
+      - name: Run unit tests on iPhone simulator
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -workspace HomeAssistant.xcworkspace \
+            -scheme Tests-Unit \
+            -destination 'platform=iOS Simulator,name=iPhone 17 Pro' \
+            -derivedDataPath "$RUNNER_TEMP/derived-unit" \
+            -resultBundlePath "$RUNNER_TEMP/Apporo-Unit.xcresult" \
+            -parallel-testing-enabled NO \
+            CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$RUNNER_TEMP/unit.log"
+
+      - name: Run UI tests on iPhone simulator
+        if: always()
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -workspace HomeAssistant.xcworkspace \
+            -scheme Tests-UI \
+            -destination 'platform=iOS Simulator,name=iPhone 17 Pro' \
+            -derivedDataPath "$RUNNER_TEMP/derived-ui" \
+            -resultBundlePath "$RUNNER_TEMP/Apporo-UI.xcresult" \
+            -parallel-testing-enabled NO \
+            CODE_SIGNING_ALLOWED=NO 2>&1 | tee "$RUNNER_TEMP/ui.log"
+
+      - name: Upload simulator results
+        if: always()
+        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
+        with:
+          name: apporo-ios-simulator-results
+          path: |
+            ${{ runner.temp }}/unit.log
+            ${{ runner.temp }}/ui.log
+            ${{ runner.temp }}/Apporo-Unit.xcresult
+            ${{ runner.temp }}/Apporo-UI.xcresult
+          if-no-files-found: ignore
