@@ -398,7 +398,6 @@ final class StoreScreenshotTests: XCTestCase {
         return false
     }
 
-
     /// 對 WKWebView 裡的 HTML 欄位輸入文字。
     ///
     /// **不能直接 `element.typeText(...)`。** 那會拋
@@ -423,7 +422,6 @@ final class StoreScreenshotTests: XCTestCase {
         }
         XCTFail("\(label)欄位始終無法取得鍵盤焦點\n\(element.debugDescription)")
     }
-
 
     /// 依序嘗試多個候選標籤。上線流程沒有無障礙識別碼,標籤是唯一的抓手,
     /// 所以失敗時要把畫面樹印出來,否則除錯完全沒有線索。

@@ -65,6 +65,7 @@ public enum AppConstants {
         public static let appleDropSupportiOS15 = page("help/troubleshooting")
 
         // MARK: Support
+
         //
         // The upstream companion app exposed the Home Assistant community here (forums, chat,
         // Twitter/Facebook, the GitHub repo and its issue tracker, the beta/translate programmes).
